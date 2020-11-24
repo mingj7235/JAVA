@@ -21,11 +21,9 @@ public class School {
 			break;
 		case 2 : 
 			input();
-			output();
 			break;
 		case 3 : 
 			input();
-			output();
 			break;
 		default :
 			break;

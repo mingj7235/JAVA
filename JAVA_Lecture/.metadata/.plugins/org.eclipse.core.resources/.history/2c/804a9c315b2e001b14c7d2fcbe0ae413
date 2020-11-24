@@ -21,11 +21,9 @@ public class School {
 			break;
 		case 2 : 
 			input();
-			output();
 			break;
 		case 3 : 
 			input();
-			output();
 			break;
 		default :
 			break;
@@ -33,20 +31,20 @@ public class School {
 	}
 	
 	public void input () {
-		Students std = new High();
+		Elementary ele = new Elementary();
 		System.out.print("과목을 입력해주세요 : ");
-		std.subject = sc.next();
+		ele.subject = sc.next();
 		System.out.print("중간고사 점수 : ");
-		std.midterm = sc.nextInt();
+		ele.midterm = sc.nextInt();
 		System.out.print("기말고사 점수 : ");
-		std.finalterm = sc.nextInt();
+		ele.finalterm = sc.nextInt();
 		System.out.print("수행평가 점수 :");
-		std.exp = sc.nextInt();
-		std.total();
+		ele.exp = sc.nextInt();
+		ele.total();
 		if (choice == 1) { //초딩
-			studentbook [choice-1][eleStd++] = std;
+			studentbook [choice-1][eleStd++] = ele;
 		}else { //중딩
-			Middle mid = (Middle) std;
+			Middle mid = (Middle) ele;
 			System.out.println("출석점수를 입력해주세요");
 			mid.attend = sc.nextInt();
 			System.out.println("봉사점수를 입력해주세요");
