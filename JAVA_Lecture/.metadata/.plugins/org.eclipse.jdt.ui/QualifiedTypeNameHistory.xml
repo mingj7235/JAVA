@@ -5,7 +5,6 @@
 <fullyQualifiedTypeName name="p2.Animal"/>
 <fullyQualifiedTypeName name="p2.Dog"/>
 <fullyQualifiedTypeName name="p2.Cat"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="p3.Calculator"/>
 <fullyQualifiedTypeName name="p3.Adder"/>
 <fullyQualifiedTypeName name="p3.Subtracter"/>
@@ -48,4 +47,10 @@
 <fullyQualifiedTypeName name="p8.ChildInterfae1"/>
 <fullyQualifiedTypeName name="p8.ChildInterEx"/>
 <fullyQualifiedTypeName name="p9.A.B"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="testPractice.School"/>
+<fullyQualifiedTypeName name="testPractice.Elementary"/>
+<fullyQualifiedTypeName name="testPractice.Middle"/>
+<fullyQualifiedTypeName name="testPractice.Students"/>
+<fullyQualifiedTypeName name="testPractice.High"/>
 </qualifiedTypeNameHistroy>

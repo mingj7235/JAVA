@@ -49,8 +49,6 @@ public class School {
 			Middle mid = (Middle) std;
 			System.out.println("출석점수를 입력해주세요");
 			mid.attend = sc.nextInt();
-			System.out.println("담당교사 이름을 입력해주세요 ");
-			mid.teacher = sc.next();
 			System.out.println("봉사점수를 입력해주세요");
 			mid.volunteer = sc.nextInt();
 			if (choice ==2) {
