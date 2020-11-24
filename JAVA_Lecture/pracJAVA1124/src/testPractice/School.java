@@ -67,7 +67,7 @@ public class School {
 		switch (choice) {
 		case 1 : 
 			System.out.println("초등학생 성적입니다.");
-			for (int i = 0; i < studentbook[0].length; i++) {
+			for (int i = 0; i < eleStd; i++) {
 				Elementary ele = (Elementary) studentbook[0][i];
 				System.out.println("과목 : " + ele.subject + "\n중간고사 : " + ele.midterm + " 기말고사 : " + ele.finalterm
 						+ " 수행평가 : " + ele.exp + "점수 : "  + ele.total());
@@ -75,7 +75,7 @@ public class School {
 			break;
 		case 2 : 
 			System.out.println("중학생 성적입니다.");
-			for (int i = 0; i < studentbook[1].length; i++) {
+			for (int i = 0; i < midStd; i++) {
 				Middle mid = (Middle) studentbook[1][i];
 				System.out.println("과목 : " + mid.subject + "담당교사 : " + mid.teacher + "\n중간고사 : " + mid.midterm + " 기말고사 : " + mid.finalterm
 						+ " 수행평가 : " + mid.exp + " 출석점수 : " + mid.attend + " 봉사점수 : " + mid.volunteer + "\n점수 : " + mid.total());
@@ -83,7 +83,7 @@ public class School {
 			break;
 		case 3 : 
 			System.out.println("고등학생 성적입니다.");
-			for (int i = 0; i < studentbook[2].length; i++) {
+			for (int i = 0; i < highStd; i++) {
 				High high = (High) studentbook[2][i];
 				System.out.println("과목 : " + high.subject + "담당교사 : " + high.teacher + "\n중간고사 : " + high.midterm + " 기말고사 : " + high.finalterm
 						+ " 수행평가 : " + high.exp + " 출석점수 : " + high.attend + " 봉사점수 : " + high.volunteer + "\n점수 : " + high.total() + " 평균 " + high.avg());
