@@ -1,0 +1,6 @@
+package SMP;
+
+public class Teachers {
+	String classSubjects;
+	
+}

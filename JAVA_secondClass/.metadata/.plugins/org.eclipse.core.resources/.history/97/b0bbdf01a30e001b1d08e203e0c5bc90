@@ -1,0 +1,6 @@
+package sanghwalcoding;
+
+public interface Interface01 {
+	void data1 (int age, String name);
+	String data2	();
+}

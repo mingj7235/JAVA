@@ -1,0 +1,21 @@
+package p7;
+//추상 클래스
+public abstract class AbstractEX {
+	static final int FNUM = 2332;
+	S
+	public AbstractEX() {
+	}
+	
+	public void play () {
+		
+	}
+	
+	public abstract void abPlay ();
+	
+	{
+		
+	}
+	static {
+		
+	}
+}

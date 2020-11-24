@@ -1,0 +1,18 @@
+package p7;
+
+public interface MyInterface {
+	void method1(); //2010년 ~ 구현 클래스 공통
+	default void method2() {
+		System.out.println("2020년도 이후 구현");
+	} //2020년도 이후에 구현한 클래스 공통
+	//오버라이드 하지 않아도 되는 메서드 사용 가능. 
+	//수정에 용이하도록 해놓은 것임. 
+	default void method3 () {
+		System.out.println("2030년도 이후 구현");
+	}//2030년 이후에 구현한 클래스 공통
+	
+	static void stMethod4 () { //2030년 이후 새로운 메소드
+		System.out.println("정적 메소드");
+	}
+	
+}

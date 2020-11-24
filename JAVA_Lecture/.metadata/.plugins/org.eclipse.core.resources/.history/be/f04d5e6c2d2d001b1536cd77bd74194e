@@ -1,0 +1,12 @@
+package p5;
+//인터페이스
+public interface RemoteControl {
+	//상수를 가질수 있다. (static final)이 생략이 되어도 자동으로 상수가된다.
+	//모든 필드가 상수가된다. 
+	//추상메소드를 가질 수 잇다. 
+	static final double PI = 3.14;
+	double EARTHAREA = 42435.22;
+	//인터페이스는 모든 필드가 어차피 상수이므로, 생략해도 static final이 붙는다. 
+	final double EARTHHEIGHT = 400;
+}
+	

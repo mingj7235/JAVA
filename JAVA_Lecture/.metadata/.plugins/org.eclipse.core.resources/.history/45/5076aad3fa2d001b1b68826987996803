@@ -1,0 +1,8 @@
+package p5;
+//비지니스 로직 부분의 클래스
+public class Car {
+	Tire frontLeftTire = new HankookTire();
+	Tire frontRightTire = new HankookTire();
+	Tire backLeftTire = new KumhoTire();
+	Tire backRightTire = new KumhoTire();
+}

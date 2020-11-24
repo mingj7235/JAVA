@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;day29_CollectionFrameWork2&apos; to &apos;set&apos;&#x0D;&#x0A;- Original project: &apos;day29_CollectionFrameWork2&apos;&#x0D;&#x0A;- Original element: &apos;day29_CollectionFrameWork2/src/day29_CollectionFrameWork2&apos;&#x0D;&#x0A;- Renamed element: &apos;day29_CollectionFrameWork2/src/set&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;day29_CollectionFrameWork2&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;day29_CollectionFrameWork2" name="set" qualified="false" references="true" stamp="1602663294238" textual="false" version="1.0"/>
+</session>

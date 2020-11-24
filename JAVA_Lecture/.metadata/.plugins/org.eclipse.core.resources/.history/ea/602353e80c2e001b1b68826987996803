@@ -1,0 +1,10 @@
+package p7;
+
+public class JavaCodeMain {
+	public static void main(String[] args) {
+		//모든 구현객체를 다형성으로 객체화(인스턴스화) 하기
+		
+		
+		
+	}
+}

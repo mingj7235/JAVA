@@ -1,0 +1,16 @@
+package sanghwalcoding;
+
+public class Prac2 {
+	@Override
+	public String toString() {
+		
+		return 
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		String [] names = {"團營", "團憮", "團ж"};
+
+	}
+}

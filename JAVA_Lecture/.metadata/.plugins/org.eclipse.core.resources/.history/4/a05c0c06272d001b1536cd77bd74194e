@@ -1,0 +1,17 @@
+package p2;
+
+public class Cat extends Animal{
+
+	@Override
+	public void sound() {
+		System.out.println("야옹야옹!");
+	}
+	public Cat() {
+		super.kind = "포유류";
+	}
+	
+	@Override
+	public String toString() {
+		return "고양이";
+	}
+}

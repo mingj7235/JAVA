@@ -1,0 +1,26 @@
+package sanghwalcoding;
+
+public class Exception {
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	
+	void div (int num1, int num2) {
+		
+		try {
+			System.out.println(num1/num2);
+		} catch (java.lang.Exception e) {
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
+		
+	}
+	public static void main(String[] args) {
+		Exception e = new Exception();
+		e.div(10, 0);
+	}
+	
+}

@@ -1,0 +1,42 @@
+package p1;
+//추상클래스 : 일반클래스와 똑같으나, 추상메소드를 가질 수 있다. 
+//추상 클래스 = 일반 클래스 + 추상메소드
+public abstract class Phone {
+	//abstract 키워드 -> 추상클래스로 변환. 
+	private String owner;
+	private String telphone;
+	private int price;
+	
+	public Phone() {
+		System.out.println("기본생성자");
+	}
+	public Phone(String owner, String telphone, int price) {
+		this.owner = owner;
+		this.telphone = telphone;
+		this.price = price;
+		System.out.println("명시적 생성자");
+	}
+	
+	//getter & setter
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	public String getTelphone() {
+		return telphone;
+	}
+	public void setTelphone(String telphone) {
+		this.telphone = telphone;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	
+}

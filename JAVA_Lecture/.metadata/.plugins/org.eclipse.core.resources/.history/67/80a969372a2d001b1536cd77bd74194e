@@ -1,0 +1,11 @@
+package p3;
+
+public class Adder extends Calculator {
+
+	@Override
+	protected int calc() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

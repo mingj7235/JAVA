@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;day24_ObjectClass.ObjectTxt&apos; to &apos;ObjectTest&apos;&#x0D;&#x0A;- Original project: &apos;day24_ObjectClass&apos;&#x0D;&#x0A;- Original element: &apos;day24_ObjectClass.ObjectTxt&apos;&#x0D;&#x0A;- Renamed element: &apos;day24_ObjectClass.ObjectTest&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ObjectTxt&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;day24_ObjectClass{ObjectTxt.java[ObjectTxt" matchStrategy="1" name="ObjectTest" qualified="false" references="true" similarDeclarations="false" stamp="1602333971735" textual="false" version="1.0"/>
+</session>

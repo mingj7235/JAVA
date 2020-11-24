@@ -1,0 +1,6 @@
+package p5;
+//인터페이스
+public interface RemoteControl {
+	//상수를 가질수 있다. (public final)
+	//추상메소드를 가질 수 잇다. 
+}

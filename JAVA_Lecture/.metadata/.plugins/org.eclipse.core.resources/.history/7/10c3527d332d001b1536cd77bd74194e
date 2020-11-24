@@ -1,0 +1,5 @@
+package p7;
+//ObjectInter를 상속
+public interface Moveable extends ObjectInter{
+	
+}

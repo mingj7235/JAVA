@@ -1,0 +1,31 @@
+package sanghwalcoding;
+
+public class Exception {
+	
+	private int [] arInt = new int [3]	;
+	
+	Exception () {
+		arInt[0] = 0;
+		arInt[1] = 10;
+		arInt[2] = 20;
+	}	
+	
+	void div (int num1, int num2) {
+		try {
+			System.out.println(arInt[num1]/ arInt[num2]);
+		} catch (java.lang.ArithmeticException e) {
+			System.out.println("0으로 나눌 수 없습니다.");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열의 크기가 3을 넘었습니다.");
+		}
+	}
+	
+	public static void main(String[] args) {
+		Exception e = new Exception();
+		
+		e.div(10, 0);
+		
+		
+	}
+	
+}
