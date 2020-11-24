@@ -1,0 +1,8 @@
+package testPractice;
+
+public class Middle extends Elementary{
+	String teacher;
+	int present;
+	int volunteer;
+	
+}
