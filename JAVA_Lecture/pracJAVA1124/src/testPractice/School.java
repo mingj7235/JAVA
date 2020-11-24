@@ -58,6 +58,7 @@ public class School {
 			}else { //°íµù
 				High high = (High) mid;
 				high.avg();
+				studentbook [choice-2][highStd++] = high;
 			}
 		}
 	}
