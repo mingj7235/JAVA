@@ -1,6 +1,6 @@
 package testPractice;
 
-public class Students {
+public class Elementary extends Students{
 	String subject;
 	int midterm;
 	int finalterm;
@@ -10,4 +10,5 @@ public class Students {
 	public int total () {
 		return midterm + finalterm + exp;
 	}
+	
 }

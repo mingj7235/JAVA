@@ -2,12 +2,12 @@ package testPractice;
 
 public class Middle extends Elementary{
 	String teacher;
-	int attend;
+	int present;
 	int volunteer;
 	
 	@Override
 	public int total() {
-		return super.total() + attend + volunteer;
+		return super.total() + present + volunteer;
 	}
 	
 }

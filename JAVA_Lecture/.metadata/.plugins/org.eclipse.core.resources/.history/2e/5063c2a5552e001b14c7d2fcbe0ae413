@@ -16,13 +16,13 @@ public class School {
 		choice = sc.nextInt();
 		switch(choice) {
 		case 1 : 
-			input();
+			
 			break;
 		case 2 : 
-			input();
+			
 			break;
 		case 3 : 
-			input();
+			
 			break;
 		default :
 			break;
@@ -39,38 +39,16 @@ public class School {
 		ele.finalterm = sc.nextInt();
 		System.out.println("수행평가 점수를 입력해주세요");
 		ele.exp = sc.nextInt();
-		ele.total();
 		if (choice == 1) { //초딩
 			studentbook [choice-1][eleStd++] = ele;
-		}else { //중딩
+		}else {
 			Middle mid = (Middle) ele;
 			System.out.println("출석점수를 입력해주세요");
-			mid.attend = sc.nextInt();
-			System.out.println("봉사점수를 입력해주세요");
-			mid.volunteer = sc.nextInt();
-			if (choice ==2) {
-				studentbook [choice-1][midStd++] = mid;
-			}else { //고딩
-				High high = (High) mid;
-				high.avg();
-			}
+			mid.present
+			
 		}
-	}
-	
-	public void output () {
-		switch (choice) {
-		case 1 : 
-			
-			break;
-		case 2 : 
-			
-			break;
-		case 3 : 
-			
-			break;
-		default :
-			break;
-		}
+		
+		
 	}
 	
 }

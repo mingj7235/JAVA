@@ -16,13 +16,13 @@ public class School {
 		choice = sc.nextInt();
 		switch(choice) {
 		case 1 : 
-			input();
+			
 			break;
 		case 2 : 
-			input();
+			
 			break;
 		case 3 : 
-			input();
+			
 			break;
 		default :
 			break;
@@ -54,23 +54,10 @@ public class School {
 				High high = (High) mid;
 				high.avg();
 			}
+			
 		}
-	}
-	
-	public void output () {
-		switch (choice) {
-		case 1 : 
-			
-			break;
-		case 2 : 
-			
-			break;
-		case 3 : 
-			
-			break;
-		default :
-			break;
-		}
+		
+		
 	}
 	
 }

@@ -1,0 +1,58 @@
+package testPractice;
+
+import java.util.Scanner;
+
+public class School {
+	Scanner sc = new Scanner(System.in);
+	Elementary elementary = new Elementary();
+	Middle middle = new Middle();
+	High high = new High();
+	
+	
+	public void view () {
+		System.out.println("학생의 grade를 확인해주세요"
+				+ "\n1. 초등학생"
+				+ "\n2. 중학생"
+				+ "\n3. 고등학생");
+		int choice = sc.nextInt();
+		switch(choice) {
+		case 1 : 
+			
+			break;
+		case 2 : 
+			
+			break;
+		case 3 : 
+			
+			break;
+		default :
+			break;
+		}
+	}
+	
+	public void check (Students std) {
+		if (std instanceof Elementary) {
+			elementary();
+		}if (std instanceof Middle) {
+			
+		}
+	}
+	
+	public void elementary () {
+		System.out.println("과목명을 입력해주세요 : ");
+		elementary.subject = sc.next();
+		System.out.println("중간고사 성적을 입력해주세요 : ");
+		elementary.midterm = sc.nextInt();
+		System.out.println("기말고사 성적을 입력해주세요 : ");
+		elementary.finalterm = sc.nextInt();
+		System.out.println("수행평가 점수를 입력해주세요 : ");
+		elementary.exp = sc.nextInt();
+		
+	}
+	
+	public void middle () {
+		
+	}
+	
+	
+}

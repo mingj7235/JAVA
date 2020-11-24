@@ -16,13 +16,13 @@ public class School {
 		choice = sc.nextInt();
 		switch(choice) {
 		case 1 : 
-			input();
+			
 			break;
 		case 2 : 
-			input();
+			
 			break;
 		case 3 : 
-			input();
+			
 			break;
 		default :
 			break;
@@ -30,47 +30,25 @@ public class School {
 	}
 	
 	public void input () {
-		Elementary ele = new Elementary();
+		Elementary std = new Elementary();
 		System.out.println("과목을 입력해주세요");
-		ele.subject = sc.next();
+		std.subject = sc.next();
 		System.out.println("중간고사 점수를 입력해주세요");
-		ele.midterm = sc.nextInt();
+		std.midterm = sc.nextInt();
 		System.out.println("기말고사 점수를 입력해주세요");
-		ele.finalterm = sc.nextInt();
+		std.finalterm = sc.nextInt();
 		System.out.println("수행평가 점수를 입력해주세요");
-		ele.exp = sc.nextInt();
-		ele.total();
+		std.exp = sc.nextInt();
 		if (choice == 1) { //초딩
-			studentbook [choice-1][eleStd++] = ele;
-		}else { //중딩
-			Middle mid = (Middle) ele;
+			studentbook [choice-1][eleStd++] = std;
+		}else {
+			
 			System.out.println("출석점수를 입력해주세요");
-			mid.attend = sc.nextInt();
-			System.out.println("봉사점수를 입력해주세요");
-			mid.volunteer = sc.nextInt();
-			if (choice ==2) {
-				studentbook [choice-1][midStd++] = mid;
-			}else { //고딩
-				High high = (High) mid;
-				high.avg();
-			}
+			
+			
 		}
-	}
-	
-	public void output () {
-		switch (choice) {
-		case 1 : 
-			
-			break;
-		case 2 : 
-			
-			break;
-		case 3 : 
-			
-			break;
-		default :
-			break;
-		}
+		
+		
 	}
 	
 }
