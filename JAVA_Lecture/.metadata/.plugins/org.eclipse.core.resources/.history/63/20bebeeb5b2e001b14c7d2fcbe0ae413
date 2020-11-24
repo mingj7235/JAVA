@@ -31,7 +31,7 @@ public class School {
 			break;
 		}
 	}
-	//입력
+	
 	public void input () {
 		Students std = new High();
 		System.out.print("과목을 입력해주세요 : ");
@@ -59,7 +59,7 @@ public class School {
 			}
 		}
 	}
-	//출력
+	
 	public void output () {
 		switch (choice) {
 		case 1 : 
