@@ -1,5 +1,0 @@
-package p2;
-
-public class OracleDao implements da {
-
-}

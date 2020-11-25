@@ -1,6 +1,0 @@
-package testPractice;
-
-public class High extends Middle{
-	double avg;
-	
-}
