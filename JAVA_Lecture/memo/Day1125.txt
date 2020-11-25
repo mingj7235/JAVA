@@ -74,5 +74,48 @@ Parent     Parent의 자식 (익명으로)
 2. 출력
 3. 등급코드 추가
 4. 종료
+-------
+
+1. 인터페이스쪽
+
+  부모인터페이스         WirelessInter
+  할인요금추상메소드      discountRate();
+  통신요금추상메소드      communicationFee();
+      |
+  부모구현클래스         WirelessClass  
+    고객명                custName:String
+    등급코드              gradeCode:String
+    시간당단가            unitPrice:int
+    기본요금              basePrice:int
+    사용시간              useTime:int  
+     
+2. 구현객체
+A등급                    AGrade
+  등급코드- A           
+  시간당단가 - 86       
+  기본요금 - 10000
+
+B등급
+   
+C등급
+
+D등급
+
+3. 자바코드쪽 부분
+
+메인클래스
+비즈니스로직을 호출하기
+
+
+메인클래스
+	비지니스로직 view 호출
+
+비즈니스 로직 클래스
+1. view() 메소드
+	메뉴선택하기
+2. 입력하기
+3. 출력하기
+4. 종료부분짜기
+
 
 
