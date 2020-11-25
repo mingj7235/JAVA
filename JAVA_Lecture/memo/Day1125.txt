@@ -83,11 +83,11 @@ Parent     Parent의 자식 (익명으로)
   통신요금추상메소드      communicationFee();
       |
   부모구현클래스         WirelessClass  
-    고객명                custName:String
-    등급코드              gradeCode:String
+    고객명              custName:String
+    등급코드             gradeCode:String
     시간당단가            unitPrice:int
-    기본요금              basePrice:int
-    사용시간              useTime:int  
+    기본요금             basePrice:int
+    사용시간             useTime:int  
      
 2. 구현객체
 A등급                    AGrade
