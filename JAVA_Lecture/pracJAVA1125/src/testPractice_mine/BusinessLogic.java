@@ -13,7 +13,7 @@ public class BusinessLogic {
 		while (!flag) {
 			System.out.print("통신요금 계산기"
 					+ "\n1. 입력  2. 출력  3. 종료"
-					+ "\n 번호 입력 : ");
+					+ "\n번호 입력 : ");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1 : 
@@ -23,7 +23,8 @@ public class BusinessLogic {
 				print(arData);
 				break;
 			case 3 : 
-				
+				System.out.println("프로그램을 종료합니다.");
+				flag = true;
 				break;
 			}
 			
@@ -42,7 +43,7 @@ public class BusinessLogic {
 			System.out.print("고객의 등급 : ");
 			String grade = sc.next();
 			
-			System.out.println("고객의 사용시간 : ");
+			System.out.print("고객의 사용시간 : ");
 			int usingTime = sc.nextInt();
 			
 			if (grade.equals("A") || grade.equals("a")) {
@@ -74,8 +75,7 @@ public class BusinessLogic {
 	public void print (GradesManage [] arData) {
 		System.out.println("고객명     등급코드     시간당단가     기본요금     사용요금     사용시간     할인요금     당월통신요금");
 		for (int i = 0; i < arData.length; i++) {
-			if (arData.length == 0) {
-				System.out.println("데이터가 없습니다.");
+			if (arData[i] == null) {
 				break;
 			}else {
 				System.out.println(arData[i].customer + "   " + arData[i].grade + "   " + arData[i].pricePerTime + "   " + arData[i].basicPrice +
