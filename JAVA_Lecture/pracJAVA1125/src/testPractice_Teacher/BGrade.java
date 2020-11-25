@@ -19,6 +19,8 @@ public class BGrade extends WirelessClass{
 	        communicationFee[cnt]= communicationFeeMethod(unitPrice, useTime[cnt],basePrice, discountRate );
 	        cnt++;
 		}
+		
+		//
 		public void output() {
 			for(int i=0;i<cnt; i++) {
 				System.out.print(custName[i]+ "  ");

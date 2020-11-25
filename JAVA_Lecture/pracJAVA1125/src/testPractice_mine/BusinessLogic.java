@@ -7,7 +7,7 @@ public class BusinessLogic {
 	int choice; 
 	int cnt = 0;
 	GradesManage arData [] = new GradesManage [10]; 
-	//view
+	//view단
 	public void view () {
 		boolean flag = false;
 		while (!flag) {
@@ -30,6 +30,7 @@ public class BusinessLogic {
 		}
 	}
 	
+	//입력
 	public void insert () {
 		boolean check = false;
 		String yesOrno = "";
@@ -69,6 +70,7 @@ public class BusinessLogic {
 		}
 	}//end insert()
 	
+	//출력
 	public void print (GradesManage [] arData) {
 		System.out.println("고객명     등급코드     시간당단가     기본요금     사용요금     사용시간     할인요금     당월통신요금");
 		for (int i = 0; i < arData.length; i++) {
