@@ -7,6 +7,7 @@ public class BusinessLogic {
 	int choice; 
 	int cnt = 0;
 	GradesManage arData [] = new GradesManage [10]; 
+	//view
 	public void view () {
 		boolean flag = false;
 		while (!flag) {
