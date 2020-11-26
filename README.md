@@ -1,3 +1,3 @@
 # JAVA
 
-good
+Own JAVA Lectures, Projects
