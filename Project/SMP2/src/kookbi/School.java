@@ -16,10 +16,10 @@ public class School {
 			if (choice == -1) break;
 			switch (choice) {
 			case 0 : 
-				
+				new LibraryMagagements_Joption().view();
 				break;
 			case 1 : 
-				new StudentManagements_Joption().view();;
+				new StudentManagements_Joption().view();
 				break;
 			case 2 : 
 				

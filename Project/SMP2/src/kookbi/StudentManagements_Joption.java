@@ -31,10 +31,10 @@ public class StudentManagements_Joption {
 		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회"};
 
 		while (true) {
-			if (choice == -1) break;
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미에 오신것을 환영합니다]\n"
 					+ "아래의 메뉴를 선택하여 학생들을 관리해주세요 :)", "학생부 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, mainImg, menu, null);
+			if (choice == -1) break;
 			
 			switch (choice) {
 			case 0:
