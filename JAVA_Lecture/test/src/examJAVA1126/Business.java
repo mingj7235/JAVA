@@ -158,17 +158,70 @@ public class Business {
 		//모든지구 출력
 		case 2 :
 			System.out.println("=======");
-			System.out.println("모든지구");
+			System.out.println("강동지구");
 			System.out.println("=======");
-			System.out.println("배달담당  배달시간  배달량  배달요금");
 			for (int i = 0; i < arData.length; i++) {
 				if (arData[i] == null) {
 					break;
-				} else {
-					System.out.println(arData[i].deliever + " " + arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
 				}
-				
+				if(arData[i].area.equals("강동지구")) {
+					System.out.println("배달담당  배달시간  배달량  배달요금");
+					System.out.println(arData[i].deliever + " " + arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
+				}else {
+				}
 			}
+			System.out.println("=======");
+			System.out.println("강서지구");
+			System.out.println("=======");
+			for (int i = 0; i < arData.length; i++) {
+				if (arData[i] == null) {
+					break;
+				}
+				if(arData[i].area.equals("강서지구")) {
+					System.out.println("배달담당  배달시간  배달량  배달요금");
+					System.out.println(arData[i].deliever + " " + arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
+				}else {
+				}
+			}
+			System.out.println("=======");
+			System.out.println("강남지구");
+			System.out.println("=======");
+			for (int i = 0; i < arData.length; i++) {
+				if (arData[i] == null) {
+					break;
+				}
+				if(arData[i].area.equals("강남지구")) {
+					System.out.println("배달담당  배달시간  배달량  배달요금");
+					System.out.println(arData[i].deliever + " " + arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
+				}else {
+				}
+			}
+			System.out.println("=======");
+			System.out.println("강북지구");
+			System.out.println("=======");
+			for (int i = 0; i < arData.length; i++) {
+				if (arData[i] == null) {
+					break;
+				}
+				if(arData[i].area.equals("강북지구")) {
+					System.out.println("배달담당  배달시간  배달량  배달요금");
+					System.out.println(arData[i].deliever + " " + arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
+				}else {
+				}
+			}
+			
+			
+//			System.out.println("=======");
+//			System.out.println("모든지구");
+//			System.out.println("=======");
+//			System.out.println("배달담당  배달지구 배달시간  배달량  배달요금");
+//			for (int i = 0; i < arData.length; i++) {
+//				if (arData[i] == null) {
+//					break;
+//				} else {
+//					System.out.println(arData[i].deliever + " " + arData[i].area + " "+ arData[i].time + " " + arData[i].weight + " " + arData[i].totalPayCal());
+//				}
+//			}
 			break;
 		case 3 :
 			
