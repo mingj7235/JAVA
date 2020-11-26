@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import java.util.Map.Entry;
 
-public class Managements_Joption {
+public class StudentManagements_Joption {
 
 	Scanner sc = new Scanner(System.in);
 	final public int SUBJECTS = 3;
