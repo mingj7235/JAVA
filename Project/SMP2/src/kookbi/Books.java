@@ -11,7 +11,7 @@ public class Books {
 	public Books() {
 	}
 	
-	public Books(String bookName, String author, int volume, String bookNum) {
+	public Books(String bookName, String author, int volume) {
 		this.bookName = bookName;
 		this.author = author;
 		this.volume = volume;
@@ -47,10 +47,13 @@ public class Books {
 		this.author = author;
 	}
 
-	public String show () {
-		return this.bookNum; 
+//	public String show () {
+//		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume; 
+//	}
+	@Override
+	public String toString() {
+		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume; 
 	}
-	
 	
 
 }
