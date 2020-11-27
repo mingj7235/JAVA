@@ -29,7 +29,7 @@ public class StudentManagements_Joption {
 	
 	public void view () {
 		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회"};
-
+		
 		while (true) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미에 오신것을 환영합니다]\n"
 					+ "아래의 메뉴를 선택하여 학생들을 관리해주세요 :)", "학생부 관리 Menu", JOptionPane.DEFAULT_OPTION, 
@@ -146,6 +146,10 @@ public class StudentManagements_Joption {
 	
 	void search () {
 		Iterator<Students> iter = StudentsBook.keySet().iterator();
+		if (StudentsBook.size() ==0 ) {
+			JOptionPane.showMessageDialog(null, "등록된 학생의 정보가 하나도 없습니다.");
+			return;
+		}
 		String name = JOptionPane.showInputDialog("♡[학생 검색]♡"
 				+ "\n검색할 학생의 이름을 써주세요.");
 		String result = "";
@@ -357,5 +361,4 @@ public class StudentManagements_Joption {
 			System.out.println("재수강 대상자는 없습니다.\n");
 		}
 	}
-
 }
