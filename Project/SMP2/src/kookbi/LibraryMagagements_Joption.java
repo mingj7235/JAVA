@@ -74,6 +74,7 @@ public class LibraryMagagements_Joption {
 	
 	//책 리스트
 	public void bookList() {
+		int listNum =0;
 		
 	}
 	
