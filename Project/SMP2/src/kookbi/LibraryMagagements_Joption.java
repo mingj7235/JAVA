@@ -12,13 +12,14 @@ public class LibraryMagagements_Joption {
 	//책을 리스트업하고,
 	//빌려간 학생 목록을 검색할 수 있음
 	ArrayList<Books> arBooks = new ArrayList<>();
+	Books books = null;
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
 	int choice;
 	public void view () {
 		boolean flag = false;
-		String menu [] = {"책 등록", "등록된 책 조회", "책 대여", "대여자 리스트 조회"};
+		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "대여자 리스트 조회"};
 		
 		while (!flag) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"
@@ -36,6 +37,7 @@ public class LibraryMagagements_Joption {
 				break;
 			//책 대여
 			case 2 :
+				bookSearch();
 				break;
 			//대여자 리스트 조회
 			case 3 :
@@ -68,8 +70,7 @@ public class LibraryMagagements_Joption {
 					JOptionPane.showMessageDialog(null, "오류입니다. 다시입력해주세요");
 					break;
 				}
-				Books books = new Books(bookName, author, volume);
-//				arBooks = new ArrayList<>();
+				books = new Books(bookName, author, volume);
 				arBooks.add(books);
 				JOptionPane.showMessageDialog(null, bookName + " 책의 정보가 입력되었습니다.");
 				break;
@@ -90,6 +91,23 @@ public class LibraryMagagements_Joption {
 			result += "♡[도서관 소장중인 책 목록]♡\n";
 			for (int i = 0; i < arBooks.size(); i++) {
 				result += arBooks.get(i) + "\n";
+			}
+		}
+		JOptionPane.showMessageDialog(null, result);
+	}
+	//책 검색
+	public void bookSearch () {
+		String result = "";
+		if (arBooks == null) {
+			result += "도서관에 등록된 책이 없습니다.";
+		}else {
+			String bookname = JOptionPane.showInputDialog("♡[책 제목 검색]♡"
+				+ "\n검색할 책 제목을 써주세요.");
+			for (int i = 0; i < arBooks.size(); i++) {
+				if (bookname.equals(books.getBookName())) {
+					result += "======[검색 결과]======\n";
+					result += books;
+				}
 			}
 		}
 		JOptionPane.showMessageDialog(null, result);
