@@ -8,21 +8,21 @@ public class Key {
 		this.number = number;
 	}
 	
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (obj instanceof Key) {
-//			Key compareKey = (Key) obj;
-//			if (this.number == compareKey.number) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}//end overrided equals method
-//	
-//	@Override
-//	public int hashCode() {
-//		return number;
-//	}
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Key) {
+			Key compareKey = (Key) obj;
+			if (this.number == compareKey.number) {
+				return true;
+			}
+		}
+		return false;
+	}//end overrided equals method
+	
+	@Override
+	public int hashCode() {
+		return number;
+	}
 	//keyExample 클래스에서 key생성자의 매개값이 number. 이것이 같을 때, equals로 가서 true가 리턴되므로 동등한 값이 된다. 
 	
 	
