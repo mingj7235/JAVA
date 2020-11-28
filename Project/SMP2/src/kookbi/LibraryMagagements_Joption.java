@@ -20,16 +20,17 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
+	boolean rentListCheck = false;
 	int choice;
 	public void libararyView () {
 		boolean flag = false;
-		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "책 대여", "대여자 리스트", "메인으로"};
+		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "책 대여", "메인으로"};
 		
 		while (!flag) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"
 					+ "아래의 메뉴를 선택하여 도서관을 관리해주세요", "도서관 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, libraryMainImg, menu, null);
-			if (choice == -1 || choice == 5) break;
+			if (choice == -1 || choice == 4) break;
 			switch (choice) {
 			//책 등록
 			case 0 :
@@ -48,9 +49,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				rent();
 				break;
 			case 4 :
-				rentList();
-				break;
-			case 5 :
 				break;
 			}
 		}
@@ -129,7 +127,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		Iterator<Books> bIter = arBooks.iterator();
 		String result = "";
 		boolean rentCheck = false;
-		if (!(StudentsBook.size()==0)) {
+		if (!(StudentsBook.size()==0) && !(arBooks.size() ==0)) {
 			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 입니다");
 			list(StudentsBook);
 			Integer number = 0;
@@ -137,6 +135,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				number = Integer.parseInt(JOptionPane.showInputDialog("책을 대여할 학생 학번을 써주세요"));
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "숫자로 입력해주세요");
+				rentCheck = true;
 			}
 			while (stIter.hasNext()) {
 				Students std = stIter.next();
@@ -154,25 +153,30 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
 									+ books.getBookName() +" 책 대여가 완료되었습니다.");
 							rentCheck = true;
+							//
+							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0) && rentListCheck) {
+								result += "[책 대여자 리스트]\n";
+								try {
+									result += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString();
+								}catch (Exception e) {
+									
+								}
+								JOptionPane.showMessageDialog(null, result);
+							} 							
 						}else {
 							JOptionPane.showMessageDialog(null, "해당하는 책이 도서관에 없습니다.");
 						}
 					}
 				} else {
+					
 					if (number instanceof Integer && !rentCheck) {
 						JOptionPane.showMessageDialog(null, "해당 학번의 학생이 없습니다.");
 					}
 				}
 			}
 		}else {
-			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다.");
+			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
-	}
-	//책 대여 학생 리스트
-	public void rentList () {
-		String result = "";
-//		result += arRentList.get(std).getBookName();
-		JOptionPane.showMessageDialog(null, result);
 	}
 }
 
