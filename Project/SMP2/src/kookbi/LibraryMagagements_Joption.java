@@ -152,35 +152,45 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
 									+ temp.getBookName() +" 책 대여가 완료되었습니다.");
 							temp.setRent("대여 중");
-							
-							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0)) {
-								result += "[책 대여자 리스트]\n";
-								try {
-									rentResult += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString()+ "\n";
-								}catch (Exception e) {
-									return;
-								}
-								JOptionPane.showMessageDialog(null, result + rentResult);
-							} 							
+						}else if (!book.equals(temp.getBookName())) {
+
 						}else if (!temp.getRent().equals("대여가능")) {
 							JOptionPane.showMessageDialog(null, "그 책은 대여가능하지 않습니다.");
+							return;
 						}
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "등록한 학생이 없습니다.");
+					return;
 				}
 			}
 		}else {
 			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
+		bookList();
 	}
 	
-	public void returnBook (LinkedHashMap<Students, Books> rentList) {
+	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
+		Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
+		String result = "";
 		if (arRentList.size() ==0) {
-			JOptionPane.showMessageDialog(null, "대여중인 책이 없습니다.");
+			result += "대여중인 책이 없습니다.";
 		}else {
-			JOptionPane.showMessageDialog(null, "[책 반납 메뉴입니다.]\n");
+			String bookNum = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
+					+ "반납하실 책 번호를 입력해주세요 (일련번호는 'Book-' 을 포함하여 써주셔야합니다.)") ;
+			while(iter.hasNext()) {
+				java.util.Map.Entry<Students, Books> temp = iter.next();
+				if(bookNum.equals(temp.getValue().getBookNum())) {
+					JOptionPane.showMessageDialog(null, "반납이 완료되었습니다.");
+					temp.getValue().setRent("대여 가능");
+				}else {
+					JOptionPane.showMessageDialog(null, "찾으시는 책이 없습니다.");
+					return;
+				}
+			}
 		}
+		bookList();
 	}
-	
 }
 
 
