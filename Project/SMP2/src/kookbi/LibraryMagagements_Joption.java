@@ -176,11 +176,11 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		if (arRentList.size() ==0) {
 			result += "대여중인 책이 없습니다.";
 		}else {
-			String bookNum = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
-					+ "반납하실 책 번호를 입력해주세요 (일련번호는 'Book-' 을 포함하여 써주셔야합니다.)") ;
+			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
+					+ "반납하실 책 제목을 써주세요.") ;
 			while(iter.hasNext()) {
 				java.util.Map.Entry<Students, Books> temp = iter.next();
-				if(bookNum.equals(temp.getValue().getBookNum())) {
+				if(bookName.equals(temp.getValue().getBookName())) {
 					JOptionPane.showMessageDialog(null, "반납이 완료되었습니다.");
 					temp.getValue().setRent("대여 가능");
 				}else {
