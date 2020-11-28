@@ -328,47 +328,52 @@ public class StudentManagements_Joption{
 		int size = StudentsBook.size();
 		int avg = 0;
 		boolean flag = false;
+		String result = "";
 		if (size == 0)  {
-			System.out.println("등록된 학생이 없습니다. 다시 확인해주세요.");
+			result += "등록된 학생이 없습니다. 다시 확인해주세요.";
 			return;
 		}else {
-			System.out.println("♥[코리아 IT 아카데미 장학생]♥"
-					+ "\n(장학생은 평균점수 85점 이상인 학생들입니다.)");
+			result += "♥[코리아 IT 아카데미 장학생]♥"
+					+ "\n(장학생은 평균점수 85점 이상인 학생들입니다.)";
 			while (iter.hasNext()) {
 				Entry<Students, ArrayList<Integer>> std = iter.next();
 				avg = std.getValue().get(3);
 				if (avg >= 85) {
-					System.out.println("★장학생 : " + std.getKey().getName()+"★");
+					result += "★장학생 : " + std.getKey().getName()+"★";
 					flag = true;
 				}
 			}
 		}
 		if (!flag) {
-			System.out.println("장학생은 없습니다.\n");
+			result += "장학생은 없습니다.\n";
 		}
+		JOptionPane.showMessageDialog(null, result);
 	}
 	
 	void list_fail_students (LinkedHashMap<Students, ArrayList<Integer>> book) {
 		Iterator<Map.Entry<Students, ArrayList<Integer>>> iter = book.entrySet().iterator();
 		int size = StudentsBook.size();
 		int avg = 0;
+		String result = "";
 		boolean flag = false;
 		if (size == 0) {
-			System.out.println("등록된 학생이 없습니다. 다시 확인해주세요.");
+			result = "등록된 학생이 없습니다. 다시 확인해주세요.";
 		}else {
-			System.out.println("◆[재수강 대상자]◆"
-					+ "\n(재수강 대상자는 평균점수 60점 아래인 학생들입니다.)");
+			result += "◆[재수강 대상자]◆"
+					+ "\n(재수강 대상자는 평균점수 60점 아래인 학생들입니다.)";
 			while (iter.hasNext()) {
 				Entry<Students, ArrayList<Integer>> std = iter.next();
 				avg = std.getValue().get(3);
 				if (avg <= 60) {
-					System.out.println("♠재수강 대상자 : " + std.getKey().getName()+"♠");
+					result += "♠재수강 대상자 : " + std.getKey().getName()+"♠";
 					flag = true;
 				}
 			}
 		}
 		if (!flag) {
-			System.out.println("재수강 대상자는 없습니다.\n");
+			result += "재수강 대상자는 없습니다.\n";
 		}
+		JOptionPane.showMessageDialog(null, result);
+		
 	}
 }
