@@ -14,22 +14,23 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	//도서관
 	//책을 리스트업하고,
 	//빌려간 학생 목록을 검색할 수 있음
-	ArrayList<Books> arBooks = new ArrayList<>();
 	Books books = null;
+	ArrayList<Books> arBooks = new ArrayList<>();
 	LinkedHashMap<Students, Books> arRentList = new LinkedHashMap<>();
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
 	int choice;
+	String rentResult = "";
 	public void libararyView () {
 		boolean flag = false;
-		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "책 대여", "메인으로"};
+		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
 		
 		while (!flag) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"
 					+ "아래의 메뉴를 선택하여 도서관을 관리해주세요", "도서관 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, libraryMainImg, menu, null);
-			if (choice == -1 || choice == 4) break;
+			if (choice == -1 || choice == 5) break;
 			switch (choice) {
 			//책 등록
 			case 0 :
@@ -48,6 +49,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				rent();
 				break;
 			case 4 :
+				returnBook(arRentList);
 				break;
 			}
 		}
@@ -143,26 +145,29 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					bookList();
 					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
 					rentCheck = true;
+					
 					while (bIter.hasNext()) {
 						Books temp = bIter.next();
-						if (book.equals(temp.getBookName())) {
-							arRentList.put(std, books);
+						if (book.equals(temp.getBookName()) && temp.getRent().equals("대여 가능")) {
+							arRentList.put(std, temp);
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
-									+ books.getBookName() +" 책 대여가 완료되었습니다.");
-							books.setRent("대여중");
+									+ temp.getBookName() +" 책 대여가 완료되었습니다.");
+							temp.setRent("대여 중");
 							rentCheck = true;
 							
 							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0)) {
 								result += "[책 대여자 리스트]\n";
 								try {
-									result += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString();
+									rentResult += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString()+ "\n";
 								}catch (Exception e) {
 									
 								}
-								JOptionPane.showMessageDialog(null, result);
+								JOptionPane.showMessageDialog(null, result + rentResult);
 							} 							
-						}else {
-							JOptionPane.showMessageDialog(null, "해당하는 책이 도서관에 없습니다.");
+						}else if (!book.equals(temp.getBookName())){
+							
+						}else if (!temp.getRent().equals("대여가능")) {
+							JOptionPane.showMessageDialog(null, "그 책은 대여가능하지 않습니다.");
 						}
 					}
 				} else {
@@ -175,6 +180,16 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
 	}
+				
+	
+	public void returnBook (LinkedHashMap<Students, Books> rentList) {
+		if (arRentList.size() ==0) {
+			JOptionPane.showMessageDialog(null, "대여중인 책이 없습니다.");
+		}
+		
+		JOptionPane.showMessageDialog(null, "");
+	}
+	
 }
 
 
