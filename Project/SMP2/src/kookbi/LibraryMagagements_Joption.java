@@ -135,8 +135,8 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			try {
 				number = Integer.parseInt(JOptionPane.showInputDialog("책을 대여할 학생 학번을 써주세요"));
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "숫자로 입력해주세요");
-				rentCheck = true;
+				JOptionPane.showMessageDialog(null, "정보를 다시 확인해주세요");
+				return;
 			}
 			while (stIter.hasNext()) {
 				Students std = stIter.next();
@@ -144,7 +144,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
 					bookList();
 					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
-					rentCheck = true;
 					
 					while (bIter.hasNext()) {
 						Books temp = bIter.next();
@@ -153,26 +152,19 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
 									+ temp.getBookName() +" 책 대여가 완료되었습니다.");
 							temp.setRent("대여 중");
-							rentCheck = true;
 							
 							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0)) {
 								result += "[책 대여자 리스트]\n";
 								try {
 									rentResult += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString()+ "\n";
 								}catch (Exception e) {
-									
+									return;
 								}
 								JOptionPane.showMessageDialog(null, result + rentResult);
 							} 							
-						}else if (!book.equals(temp.getBookName())){
-							
 						}else if (!temp.getRent().equals("대여가능")) {
 							JOptionPane.showMessageDialog(null, "그 책은 대여가능하지 않습니다.");
 						}
-					}
-				} else {
-					if (number instanceof Integer && !rentCheck) {
-						JOptionPane.showMessageDialog(null, "해당 학번의 학생이 없습니다.");
 					}
 				}
 			}
@@ -180,14 +172,13 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
 	}
-				
 	
 	public void returnBook (LinkedHashMap<Students, Books> rentList) {
 		if (arRentList.size() ==0) {
 			JOptionPane.showMessageDialog(null, "대여중인 책이 없습니다.");
+		}else {
+			JOptionPane.showMessageDialog(null, "[책 반납 메뉴입니다.]\n");
 		}
-		
-		JOptionPane.showMessageDialog(null, "");
 	}
 	
 }
