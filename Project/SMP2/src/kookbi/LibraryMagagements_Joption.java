@@ -16,7 +16,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	//빌려간 학생 목록을 검색할 수 있음
 	ArrayList<Books> arBooks = new ArrayList<>();
 	Books books = null;
-	LinkedHashMap<Students, ArrayList<Books>> arRentList = new LinkedHashMap<>();
+	LinkedHashMap<Students, Books> arRentList = new LinkedHashMap<>();
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
@@ -94,7 +94,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	//책 리스트
 	public void bookList() {
 		String result = "";
-		if (arBooks == null) {
+		if (arBooks.size() == 0) {
 			result = "도서관에 등록된 책이 없습니다.";
 		} else {
 			result += "♡[도서관 소장중인 책 목록]♡\n";
@@ -116,7 +116,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			while (iter.hasNext()) {
 				Books temp = iter.next();
 				if (bookname.equals(temp.getBookName())) {
-					result += "[검색된 자료는 아래와 같습니다.]";
+					result += "[검색된 자료는 아래와 같습니다.]\n";
 					result += temp.toString();
 				}
 			}
@@ -128,47 +128,53 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		Iterator<Students> stIter = StudentsBook.keySet().iterator();
 		Iterator<Books> bIter = arBooks.iterator();
 		String result = "";
-		JOptionPane.showMessageDialog(null, "현재 등록된 학생들 입니다");
-		list(StudentsBook);
-		int number = 0;
-		try {
-			number = Integer.parseInt(JOptionPane.showInputDialog("책을 대여할 학생 학번을 써주세요"));
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "숫자로 입력해주세요");
-		}
-		while (stIter.hasNext()) {
-			Students std = stIter.next();
-			if(std.getNumber() == number) {
-				JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
-				bookList();
-				String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
-				while (bIter.hasNext()) {
-					Books temp = bIter.next();
-					if (book.equals(temp.getBookName())) {
-						arRentList.put(std, arBooks);
-					}else {
-						JOptionPane.showMessageDialog(null, "해당하는 책이 도서관에 없습니다.");
+		boolean rentCheck = false;
+		if (!(StudentsBook.size()==0)) {
+			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 입니다");
+			list(StudentsBook);
+			Integer number = 0;
+			try {
+				number = Integer.parseInt(JOptionPane.showInputDialog("책을 대여할 학생 학번을 써주세요"));
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "숫자로 입력해주세요");
+			}
+			while (stIter.hasNext()) {
+				Students std = stIter.next();
+				if(std.getNumber() == number) {
+					JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
+					bookList();
+					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
+					rentCheck = true;
+					while (bIter.hasNext()) {
+						Books temp = bIter.next();
+						if (book.equals(temp.getBookName())) {
+							
+							arRentList.put(std, books);
+							
+							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
+									+ books.getBookName() +" 책 대여가 완료되었습니다.");
+							rentCheck = true;
+						}else {
+							JOptionPane.showMessageDialog(null, "해당하는 책이 도서관에 없습니다.");
+						}
+					}
+				} else {
+					if (number instanceof Integer && !rentCheck) {
+						JOptionPane.showMessageDialog(null, "해당 학번의 학생이 없습니다.");
 					}
 				}
-			} else {
-				JOptionPane.showMessageDialog(null, "해당 학번의 학생이 없습니다.");
 			}
+		}else {
+			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다.");
 		}
 	}
 	//책 대여 학생 리스트
 	public void rentList () {
 		String result = "";
-//		result = arRentList.get(StudentsBook);
+//		result += arRentList.get(std).getBookName();
 		JOptionPane.showMessageDialog(null, result);
 	}
 }
-
-
-
-
-
-
-
 
 
 
