@@ -6,7 +6,8 @@ public class Books {
 	private String author;
 	private int volume;
 	private String bookNum;
-	private static int FbookNum = 0000;
+	private String rent = "대여 가능";
+	private static int FbookNum = 1000;
 	
 	public Books() {
 	}
@@ -15,7 +16,7 @@ public class Books {
 		this.bookName = bookName;
 		this.author = author;
 		this.volume = volume;
-		this.bookNum = "Book" + FbookNum++;
+		this.bookNum = "Book-" + FbookNum++;
 	}
 
 
@@ -46,13 +47,20 @@ public class Books {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	public String getRent() {
+		return rent;
+	}
+	public void setRent(String rent) {
+		this.rent = rent;
+	}
 
-//	public String show () {
+	//	public String show () {
 //		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume; 
 //	}
 	@Override
 	public String toString() {
-		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume; 
+		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume + " " + this.rent; 
 	}
 	
 

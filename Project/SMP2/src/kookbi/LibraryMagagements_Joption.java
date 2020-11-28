@@ -20,7 +20,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
-	boolean rentListCheck = false;
 	int choice;
 	public void libararyView () {
 		boolean flag = false;
@@ -147,14 +146,13 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					while (bIter.hasNext()) {
 						Books temp = bIter.next();
 						if (book.equals(temp.getBookName())) {
-							
 							arRentList.put(std, books);
-							
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
 									+ books.getBookName() +" 책 대여가 완료되었습니다.");
+							books.setRent("대여중");
 							rentCheck = true;
-							//
-							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0) && rentListCheck) {
+							
+							if (!(StudentsBook.size() ==0) && !(arBooks.size() ==0)) {
 								result += "[책 대여자 리스트]\n";
 								try {
 									result += "대여자 : " + std.getName()+ "| 책정보 : " + arRentList.get(std).toString();
@@ -168,7 +166,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 						}
 					}
 				} else {
-					
 					if (number instanceof Integer && !rentCheck) {
 						JOptionPane.showMessageDialog(null, "해당 학번의 학생이 없습니다.");
 					}
