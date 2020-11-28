@@ -2,6 +2,7 @@ package kookbi;
 
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
@@ -97,16 +98,18 @@ public class LibraryMagagements_Joption {
 	}
 	//책 검색
 	public void bookSearch () {
+		Iterator<Books> iter = arBooks.iterator();
 		String result = "";
 		if (arBooks == null) {
 			result += "도서관에 등록된 책이 없습니다.";
 		}else {
 			String bookname = JOptionPane.showInputDialog("♡[책 제목 검색]♡"
-				+ "\n검색할 책 제목을 써주세요.");
-			for (int i = 0; i < arBooks.size(); i++) {
-				if (bookname.equals(books.getBookName())) {
-					result += "======[검색 결과]======\n";
-					result += books;
+				+ "\n검색할 책 제목을 써주세요.\n");
+			while (iter.hasNext()) {
+				Books temp = iter.next();
+				if (bookname.equals(temp.getBookName())) {
+					result += "[검색된 자료는 아래와 같습니다.]";
+					result += temp.toString();
 				}
 			}
 		}
