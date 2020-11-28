@@ -8,17 +8,18 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class LibraryMagagements_Joption {
+public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	//도서관
 	//책을 리스트업하고,
 	//빌려간 학생 목록을 검색할 수 있음
 	ArrayList<Books> arBooks = new ArrayList<>();
 	Books books = null;
+	
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	
 	int choice;
-	public void view () {
+	public void libararyView () {
 		boolean flag = false;
 		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "대여자 리스트 조회"};
 		
@@ -42,7 +43,7 @@ public class LibraryMagagements_Joption {
 				break;
 			//대여자 리스트 조회
 			case 3 :
-				rentList();
+				rent();
 				break;
 			}
 		}
@@ -117,7 +118,7 @@ public class LibraryMagagements_Joption {
 	}
 	//책 대여
 	public void rent () {
-		
+		list(StudentsBook);
 	}
 	//책 대여 학생 리스트
 	public void rentList () {

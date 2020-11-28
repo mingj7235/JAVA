@@ -2,8 +2,9 @@ package kookbi;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.xml.bind.SchemaOutputResolver;
 
-public class School {
+public class School extends LibraryMagagements_Joption{
 	String [] arMode = {"도서관 관리 모드", "학생 관리 모드", "교사 관리 모드"};
 	int choice = 0;
 	ImageIcon schoolImg = new ImageIcon("src/img/School.gif");
@@ -16,10 +17,10 @@ public class School {
 			if (choice == -1) break;
 			switch (choice) {
 			case 0 : 
-				new LibraryMagagements_Joption().view();
+				libararyView();
 				break;
 			case 1 : 
-				new StudentManagements_Joption().view();
+				studentView();
 				break;
 			case 2 : 
 				

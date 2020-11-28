@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import java.util.Map.Entry;
 
-public class StudentManagements_Joption {
+public class StudentManagements_Joption{
 
 	Scanner sc = new Scanner(System.in);
 	final public int SUBJECTS = 3;
@@ -27,7 +27,7 @@ public class StudentManagements_Joption {
 	
 	int choice;
 	
-	public void view () {
+	public void studentView () {
 		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회"};
 		
 		while (true) {
