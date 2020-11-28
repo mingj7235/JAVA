@@ -28,13 +28,13 @@ public class StudentManagements_Joption{
 	int choice;
 	
 	public void studentView () {
-		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회"};
+		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회", "메인으로"};
 		
 		while (true) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미에 오신것을 환영합니다]\n"
 					+ "아래의 메뉴를 선택하여 학생들을 관리해주세요 :)", "학생부 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, mainImg, menu, null);
-			if (choice == -1) break;
+			if (choice == -1|| choice == 7) break;
 			
 			switch (choice) {
 			case 0:
@@ -57,6 +57,8 @@ public class StudentManagements_Joption{
 				break;
 			case 6:
 				list_fail_students(StudentsBook);
+				break;
+			case 7: 
 				break;
 			}
 		} 
@@ -171,6 +173,8 @@ public class StudentManagements_Joption{
 				} else {
 
 				}
+			}else {
+				result += "검색된 학생이 없습니다.";
 			}
 		}
 		JOptionPane.showMessageDialog(null, result);
@@ -273,9 +277,13 @@ public class StudentManagements_Joption{
 			return;
 		}
 		Students delStd = null;
-		num = Integer.parseInt(JOptionPane.showInputDialog("♡[학생부 삭제]♡"
-				+ "\n삭제할 학생의 번호를 입력해주세요 : "));
-		
+		try {
+			num = Integer.parseInt(JOptionPane.showInputDialog("♡[학생부 삭제]♡"
+					+ "\n삭제할 학생의 번호를 입력해주세요 : "));
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "번호를 입력해주세요");
+			return;
+		}
 		Iterator<Students> iter = StudentsBook.keySet().iterator();
 		while (iter.hasNext()) {
 			Students std = iter.next();
@@ -288,7 +296,9 @@ public class StudentManagements_Joption{
 		}else {
 			StudentsBook.remove(delStd);
 			JOptionPane.showMessageDialog(null, "해당 번호의 학생이 삭제 되었습니다.");
-			list(StudentsBook);
+			if (!(StudentsBook.size() == 0)) {
+				list(StudentsBook);
+			}
 		}
 	}
 	
