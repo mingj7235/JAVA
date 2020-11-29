@@ -23,7 +23,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	String rentResult = "";
 	public void libararyView () {
 		boolean flag = false;
-		String menu [] = {"책 등록", "등록된 책 조회","도서관 대여 코드 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
+		String menu [] = {"책 등록", "등록된 책 조회","대여 코드 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
 		
 		while (!flag) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"

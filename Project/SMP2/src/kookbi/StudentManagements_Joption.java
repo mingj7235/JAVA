@@ -28,7 +28,7 @@ public class StudentManagements_Joption{
 	int choice;
 	
 	public void studentView () {
-		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강 대상자 조회", "메인으로"};
+		String menu [] = {"학생부 등록", "학생부 검색", "학생부 삭제", "학생부 수정", "학생부 조회", "장학생 조회", "재수강자 조회", "메인으로"};
 		
 		while (true) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미에 오신것을 환영합니다]\n"
