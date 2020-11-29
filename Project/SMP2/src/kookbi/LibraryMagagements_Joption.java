@@ -138,6 +138,8 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			while (stIter.hasNext()) {
 				Students std = stIter.next();
 				if(std.getName().equals(stName)) {
+					//이름이 중복이 되면 두번 돌게됨...
+					System.out.println(std.show());
 					JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
 					bookList();
 					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");

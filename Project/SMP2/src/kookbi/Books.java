@@ -1,7 +1,6 @@
 package kookbi;
 //책들 -> management에서 호출할 것들
 public class Books {
-	
 	private String bookName;
 	private String author;
 	private int volume;
