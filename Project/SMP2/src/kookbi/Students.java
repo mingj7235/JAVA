@@ -39,6 +39,12 @@ public class Students {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	public String getLibraryCode() {
+		return libraryCode;
+	}
+	public void setLibraryCode(String libraryCode) {
+		this.libraryCode = libraryCode;
+	}
 	String show () {
 		return "학번 : "+ this.number + " | 이름 : " + this.name + " | 나이 : " + age + "살";
 	}

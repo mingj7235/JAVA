@@ -131,18 +131,14 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		String result = "";
 		boolean rentCheck = false;
 		if (!(StudentsBook.size()==0) && !(arBooks.size() ==0)) {
-			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 입니다");
-			list(StudentsBook);
-			String stName = JOptionPane.showInputDialog("책을 대여할 학생 이름을 써주세요");
-			//이름이 같을 경우 비교하는 거 만들기...
-			//책이름이 같을경우 책이름에 숫자 더하기....
-			
+			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 대여 코드 번호 리스트 입니다");
+			libraryCodeList(StudentsBook);
+			String stCode = JOptionPane.showInputDialog("책을 대여할 학생 코드를 써주세요");
 			while (stIter.hasNext()) {
 				Students std = stIter.next();
-				if(std.getName().equals(stName)) {
-					//이름이 중복이 되면 두번 돌게됨...
-					System.out.println(std.show());
-					JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
+				if(std.getLibraryCode().equals(stCode)) {
+					JOptionPane.showMessageDialog(null, std.getName() + "학생 환영합니다. \n"
+							+ "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
 					bookList();
 					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
 					
@@ -153,6 +149,8 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
 									+ temp.getBookName() +" 책 대여가 완료되었습니다.");
 							temp.setRent("대여 중");
+							rentCheck = true;
+							
 						}else if (!book.equals(temp.getBookName())) {
 
 						}else if (!temp.getRent().equals("대여가능")) {
@@ -160,6 +158,8 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 							return;
 						}
 					}
+				}else if (!std.getLibraryCode().equals(stCode)){
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "등록한 학생이 없습니다.");
 					return;
@@ -168,12 +168,14 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		}else {
 			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
-		if (!(arBooks.size()==0) && !(StudentsBook.size() ==0)) {
+		if (!(arBooks.size()==0) && !(StudentsBook.size() ==0) && !rentCheck) {
 			bookList();
 		}
 	}
 	
 	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
+		//학생 두명, 책3권일때 반납시도하면 마지막권 책이 대여시 반납이 안됨. 
+		
 		String result = "";
 		if (arRentList.size() ==0) {
 			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
