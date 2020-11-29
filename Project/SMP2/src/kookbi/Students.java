@@ -40,6 +40,9 @@ public class Students {
 		this.number = number;
 	}
 	String show () {
-		return "학번 : "+ this.number + " 이름 : " + this.name + " 나이 : " + age + "살" + this.libraryCode;
-	}	
+		return "학번 : "+ this.number + " 이름 : " + this.name + " 나이 : " + age + "살";
+	}
+	String libraryShow () {
+		return "학번 : " + this.number + "이름 : " + this.name + "도서 대여 코드 : "  + this.libraryCode;
+	}
 }

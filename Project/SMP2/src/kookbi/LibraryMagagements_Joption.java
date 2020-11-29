@@ -24,13 +24,13 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	String rentResult = "";
 	public void libararyView () {
 		boolean flag = false;
-		String menu [] = {"책 등록", "등록된 책 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
+		String menu [] = {"책 등록", "등록된 책 조회","도서관 대여 코드 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
 		
 		while (!flag) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"
 					+ "아래의 메뉴를 선택하여 도서관을 관리해주세요", "도서관 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, libraryMainImg, menu, null);
-			if (choice == -1 || choice == 5) break;
+			if (choice == -1 || choice == 6) break;
 			switch (choice) {
 			//책 등록
 			case 0 :
@@ -40,15 +40,18 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			case 1 :
 				bookList();
 				break;
-			//책 검색
 			case 2 :
+				libraryCodeList(StudentsBook);
+				break;
+			//책 검색
+			case 3 :
 				bookSearch();
 				break;
 			//책 대여
-			case 3 :
+			case 4 :
 				rent();
 				break;
-			case 4 :
+			case 5 :
 				returnBook(arRentList);
 				break;
 			}
@@ -190,6 +193,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		}
 		bookList();
 	}
+	
 }
 
 

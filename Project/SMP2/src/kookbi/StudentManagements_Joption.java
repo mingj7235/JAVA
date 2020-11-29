@@ -63,7 +63,6 @@ public class StudentManagements_Joption{
 			}
 		} 
 	}
-	//입력 메소드
 	void insert () {
 		boolean check = true;
 		while (check) {
@@ -126,7 +125,6 @@ public class StudentManagements_Joption{
 				arScores.add(spring_score);
 				
 				Students std = new Students(name, age);
-			
 				//평균점수 등록
 				for (int j = 0; j < SUBJECTS; j++) {
 					total +=arScores.get(j);
@@ -145,44 +143,50 @@ public class StudentManagements_Joption{
 			}
 		}
 	}
-	
 	void search () {
+		boolean searchCheck = false;
 		Iterator<Students> iter = StudentsBook.keySet().iterator();
 		if (StudentsBook.size() ==0 ) {
-			JOptionPane.showMessageDialog(null, "등록된 학생의 정보가 하나도 없습니다.");
+			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요..");
 			return;
 		}
 		String name = JOptionPane.showInputDialog("♡[학생 검색]♡"
 				+ "\n검색할 학생의 이름을 써주세요.");
 		String result = "";
-		
 		while(iter.hasNext()) {
 			Students std = iter.next();
 			if(name.equals(std.getName())) {
-				
-				result += "====[검색 결과]====\n" + std.show()+"\n"
+				result +=  std.show()+"\n"
 				+ arSubjects[0] + " : " + StudentsBook.get(std).get(0) + "점 "
 				+ arSubjects[1] + " : " + StudentsBook.get(std).get(1) + "점 "
 				+ arSubjects[2] + " : " + StudentsBook.get(std).get(2) + "점 "
 				+ arSubjects[3] + " : " + StudentsBook.get(std).get(3) + "점\n";
-				
+				searchCheck = true;
 				if (StudentsBook.get(std).get(3) >= 85) {
-					result += "\n축하합니다. " + name + "학생은 장학생입니다.";
+					result += "축하합니다. " + name + "학생은 장학생입니다.\n"
+							+ "===============\n";
 				} else if (StudentsBook.get(std).get(3) <= 60) {
-					result += "\n"+ name+ "학생은 재수강 대상자입니다. 분발하세요.";
+					result += ""+ name+ "학생은 재수강 대상자입니다. 분발하세요.\n"
+							+ "===============\n";
 				} else {
-
+					result += "===============\n";
 				}
-			}else {
-				result += "검색된 학생이 없습니다.";
 			}
 		}
-		JOptionPane.showMessageDialog(null, result);
+		if (searchCheck) {
+			JOptionPane.showMessageDialog(null, "====[검색 결과]====\n" + result);
+		}else {
+			JOptionPane.showMessageDialog(null, "검색된 학생이 없습니다.");
+		}
 	}
 	
 	void update () {
 		boolean flag = false;
-		if(!(StudentsBook.size() == 0))list(StudentsBook);
+		if(StudentsBook.size() == 0) {
+			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요..");
+			return;
+		}
+		list(StudentsBook);
 		int num = 0, choice = 0;
 		String result = "";
 		String [] updateMenu = {"신상정보 수정", "점수 수정"};
@@ -273,7 +277,7 @@ public class StudentManagements_Joption{
 	void delete () {
 		int num = 0;
 		if (StudentsBook.size() == 0) {
-			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다.");
+			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요..");
 			return;
 		}
 		Students delStd = null;
@@ -305,11 +309,11 @@ public class StudentManagements_Joption{
 	void list (LinkedHashMap<Students, ArrayList<Integer>> book) {
 		Iterator<Map.Entry<Students, ArrayList<Integer>>> iter = book.entrySet().iterator();
 		int size = StudentsBook.size();
-		String result = "♡[코리아 IT 아카데미 학생]♡\n";
 		if (size == 0) {
 			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요.");
 			return;
 		}else {
+			String result = "♡[코리아 IT 아카데미 학생]♡\n";
 			while (iter.hasNext()) {
 				Entry<Students, ArrayList<Integer>> temp = iter.next();
 				result += temp.getKey().show() + "\n";
@@ -323,6 +327,21 @@ public class StudentManagements_Joption{
 		}
 	}
 	
+	void libraryCodeList (LinkedHashMap<Students, ArrayList<Integer>> book) {
+		Iterator<Map.Entry<Students, ArrayList<Integer>>> iter = book.entrySet().iterator();
+		int size = StudentsBook.size();
+		if (size == 0) {
+			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요.");
+			return;
+		}else {
+			String result = "♡[학생 도서 대여 코드]♡\n";
+			while (iter.hasNext()) {
+				Entry<Students, ArrayList<Integer>> temp = iter.next();
+				result += temp.getKey().libraryShow() + "\n";
+			}
+			JOptionPane.showMessageDialog(null, result);
+		}
+	}
 	void list_scholarship (LinkedHashMap<Students, ArrayList<Integer>> book) {
 		Iterator<Map.Entry<Students, ArrayList<Integer>>> iter = book.entrySet().iterator();
 		int size = StudentsBook.size();
@@ -331,7 +350,7 @@ public class StudentManagements_Joption{
 		String result = "";
 		if (size == 0)  {
 			result += "등록된 학생이 없습니다. 다시 확인해주세요.";
-			return;
+			flag = true;
 		}else {
 			result += "♥[코리아 IT 아카데미 장학생]♥"
 					+ "\n(장학생은 평균점수 85점 이상인 학생들입니다.)";
@@ -349,7 +368,6 @@ public class StudentManagements_Joption{
 		}
 		JOptionPane.showMessageDialog(null, result);
 	}
-	
 	void list_fail_students (LinkedHashMap<Students, ArrayList<Integer>> book) {
 		Iterator<Map.Entry<Students, ArrayList<Integer>>> iter = book.entrySet().iterator();
 		int size = StudentsBook.size();
@@ -357,7 +375,8 @@ public class StudentManagements_Joption{
 		String result = "";
 		boolean flag = false;
 		if (size == 0) {
-			result = "등록된 학생이 없습니다. 다시 확인해주세요.";
+			result = "등록된 학생이 없습니다. 다시 확인해주세요. ";
+			flag = true;
 		}else {
 			result += "◆[재수강 대상자]◆"
 					+ "\n(재수강 대상자는 평균점수 60점 아래인 학생들입니다.)";
@@ -374,6 +393,5 @@ public class StudentManagements_Joption{
 			result += "재수강 대상자는 없습니다.\n";
 		}
 		JOptionPane.showMessageDialog(null, result);
-		
 	}
 }
