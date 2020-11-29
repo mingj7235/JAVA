@@ -54,12 +54,9 @@ public class Books {
 		this.rent = rent;
 	}
 
-	//	public String show () {
-//		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume; 
-//	}
 	@Override
 	public String toString() {
-		return "책 번호 : " + this.bookNum + " 책 제목 : "  + this.bookName + " 저자 : " + this.author + " 페이지 : " + this.volume + " " + this.rent; 
+		return "책 번호 : " + this.bookNum + " | 책 제목 : "  + this.bookName + " | 저자 : " + this.author + " | 페이지 : " + this.volume + " " + this.rent; 
 	}
 	
 

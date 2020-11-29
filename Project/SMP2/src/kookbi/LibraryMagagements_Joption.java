@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -108,11 +107,11 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	}
 	//책 검색
 	public void bookSearch () {
-		Iterator<Books> iter = arBooks.iterator();
 		String result = "";
-		if (arBooks == null) {
+		if (arBooks.size () == 0) {
 			result += "도서관에 등록된 책이 없습니다.";
 		}else {
+			Iterator<Books> iter = arBooks.iterator();
 			String bookname = JOptionPane.showInputDialog("♡[책 제목 검색]♡"
 				+ "\n검색할 책 제목을 써주세요.\n");
 			while (iter.hasNext()) {
@@ -169,15 +168,17 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		}else {
 			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
 		}
-		bookList();
+		if (!(arBooks.size()==0) && !(StudentsBook.size() ==0)) {
+			bookList();
+		}
 	}
 	
 	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
-		Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
 		String result = "";
 		if (arRentList.size() ==0) {
-			result += "대여중인 책이 없습니다.";
+			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
 		}else {
+			Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
 			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
 					+ "반납하실 책 제목을 써주세요.") ;
 			while(iter.hasNext()) {
@@ -191,11 +192,8 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				}
 			}
 		}
-		bookList();
+		if (!(arRentList.size()==0)) {
+			bookList();
+		}
 	}
-	
 }
-
-
-
-
