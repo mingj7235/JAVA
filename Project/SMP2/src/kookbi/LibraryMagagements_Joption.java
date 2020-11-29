@@ -26,7 +26,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		String menu [] = {"책 등록", "등록된 책 조회","대여 코드 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
 		
 		while (!flag) {
-			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관에 입장하셨습니다.]\n"
+			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미 도서관 관리 프로그램입니다.]\n"
 					+ "아래의 메뉴를 선택하여 도서관을 관리해주세요", "도서관 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, libraryMainImg, menu, null);
 			if (choice == -1 || choice == 6) break;
