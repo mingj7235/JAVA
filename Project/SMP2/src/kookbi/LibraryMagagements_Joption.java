@@ -131,16 +131,13 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		if (!(StudentsBook.size()==0) && !(arBooks.size() ==0)) {
 			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 입니다");
 			list(StudentsBook);
-			Integer number = 0;
-			try {
-				number = Integer.parseInt(JOptionPane.showInputDialog("책을 대여할 학생 학번을 써주세요"));
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "정보를 다시 확인해주세요");
-				return;
-			}
+			String stName = JOptionPane.showInputDialog("책을 대여할 학생 이름을 써주세요");
+			//이름이 같을 경우 비교하는 거 만들기...
+			//책이름이 같을경우 책이름에 숫자 더하기....
+			
 			while (stIter.hasNext()) {
 				Students std = stIter.next();
-				if(std.getNumber() == number) {
+				if(std.getName().equals(stName)) {
 					JOptionPane.showMessageDialog(null, "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
 					bookList();
 					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
