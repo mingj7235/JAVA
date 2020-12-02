@@ -28,7 +28,7 @@ public class ArraySearchEx {
 		Member m3 = new Member("±è¹Î¼ö", "235352");
 		Member [] members = {m1,m2,m3};
 		Arrays.sort(members);
-		index = Arrays.binarySearch(members, "123456");
+		index = Arrays.binarySearch(members, m1);
 		System.out.println("Ã£Àº ÀÎµ¦½º : " + index);
 		System.out.println(members[index].name + "  " + members[index].num);
 	}
@@ -42,7 +42,7 @@ class Member implements Comparable<Member>{
 	}
 	@Override
 	public int compareTo(Member o) {
-		return num.compareTo(o.num);
+		return name.compareTo(o.name);
 	}
 
 	
