@@ -25,7 +25,7 @@ public class WrapperEx02 {
 		
 		String si1 = Integer.toString(i1);
 		String sdi1 = Double.toString(d1);
-		System.out.println(si1 + sdi1);
+		System.out.println(si1 + sdi1); //ø¨∞·¿”
 		
 	}
 }
