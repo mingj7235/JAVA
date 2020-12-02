@@ -1,0 +1,9 @@
+Calendar 클래스
+
+-> abstract class다.
+추상클래스로 만든 이유는 날짜, 시간 계산방식이
+지역, 문화, 나라에 따라 다르기때문임.
+꼭 필요한 메소드만 선언되어있음
+
+Calendar now = Calendar.getInstance();
+-> 싱글톤 패턴임
