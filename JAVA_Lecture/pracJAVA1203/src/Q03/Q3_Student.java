@@ -1,4 +1,4 @@
-package Q3;
+package Q03;
 
 public class Q3_Student {
 	private String studentNum;

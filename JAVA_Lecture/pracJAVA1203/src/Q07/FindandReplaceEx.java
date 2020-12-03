@@ -1,4 +1,4 @@
-package Q7;
+package Q07;
 
 public class FindandReplaceEx {
 	public static void main(String[] args) {

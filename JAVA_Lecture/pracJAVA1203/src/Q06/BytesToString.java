@@ -1,4 +1,4 @@
-package Q6;
+package Q06;
 
 public class BytesToString {
 	public static void main(String[] args) {

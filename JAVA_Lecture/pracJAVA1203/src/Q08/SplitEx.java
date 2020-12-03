@@ -1,4 +1,4 @@
-package Q8;
+package Q08;
 
 import java.util.StringTokenizer;
 

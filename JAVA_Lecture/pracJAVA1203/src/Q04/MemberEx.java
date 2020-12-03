@@ -1,4 +1,4 @@
-package Q4;
+package Q04;
 
 public class MemberEx {
 	public static void main(String[] args) {
