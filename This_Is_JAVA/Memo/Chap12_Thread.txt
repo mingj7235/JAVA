@@ -281,6 +281,41 @@ synchronized를 사용하면 객체를 잠근다.
 	(synchronized) !!!
 	-> 그렇기에 동기화 메소드, 블록에서만 호출가능하다. 
 		
+5) stop플래그, interrupt () _ 스레드의 안전한 종료
+	- 경우에 따라 실행중인 스레드를 즉시 종료할 필요가 있다.
+	ex) 뮤직프로그램에서 음악듣다 음악 정지하는 경우
+	
+	- stop() 메소드 -> deprecated됨
+	=> 스레드를 갑자기 종료하게 되면 사용중이던 자원들이
+	불안전한 상태로 남겨져서 사용하지 않는다. !!! 
+
+	- stop 플래그 이용 
+	=> stop 플래그로 run()메소드의 정상 종료를 유도한다.
+	※쓰레드는 run()이 종료되면 쓰레드가 종료된다.
+	=> while 반복안에 stop 불린을 만들어서 사용!
+	
+
+	-interrupt() 메소드
+	=> stop플래그를 사용하면 일시 정지 상태일 경우는 종료시키지 못함
+	=> interrup()메소드를 사용하면 일시정지상태인 경우도 종료시킬수있음
+	=> interrupt() 메소드를 호출하면 InterruptedExcetion을 발생시키기때문임
+	=> runnable 상태나, 실행중인 상태에서는 interruptedExcetion이 발생하지 않는다.
+	=> Thread는 일시정지 상태에 있어야지만 interruptedException이 발생한다.
+	=> 일시정지 상태가 아닌 상태에서 interrupt()가 호출되면,
+	그 다음에 일시정지가 발생이될때 된다.
+	
+	일시정지하는 코드가 없는곳에서 interrupt()는 일반적으로 못쓴다.
+	※ 일시정지 상태로 만들지 않고 while문을 빠져나오는 방법
+	=> Thread.interrupted() 는 boolean이 리턴타입.
+	-> interrupt() 메소드가 호출되면 true를 리턴함
+	-> Thread.interrupted()를 if 문에 넣어서 조건으로 빠져나올수있음
+
+
+
+
+
+
+
 
 
 
