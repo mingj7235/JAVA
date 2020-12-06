@@ -337,11 +337,28 @@ synchronized를 사용하면 객체를 잠근다.
 	-> system/main 그룹 : 메인 스레드를 포함 (main 그룹은 system그룹 하위)
 	-스레드는 반드시 하나의 스레드 그룹에 포함!!
 	-> 기본적으로 자신을 생성한 스레드와 같은 스레드 그룹에 속하게 된다.
+	-> 명시적으로 포함시키지 않으면 기본적으로 system/main 그룹에 속한다
+					=> main 스레드가 속한 곳
+
+
+스레드 그룹 생성
+	ThreadGroup tg = new ThreadGroup (String name);
+	=> 객체화하고 생성자에 매개값으로 그룹의 이름을 주는 것임
+	=> 부모그룹을 지정하지 않은 경우
 	
+	ThreadGroup tg = new (ThreadGroup Parent, String name);
+	=> 부모 지정
 
+	부모 그룹을 지정하지 않으면 현재 스레드가 속한 그룹의 하위 그룹으로
+	생성. 
 
+	스레드를 그룹에 명시적으로 포함시키는 방법
 
-
+왜스레드그룹을 사용하는가? 
+=> 스레드 그룹의 일괄 interrupt()
+스레드 그룹의 interrupt()를 호출하면 소속된 모든 스레드의 interrupt()가 호출된다.
+스레드 그룹에서 1번 호출하면 모든 소속 thread에서 interrupt()가 호출되어
+안전하게 종료가 된다. 
 
 
 
