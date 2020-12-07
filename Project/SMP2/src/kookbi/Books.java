@@ -7,6 +7,8 @@ public class Books {
 	private String bookNum;
 	private String rent = "대여 가능";
 	private static int FbookNum = 1000;
+	private String rentTime;
+	private String returnTime;
 	
 	public Books() {
 	}
@@ -52,6 +54,20 @@ public class Books {
 	}
 	public void setRent(String rent) {
 		this.rent = rent;
+	}
+	
+	public String getRentTime() {
+		return rentTime;
+	}
+	public void setRentTime(String rentTime) {
+		this.rentTime = rentTime;
+	}
+
+	public String getReturnTime() {
+		return returnTime;
+	}
+	public void setReturnTime(String returnTime) {
+		this.returnTime = returnTime;
 	}
 
 	@Override

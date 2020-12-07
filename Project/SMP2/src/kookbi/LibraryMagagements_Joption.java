@@ -1,11 +1,12 @@
 package kookbi;
 
-import java.awt.HeadlessException;
-import java.security.KeyStore.Entry;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	LinkedHashMap<Students, Books> arRentList = new LinkedHashMap<>();
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 	
 	int choice;
 	String rentResult = "";
@@ -51,7 +53,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				rent();
 				break;
 			case 5 :
-				returnBook(arRentList);
+				returnBook(arBooks);
 				break;
 			}
 		}
@@ -146,9 +148,11 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 						Books temp = bIter.next();
 						if (book.equals(temp.getBookName()) && temp.getRent().equals("대여 가능")) {
 							arRentList.put(std, temp);
-							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
-									+ temp.getBookName() +" 책 대여가 완료되었습니다.");
 							temp.setRent("대여 중");
+							temp.setRentTime(sdf.format(new Date()));
+							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
+									+ temp.getBookName() +" 책 대여가 완료되었습니다.\n"
+									+ "대여일 : " + temp.getRentTime());
 							rentCheck = true;
 							
 						}else if (!book.equals(temp.getBookName())) {
@@ -173,29 +177,39 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		}
 	}
 	
-	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
-		//학생 두명, 책3권일때 반납시도하면 마지막권 책이 대여시 반납이 안됨. 
-		
+//	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
+//		//학생 두명, 책3권일때 반납시도하면 마지막권 책이 대여시 반납이 안됨. 
+//		
+//		String result = "";
+//		if (arRentList.size() ==0) {
+//			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
+//		}else {
+//			Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
+//			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
+//					+ "반납하실 책 제목을 써주세요.") ;
+//			while(iter.hasNext()) {
+//				Map.Entry<Students, Books> temp = iter.next();
+//				if(bookName.equals(temp.getValue().getBookName())) {
+//					temp.getValue().setRent("대여 가능");
+//					JOptionPane.showMessageDialog(null, "반납이 완료되었습니다.");
+//				}else {
+//					JOptionPane.showMessageDialog(null, "찾으시는 책이 없습니다.");
+//					return;
+//				}
+//			}
+//		}
+//		if (!(arRentList.size()==0)) {
+//			bookList();
+//		}
+//	}
+	
+	public void returnBook (ArrayList<Books> arBooks) {
+		//깔끔하게 그냥 arBooks에서 대여중 이거 비교해주고, 하면되지않음?
 		String result = "";
-		if (arRentList.size() ==0) {
-			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
-		}else {
-			Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
-			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
-					+ "반납하실 책 제목을 써주세요.") ;
-			while(iter.hasNext()) {
-				java.util.Map.Entry<Students, Books> temp = iter.next();
-				if(bookName.equals(temp.getValue().getBookName())) {
-					JOptionPane.showMessageDialog(null, "반납이 완료되었습니다.");
-					temp.getValue().setRent("대여 가능");
-				}else {
-					JOptionPane.showMessageDialog(null, "찾으시는 책이 없습니다.");
-					return;
-				}
-			}
-		}
-		if (!(arRentList.size()==0)) {
-			bookList();
-		}
+		
 	}
+	
+	
+	
+	
 }
