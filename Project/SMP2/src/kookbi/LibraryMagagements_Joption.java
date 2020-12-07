@@ -194,15 +194,11 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					temp.getValue().setRent("대여 가능");
 					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생" + 
 							temp.getValue().getBookName()+ "반납이 완료되었습니다.\n"
-							+"반납시간 : " + temp.getValue().getReturnTime());
+							+"반납일 : " + temp.getValue().getReturnTime());
 					break;
-				}else if (!bookName.equals(temp.getValue().getBookName())){
-					JOptionPane.showMessageDialog(null, "찾으시는 책이 없습니다.");
-					break;
-				}else if (!temp.getValue().getReturnTime().equals("대여 중")) {
-					JOptionPane.showMessageDialog(null, temp.getValue().getBookName() +"은 대여 중이 아닙니다.");
 				}else {
-					JOptionPane.showMessageDialog(null, "정보를 다시확인해주세요 ");
+					JOptionPane.showMessageDialog(null, "정보를 다시 확인 해주세요. ");
+					break;
 				}
 			}
 		}
@@ -211,35 +207,3 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		}
 	}
 }
-//	public void returnBook (ArrayList<Books> arBooks) {
-//		//깔끔하게 그냥 arBooks에서 대여중 이거 비교해주고, 하면되지않음?
-//		String result = "";
-//		Iterator <Books> iter = arBooks.iterator();
-//		if (arBooks.size() == 0) {
-//			JOptionPane.showMessageDialog(null, "대여중인 책이 없습니다.");
-//			return;
-//		}else {
-//			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
-//					+ "반납하실 책 제목을 써주세요");
-//			while(iter.hasNext()) {
-//				Books temp = iter.next();
-//				if (bookName.equals(temp.getBookName()) && temp.getRent().equals("대여 중")) {
-//					temp.setReturnTime(sdf.format(new Date()));
-//					temp.setRent("대여 가능");
-//					//대여일이 지난경우 연체료 물도록 하고싶음
-//					JOptionPane.showMessageDialog(null, temp.getBookName() +" 이(가) 반납 완료되었습니다.\n" + "반납일자 : " + temp.getReturnTime());
-//					break;
-//				}else if (!bookName.equals(temp.getBookName())){
-//					JOptionPane.showMessageDialog(null, "검색된 책이 없습니다.");
-//					break;
-//				}else if (!temp.getRent().equals("대여 중")) {
-//					JOptionPane.showMessageDialog(null, "그 책은 대여 중이 아닙니다. ");
-//					break;
-//				}else {
-//					JOptionPane.showMessageDialog(null, "정보를 다시 확인해주세요");
-//					break;
-//				}
-//			}
-//		}
-//	}
-//}
