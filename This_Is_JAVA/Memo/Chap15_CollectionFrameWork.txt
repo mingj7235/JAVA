@@ -114,7 +114,38 @@ List <E> list = new ArrayList <E> ();
 	- 객체가 제거되면 바로 뒤 인덱스부터 마지막 인덱스까지 모두 앞으로 1씩 당겨진다
 	
 
+- 고정된 객체들로 구성된 List 생성
+=>객체들이 고정되어있다면 add를 사용하면 도리어 불편함
+List<T> list = Arrays.asList(T....a);
+	=> Arrays.asList()를 사용하는것이 간편
 
+List<String> list1 = Arrays.asList("홍길동", "신용권", "김자바");
+for(String name : list1) {
+	syso (name);
+}
+
+○Vector 클래스
+List <E> list = new Vector <E> ();
+- 특징
+	= Vector는 스레드 동기화 (synchronization) 되어있기 때문에
+	복수의 스레드가 동시에 vector에 접근해서 객체를 추가, 삭제하더라도
+	스레드에 안전(thread safe) 하다. 
+	=> ArrayList와 사용이 똑같지만, 멀티스레드환경에서 사용한다.
+	=> ArrayList는 싱글스레드에서 사용된다. 
+
+※ArrayList
+	public boolean add {...}
+
+Vector
+	public synchronized boolean add {...}
+
+즉, Vector는 메소드가 동기화되어있으므로 멀티스레스환경에서 안전하다!
+즉, 하나의 스레드가 실행하고있으면 다른 스레드들이 사용하지 못한다. 
+두 스레드가 동시에 어떤 객체를 Vector에 저장하려고할때,
+어떤 스레드부터 저장할것인가? 에대한 고민을 해결시켜줌. 
+
+그러나 싱글스레드에서는 ArrayList가 좀더 빠르게 작업을 처리하므로,
+싱글스레드에서는 ArrayList를 사용한다. 
 
 
 
