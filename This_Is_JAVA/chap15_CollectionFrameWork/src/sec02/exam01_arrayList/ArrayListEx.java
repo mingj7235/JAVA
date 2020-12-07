@@ -3,6 +3,8 @@ package sec02.exam01_arrayList;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.omg.CORBA.IdentifierHelper;
+
 public class ArrayListEx {
 	public static void main(String[] args) {
 		List <String> list = new ArrayList<>();
@@ -19,6 +21,8 @@ public class ArrayListEx {
 		String skill = list.get(2);
 		System.out.println("2 : " + skill + "\n");
 		
+		int indexofBatis = list.indexOf("iBATIS");
+		System.out.println(indexofBatis);
 		
 		for (int i = 0; i < list.size(); i++) {
 			String str = list.get(i);
