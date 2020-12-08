@@ -116,7 +116,18 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 	}//end update
 	
 	public void teacherList () {
-		
+		Iterator<Teachers> iter = arTeachers.iterator();
+		if (arTeachers.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다. 확인해주세요.");
+			return;
+		}else {
+			String result = "◆[코리아 IT 아카데미 강사님들]◆\n";
+			while (iter.hasNext()) {
+				Teachers teachers =iter.next();
+				result += teachers.show() + "\n";
+			}
+			JOptionPane.showMessageDialog(null, result);
+		}
 	}//end list
 	
 	public void assignClass() {
