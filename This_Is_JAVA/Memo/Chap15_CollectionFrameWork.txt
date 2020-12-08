@@ -250,12 +250,36 @@ Map <K, V> map = new HashMap <K, V> ();
 	즉, String은 hashcode()와 eqauls() 메소드가 재정이 되어있기 때문에!
 
 
+○Hashtable
+Map <K, V> map = new Hashtable <K, V> ();
+
+-특징
+	= 키 객체는 hashCode()와 equals()를 재정의해서 동등 객체가 될 조건을 정해야 한다.
+		->hashmap과 같음
+	= Hashtable은 스레드 동기화가 되어있기 때문에!! synchronization !!
+	복수의 스레드가 동시에 Hashtable에 접근해서 객체를 추가, 삭제하더라도
+	스레드에 안전하다. !!
+	(List의 Vector와 같은 맥락임)
+	즉, Hashtable의 메소드에 모두 synchronization이 붙어있다.
+	멀티스레드 환경이 아니라면 HashMap을 쓰는것이 낫다.
 
 
+○ Properties (HashTable의 하위 클래스임)
+-특징
+	=키와 값을 모두 String 타입으로 제한한 Map 컬렉션이다.
+	= Properties는 .properties 파일을 읽어 들일 때 주로 사용한다.
+		파일입출력할때 쓰겠네 개어렵누
+	=> 어플리케이션을 불러들일때 많이 사용하는 파일임
 
-
-
-
+- .properties 파일
+	= 옵션 정보, DB 연결정보, 국제화 (다국어)정보를 기록한 텍스트 파일로 활용
+	= 어플리케이션에서 주로 변경이 잦은 문자열을 저장해서 유지 보수를 편리하게 만들어 줌
+	= 변경이 잦은것은 class파일에 넣지 않고 properties 파일에 넣어서 유지보수간편하게함
+	= [키 = 값] 의 형태로 구성되어있다. 
+	= 키와 값이 = 기호로 연결되어있는 텍스트 파일로, ISO 8859-1 문자셋으로 저장!
+	= 한글은 유니코드로 변환되어 저장된다. (한글은 ISO 8859-1이 없음)
+	= 오이거 개쩐다 신기해
+	=properties 파일 내용을 가지고 key와 value를 가지고와서 map을 만든다!
 
 
 
