@@ -228,15 +228,26 @@ Set <E> set = new HashSet<E>();
 	boolean containsValue (object key ) : 주어진 값이 있는지 여부
 	Set <Map.Entry <K,V>> entryset () : 키와 값의 쌍으로 구성된 모든 Map.Entry 객체를
 					set에 담아서 리턴!
-	V get(Object Key) : 주어진 키의 값을 리턴
+		=> Set으로 담는 이유는 Iterator를 통해 검색하기 위해서임 반복자 사용
+	V get(Object Key) : 주어진 키의 값을 리턴 ( 키를 주면 값을 뱉음!)
 	boolean isEmpty () : 컬렉션이 비어있는지 여부
 	Set <K> keySet() : 모든 키를 Set 객체에 담아서 리턴
 	int size () 저장된 키의 총 수를 리턴
 	Collection <V> values() 저장된 모든 값 Collection 에 담아서 리턴
 
 3) 객체 삭제
-	void clear() 모든 Map.Entry(키와 값)을 삭제
-	V remove (Object key) 주어진 키와 일치하는 Map.Entry 삭제, 삭제되면 값을 리턴
+	void clear()  : 모든 Map.Entry(키와 값)을 삭제
+	V remove (Object key) : 주어진 키와 일치하는 Map.Entry 삭제, 삭제되면 값을 리턴
+
+○HashMap
+Map <K, V> map = new HashMap <K, V> ();
+
+-특징
+	= 키 객체는 hashCode()와 equals()를 재정의해서 동등 객체가 될 조건을 정해야 한다.
+		-> key 중복을 피하기 위해서
+	= 키 타입은 주로 String을 많이 사용한다
+	->String은 문자열이 같은경우 동등 객체가 될수 있도록 하기 위해서다. 
+	즉, String은 hashcode()와 eqauls() 메소드가 재정이 되어있기 때문에!
 
 
 
