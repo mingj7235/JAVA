@@ -2,6 +2,7 @@ package kookbi;
 
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -73,22 +74,37 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 				
 				Teachers tch = new Teachers(name, age, teachSubject);
 				arTeachers.add(tch);
-				System.out.println(tch.getTeachName() + " " + tch.getAge() + " " + tch.getTeachSubject());
 				break;
-				
 			case 1 :
 				JOptionPane.showMessageDialog(null, "강사 등록을 취소합니다.");
 				check = true;
 				break;
 			}
 		}
-		
-		
 	}//end insert
 	
 	public void teacherSearch () {
-		
-		
+		boolean searchCheck = false;
+		Iterator<Teachers> iter = arTeachers.iterator();
+		if(arTeachers.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다. \n다시 한번 확인해주세요.");
+			return;
+		}else {
+			String name = JOptionPane.showInputDialog("◆[강사님 검색]◆\n검색하실 강사님 이름을 입력해주세요");
+			String result = "";
+			while (iter.hasNext()){
+				Teachers teacher = iter.next();
+				if(name.equals(teacher.getTeachName())) {
+					result += teacher.show();
+					searchCheck = true;
+				}
+			}
+			if (searchCheck) {
+				JOptionPane.showMessageDialog(null, "◆[검색 결과]◆\n + "+ result);
+			}else {
+				JOptionPane.showMessageDialog(null, "찾는 강사님이 없습니다.");
+			}
+		}
 	}//end search
 	
 	public void teacherDelete() {

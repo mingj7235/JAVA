@@ -34,7 +34,9 @@ public class Teachers {
 	}
 	
 	
-	
+	public String show () {
+		return "|강사 이름 : " + teachName + " |강사 나이 : " + age + " |담당 과목 : " + teachSubject;
+	}
 	
 	
 	
