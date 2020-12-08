@@ -192,9 +192,10 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				if(bookName.equals(temp.getValue().getBookName()) && temp.getValue().getRent().equals("대여 중")) {
 					temp.getValue().setReturnTime(sdf.format(new Date()));
 					temp.getValue().setRent("대여 가능");
-					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생" + 
-							temp.getValue().getBookName()+ "반납이 완료되었습니다.\n"
+					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생 " + 
+							temp.getValue().getBookName()+ " 반납이 완료되었습니다.\n"
 							+"반납일 : " + temp.getValue().getReturnTime());
+					arRentList.remove(temp.getKey());
 					break;
 				}else {
 					JOptionPane.showMessageDialog(null, "정보를 다시 확인 해주세요. ");
