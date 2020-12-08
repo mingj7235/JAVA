@@ -178,7 +178,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	}
 	
 	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
-		//학생 두명, 책3권일때 반납시도하면 마지막권 책이 대여시 반납이 안됨. 
 		String result = "";
 		if (arRentList.size() ==0) {
 			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
