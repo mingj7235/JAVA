@@ -12,7 +12,7 @@ public class School extends TeacherManagements_Joption{
 		boolean check = false;
 		while (!check) {
 			choice = JOptionPane.showOptionDialog(null, "[코리아 IT 아카데미에 오신것을 환영합니다]\n"
-					+ "아래의 메뉴를 선택하여 접근할 모드를 선택해주세요", "학생부 관리 Menu", JOptionPane.DEFAULT_OPTION, 
+					+ "아래의 메뉴를 선택하여 접근할 모드를 선택해주세요", "학교 관리 Menu", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.PLAIN_MESSAGE, schoolImg, arMode, null);
 			if (choice == -1 || choice ==3 ) break;
 			switch (choice) {
