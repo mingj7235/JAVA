@@ -100,7 +100,7 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 				}
 			}
 			if (searchCheck) {
-				JOptionPane.showMessageDialog(null, "◆[검색 결과]◆\n + "+ result);
+				JOptionPane.showMessageDialog(null, "◆[검색 결과]◆\n  "+ result + "\n");
 			}else {
 				JOptionPane.showMessageDialog(null, "찾는 강사님이 없습니다.");
 			}
@@ -108,6 +108,34 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 	}//end search
 	
 	public void teacherDelete() {
+		int num = 0;
+		if(arTeachers.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다. \n다시 한번 확인해주세요.");
+			return;
+		}
+		teacherNumList();
+		Teachers delteacher = null;
+		try {
+		num = Integer.parseInt(JOptionPane.showInputDialog("◆[강사님 정보 삭제]◆"
+					+ "\n삭제할 강사님의 사번을 입력해주세요 : "));
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "번호를 입력해주세요");
+			return;
+		}
+		Iterator<Teachers> iter = arTeachers.iterator();
+		while (iter.hasNext()) {
+			Teachers teacher = iter.next();
+			if(num == teacher.getTeachNum()) {
+				delteacher = teacher;
+			}
+		}
+		if (delteacher == null) {
+			JOptionPane.showMessageDialog(null, "찾는 강사님이 없습니다. \n"
+					+ "다시 한번 강사님의 사번을 확인해 주세요.");
+		}else {
+			arTeachers.remove(delteacher);
+			JOptionPane.showMessageDialog(null, "해당 사번의 강사님이 삭제 되었습니다.");
+		}
 		
 	}//end delete
 	
@@ -118,7 +146,7 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 	public void teacherList () {
 		Iterator<Teachers> iter = arTeachers.iterator();
 		if (arTeachers.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다. 확인해주세요.");
+			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다. \n다시 한번 확인해주세요.");
 			return;
 		}else {
 			String result = "◆[코리아 IT 아카데미 강사님들]◆\n";
@@ -129,6 +157,21 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 			JOptionPane.showMessageDialog(null, result);
 		}
 	}//end list
+	
+	public void teacherNumList () {
+		Iterator<Teachers> iter = arTeachers.iterator();
+		if (arTeachers.isEmpty()) {
+			return;
+		}else {
+			String result = "◆[코리아 IT 아카데미 강사님들]◆\n";
+			while (iter.hasNext()) {
+				Teachers teachers =iter.next();
+				result += teachers.showNum() + "\n";
+			}
+			JOptionPane.showMessageDialog(null, result);
+		}
+	}//end list
+	
 	
 	public void assignClass() {
 		

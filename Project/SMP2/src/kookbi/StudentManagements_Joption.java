@@ -283,7 +283,7 @@ public class StudentManagements_Joption{
 		Students delStd = null;
 		try {
 			num = Integer.parseInt(JOptionPane.showInputDialog("♡[학생부 삭제]♡"
-					+ "\n삭제할 학생의 번호를 입력해주세요 : "));
+					+ "\n삭제할 학생의 학번을 입력해주세요 : "));
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "번호를 입력해주세요");
 			return;
