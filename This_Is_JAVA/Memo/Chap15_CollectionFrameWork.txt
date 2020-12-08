@@ -211,6 +211,32 @@ Set <E> set = new HashSet<E>();
 	-> hashCode() 리턴값을 비교, equals() 리턴값을 비교. 이 두가지가 모두 같으면
 	동등 객체다. 
 
+1-3 Map 컬렉션
+○특징
+	- 키와 값으로 구성된 Map.Entry 객체를 저장하는 구조
+	- 키와 값은 모두 객체다!!!
+	- 키는 중복 될수 없지만! 값은 중복 저장 가능!
+	
+	- 구현 클래스 : HashMap, Hashtable, LinkedHashMap, Properties, TreeMap
+
+○주요 메소드
+1) 객체 추가
+	V put (K key, V value) : 키와 값을 저장. 
+
+2) 객체 검색
+	boolean containsKey (Object key) : 주어진 키가 있는지 여부
+	boolean containsValue (object key ) : 주어진 값이 있는지 여부
+	Set <Map.Entry <K,V>> entryset () : 키와 값의 쌍으로 구성된 모든 Map.Entry 객체를
+					set에 담아서 리턴!
+	V get(Object Key) : 주어진 키의 값을 리턴
+	boolean isEmpty () : 컬렉션이 비어있는지 여부
+	Set <K> keySet() : 모든 키를 Set 객체에 담아서 리턴
+	int size () 저장된 키의 총 수를 리턴
+	Collection <V> values() 저장된 모든 값 Collection 에 담아서 리턴
+
+3) 객체 삭제
+	void clear() 모든 Map.Entry(키와 값)을 삭제
+	V remove (Object key) 주어진 키와 일치하는 Map.Entry 삭제, 삭제되면 값을 리턴
 
 
 
