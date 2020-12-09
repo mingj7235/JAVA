@@ -147,14 +147,13 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 		}
 		teacherNumList();;
 		int num = 0, choice = 0;
-		String result = "";
 		Iterator<Teachers> iter = arTeachers.iterator();
 		while (iter.hasNext()) {
 			try {
 				num = Integer.parseInt(JOptionPane.showInputDialog("수정할 강사님의 사번을 입력해주세요"));
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "사번은 숫자로 입력해주세요");
-				break;
+				return;
 			}
 			Teachers tch = iter.next();
 			if (num == tch.getTeachNum()) {
@@ -170,15 +169,14 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 					JOptionPane.showMessageDialog(null, "숫자로 적어주세요.");
 					break;
 				}
-				
 				tch.setTeachSubject(JOptionPane.showInputDialog(tch.getTeachName() + " 강사님의 변경된 담당 과목을 적어주세요"));
+				
+				JOptionPane.showMessageDialog(null, "강사님 정보 수정 완료");
+				teacherList();
 				break;
 			}
 		}
-		if (check) {
-			JOptionPane.showMessageDialog(null, "강사님 정보 수정 완료");
-			
-		}else {
+		if (!check){
 			JOptionPane.showMessageDialog(null, "강사님 사번을 다시 확인해주세요 ");
 		}
 	}//end update
