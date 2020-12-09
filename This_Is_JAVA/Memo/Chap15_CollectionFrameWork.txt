@@ -392,8 +392,29 @@ Stack <E> stack = new Stack <E> ();
 	- E peek() : 객체 하나를 가져온다. 객체를 큐에서 제거하지 않는다. 빼지않음!
 	- E poll () : 객체 하나를 가져온다. 객체를 큐에서 제거한다. 제거! 포오올!
 
+1-7 동기화된 컬렉션
+○ 동기화 
+	- 멀티스레드 환경에서 하나의 스레드가 사용중일때 다른 스레드가 사용하지 못하도록
+	한것! -> synchronized
+
+○동기화된 컬렉션
+	-> Vector, TableSet
+
+○비동기화된 컬렉션을 동기화된 컬렉션으로 래핑하는법
+- List 컬렉션
+	ArrayList를 동기화 컬렉션으로 래핑하는 법
+	List <T> list = Collections.synchronizedList(new ArrayList<T>());
+	=> synchronizedList 메소드의 매개값에 ArrayList를 주는것!
+
+- Set 컬렉션
+	HashSet을 동기화 컬렉션으로 래핑
+	Set <E> set = Collections.synchronizedSet(new HashSet<E>());
+	=> 이것 역시 !
 
 
+- Map 컬렉션
+	Map<K, V> map = Collections.synchronizedMap(new HashMap <K,V>());
 
+=> Vector, TableSet을 사용할 경우 필요없으나, 비동기화 컬렉션을 사용시, 래핑해서 사용함!
 
-
+○ 동기화된 컬렉션은 속도가 느릴수 밖에 없다. 
