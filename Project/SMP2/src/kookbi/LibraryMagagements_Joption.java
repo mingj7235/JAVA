@@ -153,7 +153,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 									+ temp.getBookName() +" 책 대여가 완료되었습니다.\n"
 									+ "대여일 : " + temp.getRentTime());
 							rentCheck = true;
-							
+							System.out.println(temp.getBookName());
 						}else if (!book.equals(temp.getBookName())) {
 
 						}else if (!temp.getRent().equals("대여 가능")) {
@@ -193,7 +193,9 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생 " + 
 							temp.getValue().getBookName()+ " 반납이 완료되었습니다.\n"
 							+"반납일 : " + temp.getValue().getReturnTime());
-					arRentList.remove(temp.getKey()); 
+					arRentList.remove(temp.getKey(), temp); 
+					System.out.println(temp.getValue().getBookName());
+					
 					break;
 				}else {
 					JOptionPane.showMessageDialog(null, "정보를 다시 확인 해주세요. ");
@@ -205,4 +207,29 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			bookList();
 		}
 	}
+//	public void returnBook (ArrayList<Books> arBooks) {
+//		String result = "";
+//		Iterator<Books> iter = arBooks.iterator();
+//		if (arBooks.isEmpty()) {
+//			JOptionPane.showMessageDialog(null, "등록된 책이 없습니다.");
+//			return;
+//		}
+//		String bookName = JOptionPane.showInputDialog("반납할 책 제목을 입력해주세요");
+//		while (iter.hasNext()) {
+//			Books books = iter.next();
+//			if (bookName.equals(books.getBookName()) && books.getRent().equals("대여 중")) {
+//				books.setReturnTime(sdf.format(new Date()));
+//				JOptionPane.showMessageDialog(null, books.getBookName() +"책이 반납 완료 되었습니다.\n" + 
+//						"반납 일자 : " + books.getReturnTime());
+//			}else if (!(bookName.equals(books.getBookName()))){
+//				JOptionPane.showMessageDialog(null, "찾으시는 책이 없습니다.");
+//				break;
+//			}else if (books.getRent().equals("대여 가능")) {
+//				JOptionPane.showMessageDialog(null, "해당 책은 현재 대여 가능입니다.");
+//				break;
+//			}
+//			books.setRent("대여 가능");
+//		}
+//		bookList();
+//	}
 }
