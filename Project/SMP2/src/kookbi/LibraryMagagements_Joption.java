@@ -119,12 +119,11 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 			while (iter.hasNext()) {
 				Books temp = iter.next();
 				if (bookname.equals(temp.getBookName())) {
-					result += "[검색된 자료는 아래와 같습니다.]\n";
 					result += temp.toString();
 				}
 			}
 		}
-		JOptionPane.showMessageDialog(null, result);
+		JOptionPane.showMessageDialog(null, "[검색된 자료는 아래와 같습니다.]\n" + result);
 	}
 	//책 대여
 	public void rent () {
@@ -194,7 +193,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생 " + 
 							temp.getValue().getBookName()+ " 반납이 완료되었습니다.\n"
 							+"반납일 : " + temp.getValue().getReturnTime());
-					arRentList.remove(temp.getKey()); //요놈이 신의 한줄이네....
+					arRentList.remove(temp.getKey()); 
 					break;
 				}else {
 					JOptionPane.showMessageDialog(null, "정보를 다시 확인 해주세요. ");

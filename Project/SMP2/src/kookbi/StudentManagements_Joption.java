@@ -353,7 +353,7 @@ public class StudentManagements_Joption{
 			flag = true;
 		}else {
 			result += "♥[코리아 IT 아카데미 장학생]♥"
-					+ "\n(장학생은 평균점수 85점 이상인 학생들입니다.)";
+					+ "\n(장학생은 평균점수 85점 이상인 학생들입니다.)\n";
 			while (iter.hasNext()) {
 				Entry<Students, ArrayList<Integer>> std = iter.next();
 				avg = std.getValue().get(3);
@@ -379,7 +379,7 @@ public class StudentManagements_Joption{
 			flag = true;
 		}else {
 			result += "◆[재수강 대상자]◆"
-					+ "\n(재수강 대상자는 평균점수 60점 아래인 학생들입니다.)";
+					+ "\n(재수강 대상자는 평균점수 60점 아래인 학생들입니다.)\n";
 			while (iter.hasNext()) {
 				Entry<Students, ArrayList<Integer>> std = iter.next();
 				avg = std.getValue().get(3);
