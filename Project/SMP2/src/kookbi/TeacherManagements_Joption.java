@@ -140,7 +140,47 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 	}//end delete
 	
 	public void teacherUpdate() {
-		
+		boolean check = false;
+		if (arTeachers.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "등록된 강사님이 없습니다.");
+			return;
+		}
+		teacherNumList();;
+		int num = 0, choice = 0;
+		String result = "";
+		Iterator<Teachers> iter = arTeachers.iterator();
+		while (iter.hasNext()) {
+			try {
+				num = Integer.parseInt(JOptionPane.showInputDialog("수정할 강사님의 사번을 입력해주세요"));
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "사번은 숫자로 입력해주세요");
+				break;
+			}
+			Teachers tch = iter.next();
+			if (num == tch.getTeachNum()) {
+				check = true;
+				JOptionPane.showMessageDialog(null, "[강사님 정보 수정]\n"
+						+ "이름, 나이, 담당과목을 순서대로 입력하세요");
+				
+				tch.setTeachName(JOptionPane.showInputDialog("수정할 강사님 이름을 적어주세요"));
+				
+				try {
+					tch.setAge(Integer.parseInt(JOptionPane.showInputDialog("변경될 " + tch.getTeachName() + " 강사님의 나이를 적어주세요")));
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "숫자로 적어주세요.");
+					break;
+				}
+				
+				tch.setTeachSubject(JOptionPane.showInputDialog(tch.getTeachName() + " 강사님의 변경된 담당 과목을 적어주세요"));
+				break;
+			}
+		}
+		if (check) {
+			JOptionPane.showMessageDialog(null, "강사님 정보 수정 완료");
+			
+		}else {
+			JOptionPane.showMessageDialog(null, "강사님 사번을 다시 확인해주세요 ");
+		}
 	}//end update
 	
 	public void teacherList () {

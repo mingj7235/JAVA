@@ -267,6 +267,7 @@ public class StudentManagements_Joption{
 					JOptionPane.showMessageDialog(null, "수정 실패");
 				}
 			}
+			break;
 		}
 		if (!flag) {
 			JOptionPane.showMessageDialog(null, "수정할 학생의 번호를 다시 확인해 주세요");
