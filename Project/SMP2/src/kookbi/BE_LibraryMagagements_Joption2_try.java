@@ -6,18 +6,19 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class LibraryMagagements_Joption extends StudentManagements_Joption{
+public class BE_LibraryMagagements_Joption2_try extends StudentManagements_Joption{
 	//도서관
 	//책을 리스트업하고,
 	//빌려간 학생 목록을 검색할 수 있음
 	Books books = null;
 	ArrayList<Books> arBooks = new ArrayList<>();
-	LinkedHashMap<Students, Books> arRentList = new LinkedHashMap<>();
+	LinkedHashMap<Students, Set <Books>> arRentList = new LinkedHashMap<>();
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
@@ -51,7 +52,7 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 				break;
 			//책 대여
 			case 4 :
-				rent();
+				rent(arRentList);
 				break;
 			case 5 :
 				returnBook(arRentList);
@@ -127,86 +128,24 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 		JOptionPane.showMessageDialog(null, "[검색된 자료는 아래와 같습니다.]\n" + result);
 	}
 	//책 대여
-	public void rent () {
-		Iterator<Students> stIter = StudentsBook.keySet().iterator();
-		Iterator<Books> bIter = arBooks.iterator();
-		String result = "";
-		boolean rentCheck = false;
-		if (!(StudentsBook.size()==0) && !(arBooks.size() ==0)) {
-			JOptionPane.showMessageDialog(null, "현재 등록된 학생들 대여 코드 번호 리스트 입니다");
-			libraryCodeList(StudentsBook);
-			String stCode = JOptionPane.showInputDialog("책을 대여할 학생 코드를 써주세요");
-			while (stIter.hasNext()) {
-				Students std = stIter.next();
-				if(std.getLibraryCode().equals(stCode)) {
-					JOptionPane.showMessageDialog(null, std.getName() + "학생 환영합니다. \n"
-							+ "현재 도서관에 등록된 책 목록을 보여드리겠습니다.");
-					bookList();
-					String book = JOptionPane.showInputDialog("대여할 책의 제목을 입력해주세요");
-					
-					while (bIter.hasNext()) {
-						Books temp = bIter.next();
-						if (book.equals(temp.getBookName()) && temp.getRent().equals("대여 가능")) {
-							arRentList.put(std, temp);
-							temp.setRent("대여 중");
-							temp.setRentTime(sdf.format(new Date()));
-							JOptionPane.showMessageDialog(null, std.getName() +" 학생에게 "
-									+ temp.getBookName() +" 책 대여가 완료되었습니다.\n"
-									+ "대여일 : " + temp.getRentTime());
-							rentCheck = true;
-							System.out.println(temp.getBookName());
-						}else if (!book.equals(temp.getBookName())) {
-
-						}else if (!temp.getRent().equals("대여 가능")) {
-							JOptionPane.showMessageDialog(null, "그 책은 대여가능하지 않습니다.");
-							return;
-						}
-					}
-				}else if (!std.getLibraryCode().equals(stCode)){
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "등록한 학생이 없습니다.");
-					return;
-				}
-			}
-		}else {
-			JOptionPane.showMessageDialog(null, "누락된 정보가 있습니다 다시 한 번 확인해주세요.");
-		}
-		if (!(arBooks.size()==0) && !(StudentsBook.size() ==0) && !rentCheck) {
-			bookList();
-		}
+	public void rent (LinkedHashMap<Students, Set<Books>>arRentList) {
+		Iterator<Entry<Students, Set<Books>>> iter = arRentList.entrySet().iterator();
+		
+		
+		
+		
+		
 	}
 	
-	public void returnBook (LinkedHashMap<Students, Books> arRentList) {
+	public void returnBook (LinkedHashMap<Students, Set<Books>> arRentList) {
 		String result = "";
 		if (arRentList.size() ==0) {
 			JOptionPane.showMessageDialog(null, "대여된 책이 없습니다. ");
 			return;
 		}else {
-			Iterator<Map.Entry<Students, Books>> iter = arRentList.entrySet().iterator();
-			String bookName = JOptionPane.showInputDialog("[책 반납 메뉴입니다.]\n"
-					+ "반납하실 책 제목을 써주세요.") ;
-			while(iter.hasNext()) {
-				Map.Entry<Students, Books> temp = iter.next();
-				if(bookName.equals(temp.getValue().getBookName()) && temp.getValue().getRent().equals("대여 중")) {
-					temp.getValue().setReturnTime(sdf.format(new Date()));
-					temp.getValue().setRent("대여 가능");
-					JOptionPane.showMessageDialog(null, temp.getKey().getName() + "학생 " + 
-							temp.getValue().getBookName()+ " 반납이 완료되었습니다.\n"
-							+"반납일 : " + temp.getValue().getReturnTime());
-					arRentList.remove(temp.getKey(), temp); 
-					System.out.println(temp.getValue().getBookName());
-					
-					break;
-				}else {
-					JOptionPane.showMessageDialog(null, "정보를 다시 확인 해주세요. ");
-					break;
-				}
-			}
-		}
-		if (!(arRentList.size()==0)) {
-			bookList();
-		}
+			Iterator<Map.Entry<Students, Set<Books>>> iter = arRentList.entrySet().iterator();
+		
+			
 	}
 //	public void returnBook (ArrayList<Books> arBooks) {
 //		String result = "";
@@ -233,4 +172,6 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 //		}
 //		bookList();
 //	}
+	}
 }
+

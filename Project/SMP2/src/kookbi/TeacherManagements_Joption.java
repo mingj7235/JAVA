@@ -3,6 +3,7 @@ package kookbi;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -13,8 +14,9 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 	ImageIcon insertImg = new ImageIcon("src/img/teacherInsert.gif");
 	int choice;
 	ArrayList<Teachers>arTeachers = new ArrayList<>();
+	Random r = new Random();
 	public void TeachersView ( ) {
-		String menu [] = {"교사 등록", "교사 검색", "교사 삭제", "교사 수정", "교사 조회", "강의실 배정", "메인으로"};
+		String menu [] = {"교사 등록", "교사 검색", "교사 삭제", "교사 수정", "교사 조회", "메인으로"};
 		boolean viewcheck = false;
 		while (!viewcheck) {
 			choice = JOptionPane.showOptionDialog(null,
@@ -45,10 +47,9 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 				break;
 			case 5:
 				//강의실 배정
-				assignClass();
-				break;
-			case 6:
+//				assignClass();
 				viewcheck = true;
+			case 6:
 			}
 		}
 	}//end view
@@ -210,10 +211,14 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 		}
 	}//end list
 	
-	
-	public void assignClass() {
-		
-	}//end assign
+//	public void assignClass() {
+//		if (arTeachers.isEmpty() || StudentsBook.isEmpty()) {
+//			JOptionPane.showMessageDialog(null, "누락된 정보를 확인해주세요 \n"
+//					+ "※ 선생님과 학생이 모두 등록이 되어있어야 합니다.");
+//			return;
+//		}
+//		r.nextInt(StudentsBook.size());
+//	}//end assign
 	
 
 
