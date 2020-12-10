@@ -833,3 +833,130 @@ public class ReductionEx {
 	}
 }
 ====
+1-11 수집
+○ 수집 - collect()
+	- 최종 처리 기능으로, 요소들을 수집 또는 그룹핑한다.
+
+	- 필터링 또는 매핑된 요소들로 구성된 새로운 컬렉션을 생성한다
+	- 요소들을 그룹핑하고, 집계(리덕션)을 할 수 있다. 
+
+	-오리지날 스트림에서 객체를 얻어와서 그룹핑 된것을 집계할 수도 있다.
+		예) 전체 학생에서 남자인 학생 객체들, 여자 학생객체들로 그룹핑 된 것을
+		남자 학생의 평균 키, 여자학생의 평균 키를 집계(리덕션)할수있다.
+
+○ 필터링한 요소 수집
+	collect(Collector<T, A, R> collector) 
+	※Collector의 타입 파라미터
+	- T :요소
+	- A : 누적기 (T요소를 수집하는 역할을 함) / accumulator
+	- R : T요소가 저장될 새로운 컬렉션
+		=> T요소를 A누적기가 R에 저장
+	=>R 타입의 컬렉션을 리턴한다. 
+
+	- Collector의 구현 객체
+		-> Collectors 클래스의 정적 메소드를 이용한다. 
+
+	-누적기
+	-> List, Set, Map 컬렉션에 누적할 경우에는 별도의 A(누적기)가 필요없다.
+	-> 이미 알려진, 즉 자동으로 누적이 됨
+
+
+
+○사용자 정의 컨테이너에 수집하기
+	->List, Set, Map에 컬렉트 하는것이 아니라 사용자 정의컨테이너에 수집시키는것
+	-> 즉, 개발자가 작성한 클래스 컨테이너에 수집하는것임
+
+	-collect(Supplier<R> , BiConsumer<R, ? super T>, BiConsumer <R, R>)
+	[매개변수]
+	1) 첫번재 Supplier : 요소들이 수집될 컨테이너 객체를 생성하는 역할임
+	즉, 사용자 정의 컨테이너를 만드는것임
+		- 순차처리 (싱글스레드) 스트림 : 단 한번 Supplier가 실행
+	-	- 병렬처리 (멀티스레드) 스트림 : 스레드별로 Supplier가 실행되어
+					스레드 별로 컨테이너가 생성됨
+	2) 두번째 XXXConsumer : 컨테이너 객체에 요소를 수집하는 역할
+	즉, 서플라이어가 만든 사용자 컨테이너에 객체 요소를 수집함
+		- 스트림에서 요소를 컨테이너에 누적할 때마다 실행
+
+	3) 세번째 BiConsumer : 컨테이너 객체를 결합하는 역할 (병렬처리와 관련됨)
+		- 순차처리 (싱글스레드) 스트림 : 실행되지않음. 그러나 만들어주긴해야함
+		- 병렬처리 (멀티스레드) 스트림 : 스레드별로 생성된 컨테이너를 결합해서
+					최종 컨테이너를 완성한다. 
+
+	[리턴타입]
+	R : 최종 누적된 컨테이너 객체 !!!! 
+		-> Supplier가 생성한 사용자 정의 컨테이너
+
+
+○ 요소를 그룹핑해서 수집
+	- collect()메소드는 단순히 요소를 수집하는 기능 이외에 
+	컬렉션의 요소들을 그룹핑해서 Map객체로 생성하는 기능도 제공한다. 
+
+	ex> 즉, 전체 학생에서 남학생만 남학생 키로 저장을하고
+	여학생은 여학생키로 저장을 해서 Map객체로 리턴하도록 만들 수 있음
+
+	-Collectors.groupingBy()의 리턴객체를 매개값으로 대입
+	-Collectors.groupingByConcurrent()의 리턴 객체를 매개값으로 대입	
+
+	와 개어렵다 와... 왕ㄹㅇ러ㅏ어린 멘붕이네
+
+==============
+
+package sec11.stream_collect;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class GroupingEx {
+	public static void main(String[] args) {
+		List <Student> totalList = Arrays.asList(
+				new Student ("홍길동", 10, Student.Sex.MALE, Student.City.Seoul),
+				new Student ("김수애", 6, Student.Sex.FEMALE, Student.City.Pusan),
+				new Student ("신용권", 10, Student.Sex.MALE, Student.City.Pusan),
+				new Student ("박수미", 6, Student.Sex.FEMALE, Student.City.Seoul)
+		);
+		
+		Map<Student.Sex, List <Student>> mapBySex =
+				totalList.stream()
+				.collect(Collectors.groupingBy(Student :: getSex)); //key로 무엇이 될것인가를 지정함 여기서는 성별이 key
+		
+		//성별로 그룹핑 잘되었는지 확인
+		System.out.print("남학생 : "); //
+		mapBySex.get(Student.Sex.MALE).stream()
+			.forEach(m -> System.out.print(m.getName() + " "));
+		
+		System.out.print("여학생 :");
+		mapBySex.get(Student.Sex.FEMALE).stream()
+			.forEach(m -> System.out.print(m.getName()+ " "));
+		
+		Map<Student.City, List <String>> mapByCity = totalList.stream()
+				.collect(
+						Collectors.groupingBy(
+								Student::getCity,//key로 무엇을 사용할 것인가 / city의 값을 키로 사용할것임
+								Collectors.mapping(Student::getName, Collectors.toList())
+							)
+					);
+		System.out.println("\n[서울]");
+			mapByCity.get(Student.City.Seoul).stream()
+			.forEach(name -> System.out.print(name + " "));
+			
+		System.out.println("\n[부산]");
+		mapByCity.get(Student.City.Pusan).stream()
+		.forEach(name -> System.out.print(name + " "));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
