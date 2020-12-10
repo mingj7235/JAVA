@@ -614,10 +614,57 @@ public class SortingEx {
 }
 ===========
 
+1-7 루핑
+○ 루핑이란?
+	-> 중간 또는 최종처리 기능이다. 
+	-> 요소 전체를 반복하는 것을 말함. 
 	
+○ peek() -> 중간 처리 루핑 메소드
+	- 최종 처리 메소드가 실행되지 않으면 지연되기 때문에
+	최종 처리 메소드가 호출 되어야만 동작한다. (모든 중간 처리 메소드가 지연됨!)
+
+	<루핑 미동작>
+	intStream.filter(a -> a%2 == 0).peek (a -> syso(a));
+		=> 동작 안함. 왜? 최종 처리 메소드가 없으니까!
+	<루핑 동작>
+	intStream.filter(a -> a%2 == 0).peek (a -> syso(a)).sum()
+		=> 콘솔에 찍힘. 왜? 최종 처리 메소드가 있으니까.
+
+○ forEach() -> 최종 처리 루핑 메소드
+	intStream.filter(a -> a%2 ==0).forEach (a -> syso(a));
 
 
+package sec07.stream_looping;
 
+import java.util.Arrays;
+
+public class LoopingEx {
+	public static void main(String[] args) {
+		int [] intArr = {1,2,3,4,5};
+		
+		System.out.println("[peek()]를 마지막에 호출한 경우");
+		Arrays.stream(intArr)
+			.filter(a -> a%2 == 0)
+			.peek(a -> System.out.println(a));
+		//중간 처리 메소드이므로, 최종처리 메소드가 없으면 동작하지 않음. ! 
+		System.out.println();
+		
+		Arrays.stream(intArr)
+		.filter(a -> a%2 == 0)
+		.peek(a -> System.out.println(a))
+		.forEach(a -> System.out.println(a)); //forEach 최종이 나오므로 peek도 작동해서 2번씩 찍힘
+		System.out.println();
+		
+		int total  = Arrays.stream(intArr)
+		.filter(a -> a%2 == 0)
+		.peek(a -> System.out.println(a))
+		.sum();
+		
+		System.out.println("총합 : " + total);
+		//peek 도 동작하고, sum을 담은 total을 출력함. 
+		
+	}
+}
 
 
 
