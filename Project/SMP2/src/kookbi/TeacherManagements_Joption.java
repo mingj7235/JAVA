@@ -168,7 +168,7 @@ public class TeacherManagements_Joption extends LibraryMagagements_Joption{
 					tch.setAge(Integer.parseInt(JOptionPane.showInputDialog("변경될 " + tch.getTeachName() + " 강사님의 나이를 적어주세요")));
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "숫자로 적어주세요.");
-					break;
+					return;
 				}
 				tch.setTeachSubject(JOptionPane.showInputDialog(tch.getTeachName() + " 강사님의 변경된 담당 과목을 적어주세요"));
 				
