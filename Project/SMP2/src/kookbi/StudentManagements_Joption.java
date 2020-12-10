@@ -182,6 +182,7 @@ public class StudentManagements_Joption{
 	
 	void update () {
 		boolean flag = false;
+		Iterator<Students> iter = StudentsBook.keySet().iterator();
 		if(StudentsBook.size() == 0) {
 			JOptionPane.showMessageDialog(null, "등록된 학생이 없습니다. 다시 확인해주세요..");
 			return;
@@ -190,9 +191,12 @@ public class StudentManagements_Joption{
 		int num = 0, choice = 0;
 		String result = "";
 		String [] updateMenu = {"신상정보 수정", "점수 수정"};
-		Iterator<Students> iter = StudentsBook.keySet().iterator();
-		while (iter.hasNext()) {
+		try {
 			num = Integer.parseInt(JOptionPane.showInputDialog("수정할 학생의 번호를 입력해주세요."));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "숫자로 입력해주세요");
+		}
+		while (iter.hasNext()) {
 			Students std = iter.next();
 			if (num == std.getNumber()) {
 				flag = true;
@@ -262,9 +266,6 @@ public class StudentManagements_Joption{
 					StudentsBook.get(std).set(3, avg);
 					JOptionPane.showMessageDialog(null, "성적 수정 완료");
 					break;
-				default :
-					flag = false;
-					JOptionPane.showMessageDialog(null, "수정 실패");
 				}
 			}
 			break;
