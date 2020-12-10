@@ -666,6 +666,53 @@ public class LoopingEx {
 	}
 }
 
+===========
+<1-8 부터는 최종 처리 메소드임>
+
+1-8 매칭
+○ 매칭 matching
+	-최종 처리 기능
+	- 요소들이 특정 조건을 만족하는지 조사하는 것
+○ 매칭 메소드
+1) allMatch ()
+	- 스트림의 모든 요소들이 매개값으로 주어진 Predicate의 조건을 만족하는지 조사
+		->모두 만족하면 true, 하나라도 만족하지 않으면 false
+2) anyMatch (0
+	- 최소한 한 개의 요소가 매개값의 조건을 만족하는지조사
+		-> 하나라도 만족하면 true
+
+3) noneMatch()
+	- 모든 요소들이 매개값의 조건을 만족하지 않는지 조사
+		-> 하나라도 만족하면 false 리턴
+
+이 3개의 메소드는 모든 Stream에서 구현되고, 리턴타입은 모두 boolean이다. 
+
+
+1-9 기본 집계
+○ 집계 (Aggregate)
+	- 최종 처리 기능
+	- 카운팅, 합계, 평균값, 최대값, 최소값 등과 같이 하나의 값으로 산출!! 한다.
+	- 대량의 데이터를 가공해서 축소하는 리덕션(Reduction) 이라고 볼 수 있다. 
+		=> 대량의 데이터를 하나의 값으로 가공!!
+
+○ 스트림이 제공하는 기본 집계 함수
+	count()
+	findFirst()
+	max()
+	min()
+	average()
+	sum()
+※ count(),sum()을 제외하고 모두 OptionalXXX을 리턴한다.
+	-> OptionalXXX클래스
+	- 자바 8부터 추가된 값을 저장하는 값 기반 클래스 
+	- 값을 저장하는 객체다.
+	- java.util 패키지의 Optional, OptionalDouble, OptionalInt, OptionalLong클래스를말한다.
+	- 저장된 값을 얻으려면 get(), getAsDouble(), getAsInt(), getAsLong()을 호출한다.
+
+
+
+
+
 
 
 
