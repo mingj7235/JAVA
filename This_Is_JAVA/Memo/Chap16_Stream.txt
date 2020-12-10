@@ -509,8 +509,112 @@ public class FlatMapEx {
 ○asDoubleStream(), asLongStream() , boxed() 
 
 
+1-6정렬
+○ 정렬 - sorted()
+	-> 중간 처리 기능으로 최정 처리 되기 전에 요소를 정렬한다.
+	-> 각 스트림에 모두 소유된 메소드다. 
+○ comparable과 comparator 와 관련이있다!!! -> Stream <T>이 리턴일경우
+	- 객체 요소일 경우 (Stream<T>) 일경우, comparable을 구현하지 않으면
+	ClassCastException이 발생한다. 
+	-반드시 Stream의 요소가 Comparable을 구현해야한다.
+	- 정렬하기 위해서 기준이 필요하기 때문임!!!
+	- 또는 sorted(Comparator <T>) 로 
+	
+	- 객체요소가 Comparable을 구현하지 않았거나, 구현했어도 다른 비교 방법으로
+	정렬하려면 Comparator를 매개값으로 갖는 sorted(Comparator<T>)를 사용해야한다.
+
+	=> Comparator는 함수적 인터페이스므로 람다식으로 매개값을 작성할 수 있다
+		ex> sorted( (a,b) -> {...})
+		중괄호 {} 안에는 a와 b를 비교해서 a가 작으면 음수, 같으면 0, a가 크면 양수
+
+	- 객체요소가 Comparable을 구현하고 있고, 기본 비교(comparable)방법으로 
+	정렬하려면 다음 세가지 방법 중 하나를 선택한다.
+	1) sorted();
+	2) sorted( (a,b) -> a.compareTo(b) );
+	3) sorted (Comparator.naturalOrder());
+
+	-요소가 Comparable을 구현하고 있지만, 기본 비교방법과 정반대로 정렬
+	1) sorted ( (a,b) -> b.compareTo(a) );
+	2) sorted ( (Comparator.reverseOrder() );
+
+============
+package sec06.stream_sorting;
+
+public class Student implements Comparable<Student>{
+	private String name;
+	private int score;
+
+	public Student(String name, int score) {
+		this.name = name;
+		this.score = score;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		return Integer.compare(score, o.score);
+//		if (score < o.score) return -1;
+//		else if (score = o.score) return 0;
+//		else return 1;
+			// 이것을 간단하게 쓴게 compare() 메소드
+	}
+}
+================
+package sec06.stream_sorting;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.IntStream;
 
 
+public class SortingEx {
+	public static void main(String[] args) {
+		IntStream intStream = Arrays.stream(new int [] {5,3,2,1,4});
+		
+		intStream
+			.sorted()
+			.forEach(n -> System.out.println(n));	//기본적으로 올림차순임
+		System.out.println();
+		
+		//객체요소인경우 (컬렉션을 예로든것임)
+		List <Student> studentList = Arrays.asList(
+				new Student("홍길동", 30),
+				new Student("신용권", 10),
+				new Student("유미선", 20)
+		);
+		
+		//기본 정렬 -> Student가 재정의한 방법대로 정렬
+		
+		studentList.stream()
+			.sorted()
+			.forEach(s -> System.out.println(s.getScore() + ","));
+		//반대 정렬
+		studentList.stream()
+			.sorted((a,b) -> b.compareTo(a) )
+			.forEach(s -> System.out.println(s.getScore() + ","));
+		
+		studentList.stream()
+			.sorted(Comparator.reverseOrder())
+			.forEach(s -> System.out.println(s.getScore() + ","));
+	}
+}
+===========
+
+	
 
 
 
