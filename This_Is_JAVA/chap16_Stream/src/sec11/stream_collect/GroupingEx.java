@@ -41,5 +41,17 @@ public class GroupingEx {
 		System.out.println("\n[부산]");
 		mapByCity.get(Student.City.Pusan).stream()
 		.forEach(name -> System.out.print(name + " "));
+		
+		Map<Student.Sex, String> mapBySexName = totalList.stream()
+				.collect(
+						Collectors.groupingBy(
+								Student :: getSex,				//Map의 Key를 정하고
+								Collectors.mapping(			//Student 클래스를 이름으로 매핑한단의미임
+								Student :: getName,
+								Collectors.joining(",")			//joining은 연결한다는 것임.
+								
+								)
+						)		
+				);
 	}
 }
