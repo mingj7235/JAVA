@@ -1,15 +1,16 @@
 package kookbi;
 
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	//도서관
@@ -21,10 +22,12 @@ public class LibraryMagagements_Joption extends StudentManagements_Joption{
 	ImageIcon libraryMainImg = new ImageIcon("src/img/librarymain.gif");
 	ImageIcon libraryInsertImg = new ImageIcon("src/img/libraryInsert.gif");
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+	static Font myFont = new Font("맑은 고딕", Font.PLAIN, 15);
 	
 	int choice;
 	String rentResult = "";
 	public void libararyView () {
+		UIManager.put("OptionPane.messageFont", myFont);
 		boolean flag = false;
 		String menu [] = {"책 등록", "등록된 책 조회","대여 코드 조회", "책 검색", "책 대여", "책 반납", "메인으로"};
 		

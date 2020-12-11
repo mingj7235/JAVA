@@ -1,1 +1,13 @@
 1-1 JavaFX 개요
+○ JAVA UI 변천사
+	AWT -> Swing -> JavaFX
+
+○ JavaFX 
+	- 레이아웃, 스타일, 애플리케이션 로직을 분리해서 개발이 가능하다.
+	- Swing에 비해서 훨씬 가볍고 풍부한 UI를 제공한다.
+	- 1.7 버전부터 JavaFX2.2를 JDK와 JRE에 포함시킨다.
+
+1-2 JavaFX 애플리케이션 개발 시작
+
+○ 메인 클래스 생성부터 !!
+- 메인 클래스가 Application 이라는 클래스를 상속해야한다. 
