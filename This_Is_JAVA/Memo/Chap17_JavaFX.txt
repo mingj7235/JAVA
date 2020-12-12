@@ -92,11 +92,93 @@ primaryStage.show();
 패딩 padding : 들여쓰는 양. 즉 안쪽 여백. Hbox를 기준으로, 얼마만큼 여백을 주고
 마진 margin : 버튼을 기준으로. 바깥쪽 여백. 바깥 여백 ! 
 
+○ 테그선언
+-FXML 테그는 <와 > 사이에 테그이름을 작성한 것. 시작테그와 끝 테그가 있어야한다. !
+<테그이름> ... </테그이름>
+-시작 테그와 끝 테그 사이에는 테그 내용이 작성되는데,
+테그 내용이 필요없을 경우에는 <테그이름/> 같이 붙어야한다.
+		=> 시작인 동시에 끝인경우. 
+- 테그 이름은 JavaFX의 클래스명이거나, Setter메소드 명이 될 수 있다.
+
+Button button = new Button ();
+button.setText("확인");
+
+=>
+
+<Button> => Button 클래스!
+	<text>확인</text> => setter 메소드! (setText에서 set을 떼고 T를 소문자로! text 테그!)
+</Button>
+
+
+○속성 선언
+- 속성값은 반드시 "" 또는 ''로 감싸야한다. 
+
+<테그이름 속성명 = "값" 속성명 ='값'> ... </테그이름>
+
+-속성명은 Setter메소드명 !!!!!!! 
+	- 모든 setter가 사용될 수 있는 것은 아니고, 
+	기본 타입의 값을 세팅하거나, String을 세팅하는 Setter만 올 수 있다.
+	ex) Button의 글자를 설정할 때 setText() 메소드를 사용할 때,
+	매개값이 문자열이므로 속성을 지정할 수 있다.
+	=> <Buttom text="확인"/>
+	- 기본타입이나 String 을 세팅하는 게 아닐경우, 이렇게 속성선언을 못함!
+	- 테그선언해야함
+
+○객체 선언
+<클래스 속성 ="값">
+- 일반적으로 <클래스> 형태로 테그를 작성하면 기본생성자를 호출하여 객체가 생성된다.
+	-> 기본생성자를 꼭 만들어야한다.
+	-> 매개값이 있는 생성자를 호출하려면! 속성으로
+	<클래스 속성 = "값"> 해야한다!!
+	->Setter말고도 매개값 호출하는 생성자라면 이렇게 가능. 
+		(but, 값이 기본값이거나 String이어야 속성으로 호출가능)
 
 
 
+<클래스 fx:value= "값">
+- new 연산자로 객체를 생성하지 않고, 클래스가 valueOf(String)메소드를 제공하는 경우가있다.
+	예를들어 String, Intger, Double, Boolean 클래스는 valueOf()를 호출하여 객체 생성!
+	이 경우 <클래스 fx:value="값"> 으로 FXML테그를 작성할 수 있다. 
+	ex><String fx:value ="Hello, World!"/>
+
+<클래스 fx:constant = "상수">
+- 클래스에 정의된 상수값을 얻고 싶을 경우에 사용. 
+
+<클래스 fx:factory= "정적메소드">
+- 정적 메소드로 객체를 얻어야 하는 경우. 
+ex>ComboBox combo = new ComboBox();
+	combo.setItems(
+		FXCollections. observableArrayList( //정적메소드임
+			"공개", "비공개"
+		)
+	);
+
+<ComboBox>
+	<items>
+		<FXCollections fx:factory = "observableArrayList">
+			<String fx:value = "공개"/>
+			<String fx:value ="비공개"/>
+		</FXCollections>
+	</items>
+</ComboBox>
+ 
+
+○FXML 로딩과 Scene생성
+- FXML 로딩
+	- FXML파일을 읽어들여 선언된 내용을 객체화 하는것을 말한다!
+	- FXMLLoader의 load()메소드를 이용한다. 
+	1) 정적메소드 load() 사용하는방법
+	2) 인스턴트메소드 load() 사용하는 방법
 
 
+○JavaFX Scene Builder 프로그램
+
+
+1-4 JavaFX컨테이너
+○ 컨테이너
+- 레이아웃을 작성할 때 다양한 컨트롤들을 쉽게 배치할 수 있도록 해주는 역할을 한다.
+- 컨테이너의 종류와 배치방법을 잘 이해하는것이 중요하다.
+- 컨테이너도 클래스다. javafx.scene.layout 패키지 안에 다양한 컨테이너 클래스들이 존재한다.
 
 
 
