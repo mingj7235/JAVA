@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <ImageView fitHeight="376.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/kakaoimage.jpg" />
+         </image>
+      </ImageView>
+      <HBox alignment="TOP_CENTER" spacing="20.0">
+         <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="이전" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="다음" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="HYPost-Light" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
