@@ -11,3 +11,38 @@
 
 ○ 메인 클래스 생성부터 !!
 - 메인 클래스가 Application 이라는 클래스를 상속해야한다. 
+- Application -> JavaFX 패키지에 있음
+- 메인은 반드시 Application을 상속!!
+
+- start() 메소드를 재정의 해야한다 .
+	-> start()메소드는 UI를 생성하고, 윈도우창을 만들어준다.
+	-> main 클래스에서 main 메소드를 만들고, 그 main메소드에서
+	launch()를 호출함으로 start()를 실행하도록 해야한다 .
+	-> main 스레드 이외에 ui 생성용 스레드를 실행해줘야하기 때문이다.
+	-> 그 스레드를 launch가 실행시켜준다. 
+	->main 메소드에서 start()를 호출하는것이아니다! 
+
+※Stage : 윈도우창을 말함. 무대!! 윈도우창도 무대라고 생각하면된다.
+	JavaFX는 윈도우를 stage로 이야기한다. ! 
+
+○ JavaFX라이프 사이클
+
+- launch() 메소드가 실행되면
+	-> JavaFX Application Thread 스레드와 -> UI 생성, 변경 스레드 / 기본생성자, start(), stop() 실행
+	-> JavaFX Launcher 스레드가 생성된다. -> init() 실행
+※JavaFX Application Thread 에서만 UI를 생성하고 변경해야한다!!
+	즉, init()에서 UI를 생성하거나 변경하면 안된다!!!
+	=> 매우 중요함
+
+
+○ 메인 클래스 실행 매개값 얻기
+	init() 메소드에서 매개값을 얻을 수 있다.
+		Parameters params = getParameters();
+		1) List<String>list = params.getRaw();
+		2) Map<String,String>map = params.getNamed();
+		두가지 방법으로 매개값을 얻을 수 있다. 
+		=> 두번째 방법이 더 유리하다. key 로검색해서, 값을 얻을 수 있다. 
+
+
+
+○ 무대와 장면
