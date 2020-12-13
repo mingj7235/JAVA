@@ -12,7 +12,8 @@
 	
 	<children>
 		<Button fx:id ="btn1" text = "버튼1" />
-		<Button fx:id ="btn2" text = "버튼2" />
+		<Button text = "버튼2" onAction = "#handleBtn2Action"/>
+		<!-- FXML에서 직접 이벤트 처리를 한다면 id를 줄 필요도 없다.  -->
 		<Button fx:id ="btn3" text = "버튼3" />
 	</children>
 </HBox>
