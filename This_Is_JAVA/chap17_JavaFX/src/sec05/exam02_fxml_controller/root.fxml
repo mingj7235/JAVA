@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+	prefWidth="200" prefHeight="50" alignment="CENTER" spacing="20" 
+	fx:controller="sec05.exam02_fxml_controller.RootController">
+	<!-- 컨트롤러는 fxml파일 하나당 하나씩! 
+	fx:controller로 컨트롤러를 지정해주는것임.-->
+	
+	
+	<children>
+		<Button fx:id ="btn1" text = "버튼1" />
+		<Button fx:id ="btn2" text = "버튼2" />
+		<Button fx:id ="btn3" text = "버튼3" />
+	</children>
+</HBox>
+
