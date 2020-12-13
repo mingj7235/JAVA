@@ -202,6 +202,14 @@ ex>ComboBox combo = new ComboBox();
 - VBox는 컨트롤의 폭을 끝까지 확장하고 컨트롤의 높이는 유지 수직으로!!!
 
 
+○BorderPane 컨테이너
+- top, bottom,left,right,center 셀에 컨트롤을 배치하는 컨테이너
+- 각 나눠진 셀에는 하나의 컨트롤 또는 컨테이너만 배치된다.
+	ex)버튼을 두개 못넣음. 그래서 컨테이너를 center에 하나 배치하고 그 컨테이너에
+	컨트롤을 둬야한다. 
+- top, bottom,left,right 에 배치하지 않으면 center에 배치된 컨트롤이 확장된다.
+	-> center가 확장이되는것!!
+- 섹션이 나눠져있는 컨테이너라고 생각하면댐
 
 
 

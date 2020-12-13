@@ -15,6 +15,7 @@ public class Member {
 	public boolean equals(Object obj) {
 		if (obj instanceof Member) {
 			Member member = (Member) obj;
+	
 			return member.name.equals(name) && member.age == age ;
 		} else {
 			return false;
