@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<TilePane xmlns:fx="http://javafx.com/fxml/1"
+	prefTileWidth="100" prefTileHeight="100">
+	
+	<children>
+		<!-- 타일은 chlderen에 한다. -->
+		<ImageView>
+			<image>
+				<Image url = "@images/파일명1.jpg"/>
+				<!-- 여기에 이미지 경로가 들어간다.  -->
+			</image>		
+		</ImageView>
+		
+		<ImageView>
+			<image>
+				<Image url = "@images/파일명2.jpg"/>
+				<!-- 여기에 이미지 경로가 들어간다.  -->
+			</image>		
+		</ImageView>
+		
+		<ImageView>
+			<image>
+				<Image url = "@images/파일명3.jpg"/>
+				<!-- 여기에 이미지 경로가 들어간다.  -->
+			</image>		
+		</ImageView>
+	</children>
+
+
+
+</TilePane>
+
