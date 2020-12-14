@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Slider?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" 
+	prefWidth="350" prefHeight="250"
+	fx:controller = "sec06.exam01_property_listener.RootController">
+	<!-- 컨트롤러 지정 -->
+	
+	<center>
+		<Label fx:id = "label" text = "javaFX">
+			<font>
+				<Font size="0" />
+			</font>
+		</Label>
+	</center>
+
+	<bottom>
+		<Slider fx:id = "slider" />
+	</bottom>
+
+
+</BorderPane>
+
