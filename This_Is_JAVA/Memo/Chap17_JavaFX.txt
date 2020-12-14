@@ -294,6 +294,7 @@ initialize() 메소드 내에서 이벤트 처리를 할 수 있음
 엄청 재밌다 이거 와 대박쓰...
 
 1-6 JavaFX속성 감시와 바인딩
+○속성 감시
 - 컨트롤의 속성값 변화를 감시하는 changeListener를 등록할 수 있다.
 	-> 속성이 변화되었는지 감시함
 - 속성값에 변화가 생기면 ChangeListneer의 changed()가 호출된다.
@@ -310,6 +311,51 @@ initialize() 메소드 내에서 이벤트 처리를 할 수 있음
 - set메소드로 인해 속성이 변경되면 리스너의 changed메소드가 자동으로 실현됨
 -> 어떠한 컨트롤이든 속성타입Property()가 다있다.
 -> changeListner를 통해 다 리스너를 등록할수있다.
+
+○속성 바인드
+- 두 컨트롤의 속성을 서로 연결하는 것!!
+- 바인드된 속성들은 하나가 변경되면 자동적으로 다른 하나도 변경된다. 
+
+- 단방향 바인드
+	TextArea textArea1 = new TextArea();
+	TextArea textArea2 = new TextArea();
+	textArea2.textProperty().bind(textArea1.textProperty());
+
+- 양방향 바인드
+	1) textArea2.textProperty().bindBidirectional(textArea1.textProperty());
+	2) Bindings.bindBidirectional(textArea1.textProperty(), textArea2.textProperty());
+
+- 언바인드
+	단방향
+	textArea2.textProperty().unbind();
+	양방향1
+	textArea2.textProperty().unbindBidirectional(textArea1.textProperty());
+	양방향2
+	Bindings.unbindbiderectional(textArea1.textProperty(), textArea2.textProperty());
+
+
+- Bindings 클래스	
+	=> 속성을 연산하거나 다른타입으로 변환한 후 바인딩하는 기능을 제공한다.
+	=> 바인딩하고자하는 속성들의 값이 서로 타입이 다르거나 범위가 다를경우
+	Bindings클래스를 사용해야한다. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
