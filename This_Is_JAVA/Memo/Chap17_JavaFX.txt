@@ -373,6 +373,31 @@ groupName.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
 속성감시를 통해 선택되어진 라디오버튼이 변경이되면 체인지가 실행되도록함
 그렇게해서 변경된 라디오버튼을 얻어낼수있도록! 개쩌네;
 
+○ 입력 컨트롤
+-> 사용자의 텍스트를 입력 받는 컨트롤
+
+ex> Label, TextField, PasswordField, TextArea, ComboBox, DatePicker, ColorPicker, HTMLEditor 등
+
+○뷰 컨트롤
+-> 뷰컨트롤은 무언가를 보여주는 컨트롤
+
+ex> ListView, TableView, ImageView
+
+-ImageView 컨트롤
+	-preserveRatio = "true (or false)" 개념이 중요하다!
+	=> 매개값 true이면 원본 그림의 비율
+		true일때 fitWidth와 fitHeigth가 비율이 맞지않다면
+		폭과 높이중 하나에 맞춰서 나머지를 무시하고, 비율에 맞춘다.
+		그렇기때문에, true일경우는 폭과 높이중 하나만 설정을 한다. 
+	=> 매개값 false이면 ImageView에서 지정한 fitWidth와 fitHeight를 따라서 설정된다.
+
+
+-ListView 컨트롤
+
+-TableView 컨트롤
+	-> 객체의 각 필드를 테이블로 담는 것임.
+	그래서 그전에 객체들의 선언이 중요함
+
 
 
 
