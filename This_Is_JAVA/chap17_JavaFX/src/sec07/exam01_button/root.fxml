@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="420" prefHeight="150"
+	fx:controller="sec07.exam01_button.RootController">
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10" />
+	</padding>
+	
+	<center>
+		<HBox alignment="CENTER" prefWidth="200" prefHeight="100" spacing="10">
+			<children>
+				<VBox prefWidth="100" prefHeight="200" spacing="20" alignment="CENTER_LEFT">
+					<children>
+						<CheckBox fx:id = "chk1" text ="안경" onAction="#handleChkAction"/>
+						<CheckBox fx:id = "chk2" text ="모자" onAction="#handleChkAction" />
+					</children>
+				</VBox>
+				<ImageView fx:id ="checkImageView" fitWidth="100" preserveRatio="true">
+					<image>
+						<Image url ="@images/geek.gif" />
+					</image>
+				</ImageView>		
+				<Separator orientation="VERTICAL" prefHeight="200" />
+				
+				<VBox prefWidth="150" prefHeight="200" spacing="20" alignment="CENTER_LEFT">
+					<fx:define>
+						<ToggleGroup fx:id = "group"/>
+					</fx:define>
+					<children>
+						<RadioButton text="BubbleChart" userData = "BubbleChart" toggleGroup = "$group" />
+						<RadioButton text="BarChart" userData = "BarChart" toggleGroup = "$group" selected="true"/> <!-- 디폴트주기 -->
+						<RadioButton text="AreaChart" userData ="AreaChart" toggleGroup = "$group" />
+					</children>
+				</VBox>
+				<ImageView fx:id ="radioImageView" fitWidth="100" preserveRatio="true">
+					<image>
+						<Image url ="@images/BarChart.png" />
+					</image>
+				</ImageView>	
+			</children>
+		</HBox>		
+	</center>
+	
+	<bottom>
+		<Button BorderPane.alignment="CENTER" onAction="#handleBtnExitAtcion">
+			<graphic>
+				<ImageView>
+					<Image url = "@images/exit.png"/>
+				</ImageView>
+			</graphic>
+			<BorderPane.margin>
+				<Insets top="20" />
+				<!-- 버튼에 탑 마진을 주는 법. 자동완성이 잘안된다. -->
+			</BorderPane.margin>
+		</Button>
+	</bottom>
+	
+
+</BorderPane>
+

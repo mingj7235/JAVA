@@ -340,9 +340,38 @@ initialize() 메소드 내에서 이벤트 처리를 할 수 있음
 	Bindings클래스를 사용해야한다. 
 
 
+1-7 JavaFX 컨트롤
+○버튼 컨트롤
+- 마우스로 클릭을 할 수 있는 컨트롤. ButtonBase를 상속하는 하위 컨트롤
+- Button, CheckBox(다중선택), RadioButton(그룹으로형성. 하나만선택), ToggleButton(라디오랑 모양만다름. 그룹중 하나만선택)
 
+- Button 컨트롤
+	ex> 버튼의 이미지를 넣는방법
+	<Button text = "아이콘버튼">
+		<graphic>
+			<ImageView>
+				<Image url = "@images/view.gif"/>
 
+-CheckBox
 
+-RadioButton (그룹을 생성하고, 거기서 하나만 선택)
+	<fx:define> -> 그룹을 생성하는 것임!
+		<ToggleGroup fx:id = "groupName"/>
+	</fx:define>
+	<RadioButton text ="라벨1" userData="값1" toggleGroup ="$groupName"/>
+
+ToggleGroup에서 이벤트 처리를한다. 
+-> 각각의 라디오 버튼에서 이벤트처리하지않고, 토글그룹에서 속성감시를 이용함!
+
+groupName.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+	@Override
+	public void changed(ObservableValue<.....>
+		Toggle oldValue, Toggle newValue) {....}
+		//oldValue, newValue는 라디오버튼
+	});
+
+속성감시를 통해 선택되어진 라디오버튼이 변경이되면 체인지가 실행되도록함
+그렇게해서 변경된 라디오버튼을 얻어낼수있도록! 개쩌네;
 
 
 
