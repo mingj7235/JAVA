@@ -398,8 +398,18 @@ ex> ListView, TableView, ImageView
 	-> 객체의 각 필드를 테이블로 담는 것임.
 	그래서 그전에 객체들의 선언이 중요함
 
+1-8 JavaFX메뉴바와 툴바
+○ 메뉴바
+	- MemuBar에는 Menu들이 배치된다. 
+	- Menu에는 메뉴 아이템들이 추가된다. 
 
+- accelerator 
+	-> 단축키 지정. 개쩐다;
 
+○ 툴바
+	- Toolbar 컨트롤은 UI 컨ㅌ롤이면서 컨테이너이기도하다.
+		-> Toolbar 안에 컨트롤이 들어가므로! 컨틀로이면서 동시에 컨터이너다
+	- Button이 추가되지만, comboBox와 같은 다른 컨트롤도 배치할 수 있다. 
 
 
 
