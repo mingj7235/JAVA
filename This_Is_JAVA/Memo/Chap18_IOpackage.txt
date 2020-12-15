@@ -201,6 +201,79 @@ System.in : 입력스트림
 -> 한글은 2바이트로 되어있다. 
 -> 바이트 배열에 담아야한다. 
 
+○ Scanner 쓰면댐;
+
+1-4 파일 입출력
+
+○File 클래스
+- 파일 시스템의 파일을 표현하는 클래스
+	- 파일 크기, 파일 속성, 파일 이름등의 정보를 제공한다.
+	- 파일 생성 및 삭제 기능 제공
+	- 디렉토리를 생성하고 디렉토리에 존재하는 파일리스트를 얻어내는 기능 제공
+	(File이라고해서 파일만 관여하지 않음. 디렉토리도 관리함)
+
+- 파일 객체 생성
+	File file = new File ("파일이나 디렉토리의 경로가 매개값!");
+
+- 파일 또는 디렉토리 존재 유무 확인 메소드
+	boolean isExist = file.exists();
+	=>파일 또는 디렉토리가 존재하는 지 확인. true나 false리턴
+
+-파일 및 디렉토리 생성 및 삭제 메소드
+	-createNewFile()
+	-mkdir() -> 새로운 디렉토리를 생성 (경로상에 없는 디렉토리를 넣으면 에러발생)
+	-mkdirs() -> 경로상에 없는 모든 디렉토리를 생성 (그래서 s 즉 복수가 붙음)
+		=> 경로상에 디렉토리가 확실하지 않을때는 mkdirs()를 사용하는것이 좋음
+	-delete() 파일 또는 디렉토리 삭제
+
+
+- 파일 및 디렉토리의 정보를 리턴하는 메소드
+	-canExecute() 실행할 수있는 파일인지 여부
+	-canRead() 읽을수 있는지
+	-canWrite() 데이터를 수정, 저장할수있는지
+	-getName() 파일의 이름을 리턴
+	-getParent() 부모 디렉토리를 리턴
+	-getParentFile() 부모디렉토리를 File 객체로 생성하고 그 File을 리턴
+	-getPath() 전체 경로를 리턴
+	-isDirectory() 디렉토리인지 여부
+	-isFile() 파일인지 여부
+	-isHidden () 숨김 파일인지 여부
+	-lastModified()  마지막 수정날짜 및 시간을 리턴
+	-lentgh() 파일의 크기 리턴 (사이즈가 아니라 렝스임!)
+		=> long타입으로 리턴됨 중요!
+	- list() 디렉토리에 포함된 파일 및 서브디렉토리 목록 전부를 
+		String 배열로 리턴
+	- list(FilenameFilter filter) 디렉토리에 포함된 파일 및 서브디렉토리 목록중에
+		FilenameFilter에 맞는 것만 String 배열로 리턴
+		-> 필터링을 하는 것임
+	- listFiles() 디렉토리에 포함된 파일 및 서브 디렉토리 목록 전부를
+		File배열로 리턴
+	- listFiles(FilenameFilter filter) 디렉토리에 포함된 파일 및 서브디렉토리 목록중에
+		FilenameFilter에 맞는 것만 File배열로 리턴
+
+
+○ FileInputStream
+- 파일로부터 바이트 단위로 읽어 들일 때 사용
+	- 그림, 오디오, 비디오, 텍스트 파일등 모든 종류의 파일을 읽을 수 있다.
+- 객체 생성방법
+	1) FileInputStream fis = new FileInputStream ("경로");
+
+	2) File file = new File (경로);
+	   FileInputStream fil = new FileInputStream (file);
+
+- FileInputSteram 객체가 생성될 때 파일과 직접 연결
+	예외처리해야한다!
+
+- InputStream 하위 클래스 이므로 사용 방법이 InputStream과 동일하다. 
+
+
+
+
+
+
+
+
+
 
 
 
