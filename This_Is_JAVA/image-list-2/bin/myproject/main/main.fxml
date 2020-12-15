@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Border?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<StackPane fx:id="stackPane" prefHeight="530" prefWidth="350" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myproject.main.MainController">
+	<children>
+      <AnchorPane prefHeight="530.0" prefWidth="350.0">
+         <children>
+	   			<ImageView fitHeight="530.0" fitWidth="350.0">
+	   				<image>
+	                  <Image url="@../images/background2.png" />
+	               </image>
+	   			</ImageView>
+      	   		<Button fx:id="btnList" layoutX="181.0" layoutY="450" prefHeight="50.0" prefWidth="155.0" text="  폰목록 보기">
+      	   			<graphic>
+      	   				<ImageView>
+      	   					<image><Image url="@../images/btn1_img2.png"/></image>
+      	   				</ImageView>
+      	   			</graphic>
+      	   		</Button>
+         </children>
+      </AnchorPane>
+	</children>
+</StackPane>

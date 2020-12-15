@@ -160,10 +160,28 @@
 	-> 한번에 한 문자를 읽는다! (2바이트) 
 ※ 더이상 읽을 문자가 없으면 -1을 리턴함! 
 
+○ read(char[] cbuf) 메소드
+
+○ read(char[] cbuf, int off, int len) 메소드
 
 
+○ Writer
+	-문자기반 출력 스트림의 최상위 클래스로 추상 클래스
 
+- 메소드
+1) write (int c) : 매개값으로 주어진 한 문자를 보낸다.
 
+2) write (char [] cbuf) : 배열의 모든 문자를 출력
+
+3) write (char [] cbuf, int off, int len)
+
+4) write (String str) 매개값으로 주어진 문자열을 전부
+
+5) write (String str, int off, int len)
+
+6) flush ()
+
+7) close ()
 
 
 

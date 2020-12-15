@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Border?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane stylesheets="@../css/style.css" prefHeight="500" prefWidth="350" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myproject.list.ListController">	
+   <top>
+      <BorderPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <center>
+            <Label text="이미지와 목록" textFill="WHITE" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="largeImage" fitHeight="200.0" fitWidth="350.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/phone01_large.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="menuBtn1" layoutX="234.0" layoutY="159.0" mnemonicParsing="false" />
+                  <Button id="menuBtn2" layoutX="268.0" layoutY="160.0" mnemonicParsing="false" />
+                  <Button id="menuBtn3" layoutX="304.0" layoutY="159.0" mnemonicParsing="false" />
+               </children>
+            </AnchorPane>
+      		<BorderPane style="-fx-background-color: #eaeaea;">
+      			<left>
+      				<Button fx:id="btnLeft" prefHeight="30" text="이전" />
+      			</left>
+      
+				<center>			
+      				<Label alignment="CENTER" prefWidth="215" text="목록" />
+      			</center>
+      			
+				<right>
+      				<Button fx:id="btnRight" prefHeight="30" text="다음" />
+      			</right>
+       			
+                  			<padding>
+      				<Insets topRightBottomLeft="3" />
+      			</padding>
+      		</BorderPane>
+            <StackPane fx:id="listStackPane" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </center>	
+   
+   <bottom>
+		<BorderPane style="-fx-background-color: #eaeaea;">
+			<center>			
+				<HBox alignment="CENTER" style="-fx-background-color: black;">
+					<children>
+						<Button fx:id="btnHome" id="btnHome"/>
+					</children>
+					<padding>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</padding>
+				</HBox>
+			</center>
+		</BorderPane>		   
+   </bottom>   
+</BorderPane>

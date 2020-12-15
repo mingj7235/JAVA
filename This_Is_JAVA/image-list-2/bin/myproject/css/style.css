@@ -1,0 +1,44 @@
+#menuBtn1 {
+  -fx-graphic: url('../images/btn1_img2.png');
+  -fx-background-color: transparent;
+}
+
+#menuBtn1:hover {
+  -fx-graphic: url('../images/btn1_img3.png');
+}
+
+#menuBtn1:pressed {
+  -fx-graphic: url('../images/btn1_img1.png');
+}
+
+#menuBtn2 {
+  -fx-graphic: url('../images/btn2_img2.png');
+  -fx-background-color: transparent;
+}
+
+#menuBtn2:hover {
+  -fx-graphic: url('../images/btn2_img3.png');
+}
+
+#menuBtn2:pressed {
+  -fx-graphic: url('../images/btn2_img1.png');
+}
+
+#menuBtn3 {
+  -fx-graphic: url('../images/btn3_img2.png');
+  -fx-background-color: transparent;
+}
+
+#menuBtn3:hover {
+  -fx-graphic: url('../images/btn3_img3.png');
+}
+
+#menuBtn3:pressed {
+  -fx-graphic: url('../images/btn3_img1.png');
+}
+
+#btnHome {
+  -fx-graphic: url('../images/home.png');
+  -fx-background-color: transparent;  
+}
+
