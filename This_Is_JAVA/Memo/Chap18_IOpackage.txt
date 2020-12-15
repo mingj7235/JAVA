@@ -266,7 +266,12 @@ System.in : 입력스트림
 
 - InputStream 하위 클래스 이므로 사용 방법이 InputStream과 동일하다. 
 
+○FileOutputStream
+- 파일에 바이트 단위로 데이터를 저장할 때 사용
 
+- 파일이 이미 존재할 경우, 데이터를 출력하게 되면 파일을 덮어쓰게 됨.
+- 기존 파일 내용 끝에 데이터를 추가할 경우, 두번째 매개변수에 true를 넣으면댐
+FileOutputStream fis = new FileOutputStream (file, true);
 
 
 
