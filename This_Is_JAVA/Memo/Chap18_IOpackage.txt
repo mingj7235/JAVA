@@ -288,9 +288,97 @@ FileOutputStream fis = new FileOutputStream (file, true);
 	-> 데이터를 문자로변환(보조1) 하고 성능향상(보조2)  -> 프로그램전달
 	=> 요렇게 체인으로!
 
+○ 문자 변환 보조 스트림
+- 소스 스트림이 바이트 기반 스트림이지만 데이터가 문자일 경우사용할 수 있다.
+	- Reader와 Writer는 문자 단위로 입출력하기 때문에 바이트 기반 스트림보다 편리
+	- 문자셋의 종류를 지정할 수 있기 때문에 다양한 문자를 입출력
+
+- InputStreamReader
+	-> 문자 변환 보조 스트림 InputStream을 가지고 Reader를 만든다.
+	바이트를 문자로 읽게끔 해준다.
+
+InputStream is = System.in;
+Reader reader = new InputStreamReader(is);
+
+FileInputStream fis = new FileInputStream ("C:/Temp/file.txt");
+Reader reader = new InputStreamReader(fis);
+
+※문자 변환 보조스트림이 없이는 바이트로 받으면 또 문자로 변환하는 과정이 필요하다. 
+
+-OutputStreamWriter
+	-> 문자를 바이트로 변경하여 보낼경우
+
+프로그램 문자데이터-> OutputStreamWriter -> outputstream -> 바이트
+
+FileOutPutStream fos = new FileOutputStream ("C:/Temp/file.txt");
+Writer writer = new OutputStreamWriter(fos);
 
 
 
+○성능 향상 보조 스트림
+- 입출력 성능에 영향을 미치는 입출력 소스
+	- 하드디스크 -> 이걸로 입출력하면 가장 느림
+		프로그램이 아무리 빨라도 하드디스크 속도에 맞춤
+	- 느린 네트워크 -> 아무리 빨리 데이터를 보내고싶어도
+		네트워크가 느리면 느리게감
+
+- 버퍼를 이용한 해결
+	- 프로그램이 입출력 소스와 직접 작업하지 않고 버퍼와 작업함으로써 실행 성능을 향상
+	프로그램 -> 메모리 버퍼 -> 하드디스크
+	※한번에 버퍼 내용 모두를 전송
+	즉, 버퍼에 데이터를 고속으로 전송시키고 그 메모리 버퍼에
+	데이터를 쌓고, 꽉차게 되면 한번에 데이터를 하드에 전송함 (flush!)
+
+	- 프로그램은 쓰기속도가 향상
+	- 버퍼가 차게 되면 데이터를 한번에 하드에 보냄으로써 출력 횟수를 줄여준다. 빨라짐
+
+
+- 입력 버퍼 제공 : BufferedInputStream, BufferedReader
+	프로그램으로 데이터를 읽을 때 고속으로 !
+
+- 출력 버퍼 제공 : BufferedOutputStream, BufferedWriter
+	프로그램에서 데이터를 출력할때 고속으로
+
+
+○ 객체 입출력 보조 스트림
+- 객체를 파일 또는 네트워크로 입출력할 수 있는 기능 제공
+
+-ObjectInputStream, ObjectOutputStream을 사용해서
+객체를 쉽게 전송이 가능하다. 
+	-> 프로그램의 객체를 바이트단위로 변경하여 출력스트림으로 가져오고, 내보낸다.
+	이런 과정을 '직렬화' 라고한다.
+	객체를 바이트화 시키는것을 직렬화
+	바이트를 객체로 만드는것을 역직렬화 라고한다. 
+
+
+
+○직렬화가 가능한 클래스 (Serializable)
+	->직렬화가 되어있지 않은 클래스는 객체입출력이 불가능하다.
+	-> Java는 Serializable 인터페이스를 구현한 클래스만 직렬화 할 수 있도록 제한한다.
+
+	-transient 키워드가 붙은 필드는 직렬화에서 제외됨
+
+
+-serialVersionUID필드
+	-> 식별값임
+	-> 직렬화된 객체를 역직렬화할때는 직렬화 했을 때와 같은 클래스를 사용해야함
+	-> 클래스의 이름이 같더라도 클래스의 내용이 변경된 경우 역직렬화는 실패한다. 
+		=> 클래스가 변경된 경우..!
+	-> serialVersionUID는 같은 클래스임을 알려주는 식별자 역할
+		=> Serializable인터페이스가 구현되면 컴파일시 자동적으로
+		 serialVersionUID 정적 필드가 추가됨
+		=> 재컾아링하면 UID 의 값이 달라진다.
+	-> 불가피한 수정이 있을 경우 명시적으로 UID를 선언한다.
+		-> static final long serialVersionUID = 정수값; << 상수로줘야함
+
+
+ cmd에서 얻은 UID : private static final long serialVersionUID = -1265691405514514962L;
+UID값을 전송하려는 객체에 선언해주면, 그 선언된 객체는 수정이되어도
+직렬화, 역직렬화가 오류없이 가능해진다. 
+
+
+1-6 네트워크 기초
+	
 
 
 
