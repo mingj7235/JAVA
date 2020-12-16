@@ -379,6 +379,149 @@ UID값을 전송하려는 객체에 선언해주면, 그 선언된 객체는 수
 
 1-6 네트워크 기초
 	
+○네트워크
+- 여러대의 컴퓨터를 통신 회선으로 연결한 것
+	- 홈 네트워크 : 컴퓨터들을 유.무선 등의 통신 회선으로 연결
+	- 지역 네트워크 : 회사, 건물, 특정 영역에 존재하는 컴퓨터를 통신 회선으로 연결
+	- 인터넷 : 지역 네트워크를 통신 회선으로 연결한 것
+○ 서버와 클라이언트
+	- 서버 : 서비스를 제공하는 프로그램
+		ex> 웹서버, FTP서버, DBMS, 메신저 서버등
+		=> 클라이언트의 연결을 수락하고, 요청 내용을 처리한 후 응답을 보낸다.
+	-클라이언트 : 서비스를 받는 프로그램
+		ex> 웹브라우저, FTP 클라이언트, 메신저
+		=> 네트워크 데이터를 필요로 하는 모든 어플리케이션 
+	
+
+○IP 주소와 포트 (port)
+- IP 주소
+	- 네트워크 상에서 컴퓨터를 식별하는 번호
+	- 네트워크 어댑터 마다 할당 (LAN 카드 마다 할당됨)
+	- xxx.xxx.xxx.xxx (xxx는 0~255 사이의 정수. 4가지로 분류됨)
+
+- 포트(port)
+	- 같은 컴퓨터 내에서 프로그램을 식별하는 번호
+	(웹서버, FTP서버, DBMS 서버 등 프로그램을 식별함)
+	- 클라이언트는 서버에 연결 요청시 IP주소와 Port를 같이 제공한다. 
+	-> port 번호로 식별하여 해당 프로그램을 연결한다.
+	ex) 클라이언트가 웹브라우저 프로그램이라면, ip주소를 네트워크 어댑터에 제공하고
+	port넘버로 프로그램이 연결된다.
+	- port번호는 0~65535 범위의 값을 가진다. 
+	이범위는 3가지로 구분이된다.
+		0~1023 : well know port numbers : 특정 애플리케이션용으로 미리 예약된 포트
+		1024~49151 : Registered Port Numbers : 회사에서 등록해서 사용할수있는 포트
+		49152 ~65535 : OS가 부여하는 동적 포트 또는 개인적인 목적으로 설정하는 포트
+
+○InetAddress 클래스로 IP 주소 얻기
+- java.net 패키에 포함되어있다.
+	- IP주소를 표현한 클래스
+	- 로컬 컴퓨터의 IP주소 뿐아니라
+	- 도메인 이름을 DNS에서 검색한 후 IP주소를 가져오는 기능을 제공
+※도메인 이름 : www.naver.com 이런것들.
+	하나의 도메인은 여러가지의 ip주소가 등록되어있다. 
+
+- 로컬 컴퓨터에서 얻기
+InetAddress ia = InetAddress.getLocalHost();
+
+- 도메인 이름으로 얻기
+InetAddress ia = InetAddress.getByName (Sgring host); 
+	매개값이 도메인 이름을 넣고, ip주소를 가져온다. 
+
+InetAddress [] iaArr = InetAddress.getAllByName (Sgring host);
+	매개값을 도메인으로 넣고, 여러개의 ip주소를 각각 가져와서 배열로 리턴한다.
+
+이 InetAdrress객체를 얻고 이것으로 IP주소를 얻는것임
+String ip = InetAddress.getHostAddress();
+
+
+1-7 TCP 네트워킹
+○TCP (Transmission Control Protocol)
+- 연결지향적 프로토콜 (통신을 하기위해서 일단 연결해야함) -> 시간 소요가 됨
+- 통신 선로 고정 (두 프로그램이 TCP로 통신하려면 회선이 고정, 즉 정해짐) 
+		회선 자체가 느릴경우-> 전송 속도 느려질 수도 있음
+- 데이터를 정확하고 안정적으로 전달 (이것이 장점임!)
+	-> 반드시 연결이 성공되야 데이터를 전달하므로 데이터가 정확하고 
+	데이터를 순차적으로 보내고 순차적으로 받아서 처리하므로 안정적으로 전달된다.
+	데이터 누수가 없다.
+- java.net API
+	- ServerSocket, Socket 두가지 API가 제공됨
+
+- ServerSocket과 Socket용도	
+	둘다 서버에서 사용되는 API
+	0 ServerSocket : 특정 포트를 가지고 실행됨 (프로그램 실행 고유번호)
+		이 포트를 서버소켓의 바인딩 포트라고 부른다. 
+		서버가 시작될때 물고 들어가는 포트라는 의미임
+		서버 소켓은 특정 보트에서 실행된 이후에 클라이언트의 연결을위해서
+		대기를 해야하는데 이걸 accept()메소드가한다.
+		연결을 수락하는 역할을 accept()가 한다.
+		accept() 하고 클라이언트와 소통하는 Socket 객체를 만든다.
+	0 Socket : 클라이언트가 서버에 연결요청하기위해 클라이언트에서 생성되는 객체
+		소켓이 서버 소켓을 통해 accept()메소드가 연결요청을 받고
+		accept()가 연결 수락이 되면 소캣 객체를 만들어서 클라이언트에 전달한다.
+
+○ ServerSocket 생성과 연결 수락
+- ServerSocket 생성과 포트 바인딩
+1) ServerSocket serverSocket = new ServerSocket (바인딩할 포트번호);
+2) ServerSocket serverSocket = new ServerSocket ();
+   serverSocket.bind (new InetSocketAddress("ip주소", 바인딩할 포트번호);
+
+- 연결수락 (서버쪽 소켓) (예외처리해야함)
+Socket socket = serverSocket.accept();
+=> 이 socket을 가지고 클라이언트와 데이터를 주고받을 수 있다.
+	연결된 클라이언트 IP 주소 얻기
+	getRemoteSocektAddress() 메소드 활용, InetSocketAddress타입으로 리턴
+
+- ServerSocket포트 언바인딩
+	-> serverSocket.close();	
+
+○Socket생성과 연결요청 (클라이언트쪽)
+- 생성 (예외처리해야함)
+1) Socket socket = new Socket ("localhost", 서버의 포트번호);
+2) Socket socket = new Socket (new InetSocketAddress("localhost", 서버의 포트번호));
+※예외 2가지 : 1.ip표기 방법이 잘못된경우 2. 해당 포트 서버에 연결할 수 없는경우
+
+3) socket = new Socket();
+	socket.connect(new InetSocketAddress("localhost", 서버의 포트번호));
+
+- 연결끊기 (예외처리해야함)
+- socket.close()
+
+
+○Socket 데이터 통신
+- 입출력 스트림 얻기 (얻는 것이므로 get)
+socket.getInputStream(); / socket.getoutputStream();
+
+-데이터 보내기
+
+-데이터 받기
+read()블로킹 해제
+	1) 상대방이 데이터를 보냄 -return : 읽은 바이트 수
+	2) 상대방이 정상적으로 socket의 close()를 호출 - -1리턴
+	3) 비정상적으로 종료 - IOException 발생
+		(상대방 컴퓨터가 꺼졌거나 예기치않게 프로그램이 종료)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
