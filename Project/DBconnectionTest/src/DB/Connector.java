@@ -3,12 +3,38 @@ package DB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Connector {
 	public static void main(String[] args) {
 		createTable();
 		createCustomer("Danny","01064707235","Male","24","Random");
-		
+		ArrayList <String> list = getCustomers();
+		for (String item : list) {
+			System.out.println(item);
+		}
+		createCustomer("David","01012342412","Female","24","Important Customer");
+	}
+	
+	public static ArrayList<String> getCustomers ( ) {
+		//데이터를 list에 return시켜서 불러옴
+		try {
+			Connection con  = getConnection();
+			PreparedStatement statement = con.prepareStatement("Select name, phone, gender FROM customer");
+			ResultSet results = statement.executeQuery();
+			ArrayList<String> list = new ArrayList <String> ();
+			while (results.next()) { //데이터가 끝날때까지 whlie 루프롤통해 list에 저장
+				list.add("Name : " + results.getString("name") + 
+						"Phone :" + results.getString("phone") + 
+						"Gender : " + results.getString("gender"));
+				
+			}
+			System.out.println("The data has been fetched");
+			return list;
+		}catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public static void createCustomer (String name, String phone, String gender,
@@ -22,6 +48,7 @@ public class Connector {
 					+ "('" +name + "','" + phone +"','" + gender+ "','" + age+"','" + note +"')");
 			//('name','phone','gender','age','note')
 			insert.executeUpdate();
+			System.out.println("The data has been saved!");
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -41,6 +68,7 @@ public class Connector {
 					+ "PRIMARY KEY (id))");
 			//sql에게 이 table을 만들어라 라고 명령하는 것임
 			createTable.execute();
+			System.out.println("Table successfully created");
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}finally {
