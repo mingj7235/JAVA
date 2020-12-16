@@ -77,10 +77,8 @@ public class ServerExample extends Application {
 				}
 			}
 		};
-		
 		executorService.submit(runnable); //스레드풀에 작업하도록 하는 것임. 
 	}
-	
 	void stopServer() {
 		//서버 종료 코드 //연결된 모든 client의 연결을 끊는 것임
 			try {
