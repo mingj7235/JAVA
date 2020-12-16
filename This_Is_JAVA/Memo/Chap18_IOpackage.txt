@@ -500,10 +500,173 @@ read()블로킹 해제
 	3) 비정상적으로 종료 - IOException 발생
 		(상대방 컴퓨터가 꺼졌거나 예기치않게 프로그램이 종료)
 
+---------서버 예제------------
+
+package sec07.exam02_data_read_write;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerEx {
+	public static void main(String[] args) {
+		//서버
+		ServerSocket serverSocket = null;
+		
+		try {
+			serverSocket = new ServerSocket();
+			serverSocket.bind(new InetSocketAddress("localhost", 5001));
+			while (true) {
+				//서버는 항상 클라이언트 요청을 기다려야하므로 무한루프
+				System.out.println("[연결 기다림]");
+				Socket socket =serverSocket.accept(); //클라이언트의 서버 연결요청을 수락하는 accept() 메소드.
+											//연결요청이 들어오기 전에는 블로킹되어있음
+											//Socket 타입을 리턴
+				
+				InetSocketAddress  isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+				System.out.println("[연결 수락함]" + isa.getHostName()); //클라이언트 ip주소를 얻을 수 있음
+				
+				//데이터를 받기
+				byte [] bytes = null;
+				String message = null;
+				
+				InputStream is = socket.getInputStream();
+				bytes = new byte[100];
+				int readByteCount = is.read(bytes); //데이터를 읽는것. 리턴은 데이터의 읽은 바이트 수.
+																			//데이터는 bytes에 저장
+				
+				message = new String(bytes, 0, readByteCount, "UTF-8");
+				
+				System.out.println("[데이터 받기 성공]\n받은 메세지 : " + message);
+				
+				OutputStream os = socket.getOutputStream();
+				message = "Hello Client";
+				bytes = message.getBytes("UTF-8");
+				os.write(bytes);
+				os.flush();
+				System.out.println("[데이터 전송 성공]");
+				
+				is.close();
+				os.close();
+				socket.close(); //연결을 끊겠다는것임
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(!serverSocket.isClosed()) {
+			try {
+				serverSocket.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
+}
 
 
+-------클라이언트 예제----------
+package sec07.exam02_data_read_write;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
+public class ClientEx {
+	public static void main(String[] args) {
+		//클라이언트
+		
+		Socket socket = null;
+		
+		try {
+			socket = new Socket();
+			System.out.println("[연결 요청]");
+			socket.connect(new InetSocketAddress("localhost", 5001));
+			System.out.println("[연결 성공]");
+			
+			byte [] bytes = null;
+			String message = null;
+			
+			OutputStream os = socket.getOutputStream(); //아웃풋 스트림 얻기 ! 보내야하니까
+			message = "Hello Server! ";
+			bytes = message.getBytes("UTF-8");
+			os.write(bytes);
+			os.flush();
+			System.out.println("[데이터 전송 성공]");
+			
+			InputStream is = socket.getInputStream();
+			bytes = new byte [100];
+			int readByteCount = is.read(bytes); 
+			message = new String (bytes, 0, readByteCount, "UTF-8");
+			System.out.println("[데이터 받기 성공]\n받은 데이터 : " + message);
+			
+			is.close();
+			os.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (!socket.isClosed()) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+-------------------------------
+
+○ 스레드 병렬처리
+- 블로킹 (대기상태) 가되는 메소드
+	-ServerSocekt의 accept()
+	-Socket 생성자 또는 connect() //클라이언트 에서 사용하는것
+	-Socket의 read(), write() //통신 시 
+
+- 병렬 처리의 필요성
+ㅁ 스레드가 블로킹 되면 다른 작업을 수행하지 못한다
+	ex> 입출력할 동안 다른 클라이언트의 연결 요청을 수락하지 못한다.
+	      입출력 할 동안 다른 클라이언트의 입출력을 하지 못한다. 
+
+ㅁ UI 생성 /변경 스레드에서 블로킹 메소드를 호출하지 않도록 한다.
+	ex> UI 생성 및 변경이 안되고 이벤트 처리가 안된다. 
+
+※그러므로 병렬처리를 해야한다!! 병렬적으로 다른 클라이언트도 접속해서 액션할수있도록해야한다.
 
 
+- 스레드 병렬 처리
+
+accept()를 실행하는 스레드 1개 -> accept를 제어하는 스레드
+
+통신을 하는 스레드를 별도로 만들어야한다. 
+통신할때마다 각각의 스레드가 서로 클라이언트와 서버가 통신하게끔 만들어줘야한다.
+즉, accpet()가 될때마다 스레드가 생성되어서 통신하도록 해야한다.
+
+그런데 만약 클라이언트가 수천개면 스레드도 수천개가 만들어져야하나?
+-> 스레드가 많아질수록 서버의 성능이 급격히 저하가 된다.
+-> 클라이언트가 갑자기 급증하면 서버의 작업스레드가 기하급수적으로 증폭되면 서버 폭주!
+-> 이것에 대한 해결 방법 : 서버의 스레드를 제한된 갯수만큼 운영하는것 !!
+	=> 제한된 스레드를 가지고 작업처리를 해야한다.
+	=> 즉 스레드풀을 사용한다!!!!!오오오오!!!배웠음!!
+	(ExecutorService를 사용!)
+
+-> 스레드 풀을 통해서 작업큐에 작업을 순차적으로 스레드들이 꺼내서 작업하도록함
+각 스레드는 큐에서 작업을 가져와서 실행시킨다.
+클라이언트가 많아지고 작업이 많아져도 작업큐의 누적되는 작업의양이 증가되고
+스레드의 량은 고정적으로 제한될 것이다. 
+
+
+○ 채팅 서버 및 클라이언트 구현 !!!
 
 
 
