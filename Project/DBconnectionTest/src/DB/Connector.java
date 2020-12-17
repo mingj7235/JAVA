@@ -7,31 +7,54 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Connector {
-	public static void main(String[] args) {
-		createTable();
-		createCustomer("Danny","01064707235","Male","24","Random");
-		ArrayList <String> list = getCustomers();
-		for (String item : list) {
-			System.out.println(item);
-		}
-		createCustomer("David","01012342412","Female","24","Important Customer");
-	}
+//	public static void main(String[] args) {
+//		createTable();
+//		createCustomer("Danny","01064707235","Male","24","Random");
+//		ArrayList <String> list = getCustomers();
+//		for (String item : list) {
+//			System.out.println(item);
+//		}
+//		createCustomer("David","01012342412","Female","24","Important Customer");
+//	}
+//	
+//	public static ArrayList<String> getCustomers ( ) {
+//		//데이터를 list에 return시켜서 불러옴
+//		try {
+//			Connection con  = getConnection();
+//			PreparedStatement statement = con.prepareStatement("Select name, phone, gender FROM customer");
+//			ResultSet results = statement.executeQuery();
+//			ArrayList<String> list = new ArrayList <String> ();
+//			while (results.next()) { //데이터가 끝날때까지 whlie 루프롤통해 list에 저장
+//				list.add("Name : " + results.getString("name") + 
+//						"Phone :" + results.getString("phone") + 
+//						"Gender : " + results.getString("gender"));
+//				
+//			}
+//			System.out.println("The data has been fetched");
+//			return list;
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
 	
-	public static ArrayList<String> getCustomers ( ) {
+	public static String [][] getCustomers ( ) {
 		//데이터를 list에 return시켜서 불러옴
 		try {
 			Connection con  = getConnection();
 			PreparedStatement statement = con.prepareStatement("Select name, phone, gender FROM customer");
 			ResultSet results = statement.executeQuery();
-			ArrayList<String> list = new ArrayList <String> ();
+			ArrayList<String []> list = new ArrayList <String[]> ();
 			while (results.next()) { //데이터가 끝날때까지 whlie 루프롤통해 list에 저장
-				list.add("Name : " + results.getString("name") + 
-						"Phone :" + results.getString("phone") + 
-						"Gender : " + results.getString("gender"));
-				
+				list.add (new String [] {
+						results.getString("name"),
+						results.getString("phone"),
+						results.getString("gender")
+						
+				});
 			}
 			System.out.println("The data has been fetched");
-			return list;
+			String [][] arr = new String [list.size()][3];
+			return list.toArray(arr);
 		}catch (Exception e) {
 			return null;
 		}
@@ -52,6 +75,8 @@ public class Connector {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		//요놈을 버튼에 넣기. 
 	}
 	
 	public static void createTable () {
@@ -75,7 +100,7 @@ public class Connector {
 			System.out.println("Table successfully created");
 		}
 	}
-	
+	//DB와 연결해주는 커넥터 메소드 이걸 활용해서 커넥트함
 	public static Connection getConnection () {
 		try {
 			String driver = "com.mysql.cj.jdbc.Driver";

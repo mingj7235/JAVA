@@ -110,17 +110,19 @@ public class ServerExample extends Application {
 		}
 		
 		void receive () { //클라이언트가 데이터를 보내게되면 통신소켓을 이용! 
-			Runnable runnable = new Runnable() {
+			Runnable runnable = new Runnable() { //작업객체 -> 스레드풀에서 스레드가 일할수있도록
 				@Override
-				public void run() {
+				public void run() { //작업의 내용
 					//클라이언트가 메세지를 보내게끔
 					try {
-						while (true) { //계속해서 메세지를 보낼수 있어야하므로 무한루프
+						while (true) { //클라이언터가 보낸 매세지를 계속 받을 수있도록 무한루프
 							byte [] byteArr = new byte [100];
 							InputStream is = socket.getInputStream(); //클라이언트로부터 온 데이터를 읽어야하므로
 							
-							int readByteCount = is.read(byteArr);
-							if (readByteCount == -1) { //클라이언트가 정상적으로 종료했다면
+							int readByteCount = is.read(byteArr); 
+							//정상적으로 데이터를 받았을경우, 정상적으로 종료할경우, 비정상적 종료일경우 read() 의blocking해제
+							
+							if (readByteCount == -1) { //클라이언트가 정상적으로 종료한경우 !
 								throw new IOException () ; //강제적으로 일부러 IOException 발생시킴
 										//그래서 catch로 빠질 수 있도록 ! -> 종료하는 코드를 catch에 넣어서 편하게 관리하기위해
 							}
@@ -131,12 +133,13 @@ public class ServerExample extends Application {
 								displayText(message)
 							); 
 							String data = new String (byteArr, 0, readByteCount, "UTF-8");
-							//이 받은 데이터를 send해야함 -> 모든 client에게! 그래서 반복문써서 보내야함.올...ㅋ 
+							
 							for (Client client : connections) {
+								//한 클라가 보낸 데이터를 받아서 모든 클라이언트에게 데이터를 send해야함 -> 모든 client에게! 그래서 반복문써서 보내야함.올...ㅋ 
 								client.send(data);
 							}
 						}
-					}catch (Exception e) {
+					}catch (Exception e) { //정상적으로 종료하거나 비정상적으로 종료한경우
 						try {
 							connections.remove(Client.this); //이 클라이언트 객체를 제거함
 							String message = "클라이언트 통신 안됨 : " + socket.getRemoteSocketAddress() + ":"
@@ -152,7 +155,7 @@ public class ServerExample extends Application {
 			executorService.submit(runnable); //스레드풀에 스레드를 작업 큐에 넣는 것임!!!
 		}
 		
-		void send (String data) {
+		void send (String data) { //클라이언트한테 메세지를 보내는 메소드
 			Runnable runnable = new Runnable () {
 				@Override
 				public void run() {
