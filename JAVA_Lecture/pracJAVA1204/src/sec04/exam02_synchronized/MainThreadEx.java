@@ -1,5 +1,7 @@
 package sec04.exam02_synchronized;
 
+import java.util.function.ToIntFunction;
+
 public class MainThreadEx {
 	public static void main(String[] args) {
 		Calculator calculator = new Calculator();
@@ -13,4 +15,7 @@ public class MainThreadEx {
 		u2.start();
 		
 	}
+	
+	
+
 }
