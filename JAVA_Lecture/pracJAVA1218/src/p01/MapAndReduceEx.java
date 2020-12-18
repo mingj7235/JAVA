@@ -17,7 +17,8 @@ public class MapAndReduceEx {
 		System.out.println("Æò±Õ Á¡¼ö : " + avg1);
 		System.out.println("Æò±Õ Á¡¼ö : " + avg2);
 		
-		
+		long count = list.stream().filter(m -> m.getName().equals("È«±æµ¿")).mapToInt(Student :: getScore).count();
+		System.out.println(count);
 	}
 }
 
