@@ -16,8 +16,11 @@ public class StreamPipeLineEx {
 		System.out.println("남자 수 : " + maleCount);
 		long femaleCount = list.stream().filter(m -> m.getSex() == Member.Male).mapToInt(Member::getAge).count();
 		System.out.println("여자 수 : " + femaleCount);
-		double femaleAgeAvg = list.stream().filter(m -> m.getSex() == Member.Male).mapToInt(Member::getAge).average().getAsDouble();
-		System.out.println(femaleAgeAvg);
+		double maleAgeAvg = list.stream()
+				.filter(m -> m.getSex() == Member.Male)
+				.mapToInt(Member::getAge)
+				.average().getAsDouble();
+		System.out.println("남자 나이 평균 : " + maleAgeAvg);
 		
 	}
 }
