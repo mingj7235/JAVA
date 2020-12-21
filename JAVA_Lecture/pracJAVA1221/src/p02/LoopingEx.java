@@ -14,6 +14,9 @@ public class LoopingEx {
 		int s = ins.sum();
 		System.out.println("ÃÑÇÕ : " + s);
 		
+		
+//		double avg = Arrays.stream(intArr).filter(a -> a%2 ==0).average().getAsDouble();
+		
 		double avg = ins.average().getAsDouble();
 		System.out.println("Æò±Õ : " + avg);
 		
