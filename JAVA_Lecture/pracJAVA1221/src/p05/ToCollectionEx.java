@@ -1,10 +1,13 @@
 package p05;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CollectEx {
+public class ToCollectionEx {
 	public static void main(String[] args) {
 		List<Student> totalList = Arrays.asList(
 				new Student ("È«±æµ¿", 10, Student.Sex.MALE),
@@ -17,20 +20,20 @@ public class CollectEx {
 		
 		List<Student> maleList = totalList.stream().filter(n-> n.getSex()==Student.Sex.MALE)
 					.collect(Collectors.toList());
-		
-		
 		System.out.println(maleList);
 		
-		int maleScoreSum = maleList.stream().mapToInt(Student::getScore).sum();
-		System.out.println(maleScoreSum);
-		
-		List <Student> femaleList = totalList.stream().filter(n -> n.getSex() == Student.Sex.FEMALE)
-					.collect(Collectors.toList());
-		
-		List <Student> Seoul =totalList.stream().filter(s -> s.getCity() == Student.City.SEOUL).collect(Collectors.toList());
-	
-		List <Student> scoreList =totalList.stream().filter(n -> n.getScore()>=8).collect(Collectors.toList());
-		scoreList.stream().forEach(System.out :: println);
+		//¿©ÇÐ»ý¸¸ ¹­¾î¼­ set »ý¼º
+		Set <Student> femaleSet = totalList.stream().filter(s -> s.getSex() == Student.Sex.FEMALE)
+								.collect(Collectors.toCollection(HashSet::new));
+		//forEach·Î Âï±â
+		femaleSet.stream().forEach(s -> System.out.println(s));
+		//iterator·Î Âï±â
+		Iterator<Student> iter = femaleSet.iterator();
+		while(iter.hasNext()) {
+			Student st = iter.next();
+			System.out.println(st.getSex());
+		}
+			
 		
 	}
 }

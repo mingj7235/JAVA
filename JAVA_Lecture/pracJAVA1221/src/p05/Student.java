@@ -54,6 +54,9 @@ public class Student {
 		this.city = city;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return name + " " + score + " " + sex + " "  + city;
+	}
 	
 }
