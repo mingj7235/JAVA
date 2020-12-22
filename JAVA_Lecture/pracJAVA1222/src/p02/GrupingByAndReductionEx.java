@@ -32,7 +32,7 @@ public class GrupingByAndReductionEx {
 		System.out.println("남학생 수  :" + countBySex.get(Student.Sex.MALE));
 		System.out.println("여학생 수  :" + countBySex.get(Student.Sex.FEMALE));
 		
-		//성별을 쉼표로 구분하는 이름을 저장하는 Map 얻기 (ex>
+		//성별을 쉼표로 구분하는 이름을 저장하는 Map 얻기 
 		
 		Map<Student.Sex, String> nameBySex = totalList.stream()
 				.collect(Collectors.groupingBy(Student::getSex,
