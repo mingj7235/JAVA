@@ -7,15 +7,11 @@ public class InputStreamEx02 {
 	public static void main(String[] args) throws Exception{
 		InputStream is = new FileInputStream("C:/Temp/test1.txt");
 		int readByteNo;
-		byte [] readBytes = new byte [20];
-		String data = "";
-		while (true) {
-			readByteNo = is.read(readBytes); //배열의 크기만큼 읽어온다. 즉 2바이트씩 읽어온다. 
-			if (readByteNo == -1) break;
-			data += new String (readBytes, 0, readByteNo);
-			
+		byte [] readBytes = new byte [8];
+		readByteNo = is.read(readBytes,2,3); 
+		for (int i = 0; i < readBytes.length; i++) {
+			System.out.println((char)readBytes[i]);
 		}
-		System.out.print(data); 
 		is.close();
 	}
 }
