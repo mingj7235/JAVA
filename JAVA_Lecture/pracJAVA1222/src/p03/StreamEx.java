@@ -1,15 +1,14 @@
 package p03;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
-import p01.GroupingByEx;
 
 public class StreamEx {
 	public static void main(String[] args) {
@@ -94,12 +93,33 @@ public class StreamEx {
 		
 		System.out.println("5. 다중 그룹화 + 통계 (학년별, 반별 1등");
 		
-//		Map <Integer, Map <Integer, Student>> topStuByHakAndBan = Stream.of(strArr)
-//				.collect(Collectors.groupingBy(Student::getHak,
-//						Collectors.groupingBy(Student::getBan,
-//								Collectors.collectingAndThen(Collectors.maxBy(Collectors.com)), finisher))
-//						))
+		Map<Integer, Map<Integer, Student>> topStuByHakAndBan =
+				Stream.of(strArr)
+				.collect(Collectors.groupingBy(Student :: getHak,
+						Collectors.groupingBy(Student :: getBan,
+								Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingInt(Student :: getScore)), 
+										Optional :: get))
+						));
+		for(Map<Integer, Student> ban : topStuByHakAndBan.values()) {
+			for(Student s : ban.values()) {
+				System.out.println(s);
+			}
+		}
 		
+		System.out.printf("%n6. 다중그룹화 + 통계(학년별, 반별 성적그룹)%n");
+		Map<String, Set<Student.Level>> stuByScoreGroup = 
+				Stream.of(strArr)
+				.collect(Collectors.groupingBy(s -> s.getHak()+"-"+s.getBan(),
+						Collectors.mapping(s -> {
+							if(s.getScore() >= 200) return Student.Level.HIGH;
+							else if (s.getScore() >= 100) return Student.Level.MID;
+							else return Student.Level.LOW;
+						}, Collectors.toSet())
+						));
+
+		for(String key : stuByScoreGroup.keySet()) {
+			System.out.println("["+key+"]"+stuByScoreGroup.get(key));
+		}
 		
 		
 		
