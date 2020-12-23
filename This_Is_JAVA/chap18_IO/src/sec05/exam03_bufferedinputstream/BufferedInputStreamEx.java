@@ -27,7 +27,6 @@ public class BufferedInputStreamEx {
 		}
 		end = System.currentTimeMillis();
 		System.out.println("사용했을 때 걸린 시간 : " + (end - start) + "ms");
-		//오..훨씬 빠르네 개빠름;;
 		fis2.close();
 	}
 }
