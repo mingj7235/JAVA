@@ -18,7 +18,7 @@ public class ObjectInputOutputStreamEx {
 		oos.writeObject(new String ("홍길동"));
 		
 		oos.flush();oos.close();fos.close();
-		//역질렬화
+		//역질렬화//
 		
 		FileInputStream fis = new FileInputStream("c:/temp/obj1.txt");
 		ObjectInputStream ois = new ObjectInputStream(fis);
