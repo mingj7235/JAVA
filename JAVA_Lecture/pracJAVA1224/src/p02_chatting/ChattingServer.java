@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import javafx.scene.layout.Border;
-
 public class ChattingServer extends Thread implements ActionListener{
 	//필드 선언
 	Frame frame; //윈도우창 프레임지원 클래스
