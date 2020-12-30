@@ -1,0 +1,6 @@
+@charset "EUC-KR";
+
+.header-test {
+	-fx-backgroud-color: black;
+	-fx-border-color: blue;
+}
