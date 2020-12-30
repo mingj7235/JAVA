@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <top>
+      <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="25.0" layoutY="192.0" prefHeight="42.0" prefWidth="258.0" promptText="Email or phone number" style="-fx-border-radius: 20px; -fx-border-color: none;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <PasswordField layoutX="24.0" layoutY="256.0" prefHeight="44.0" prefWidth="259.0" promptText="Password" />
+            <Button layoutX="73.0" layoutY="334.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="158.0" style="-fx-background-color: #fee100; -fx-border-radius: 10px;" text="Login">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="15.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="51.0" prefHeight="66.0" prefWidth="254.0" style="-fx-text-fill: rgba(0,0,0,0.8);" text="Kakao Talk">
+               <font>
+                  <Font name="Lucida Bright Demibold Italic" size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="42.0" layoutY="117.0" prefHeight="15.0" prefWidth="221.0" text="If you have a Kakao account," textFill="#a49f9f" />
+            <Label alignment="CENTER" layoutX="22.0" layoutY="132.0" prefHeight="15.0" prefWidth="261.0" text="log in with your email or phone number:)" textFill="#a49f9f" />
+            <Label alignment="CENTER" layoutX="55.0" layoutY="394.0" text="Find Kakao Account or Password" textFill="#a49f9f" />
+            <Label layoutX="132.0" layoutY="7.0" text="21:15" />
+            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@wifi.JPG" />
+               </image>
+            </ImageView>
+            <Label layoutX="15.0" layoutY="8.0" text="KT">
+               <font>
+                  <Font name="Lucida Bright Regular" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
