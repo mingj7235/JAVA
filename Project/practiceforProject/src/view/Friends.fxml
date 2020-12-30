@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</BorderPane>
 
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <center>
+      <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="132.0" layoutY="7.0" text="21:15" />
+            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@wifi.JPG" />
+               </image>
+            </ImageView>
+            <Label layoutX="15.0" layoutY="8.0" text="KT">
+               <font>
+                  <Font name="Lucida Bright Regular" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="33.0" prefHeight="38.0" prefWidth="96.0" text="Friends">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="22.0" />
+               </font>
+            </Label>
+            <Pane layoutX="-1.0" layoutY="71.0" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.05);">
+               <children>
+                  <TextField layoutX="38.0" layoutY="6.0" opacity="0.77" prefHeight="23.0" prefWidth="204.0" promptText="Search for your friend's name :-)">
+                     <font>
+                        <Font name="Lucida Bright Italic" size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane layoutY="105.0" prefHeight="71.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="55.0" fitWidth="60.0" layoutX="24.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/profile.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

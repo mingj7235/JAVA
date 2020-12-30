@@ -6,22 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class KakaoMain extends Application{
-
+public class KakaoFriends extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Root.fxml"));
-		Scene scene = new Scene (root);
+		Parent friends = (Parent)FXMLLoader.load(getClass().getResource("Friends.fxml"));
+		Scene scene_friends = new Scene (friends);
 		
-		primaryStage.setTitle("Main");
-		primaryStage.setScene(scene);
+		primaryStage.setTitle("Friends");
+		primaryStage.setScene(scene_friends);
 		primaryStage.show();
-		
-		
-		
-		
 	}
-	
 	
 	public static void main(String[] args) {
 		launch(args);
