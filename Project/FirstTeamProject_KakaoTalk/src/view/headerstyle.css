@@ -1,0 +1,12 @@
+.header-box{
+	-fx-text-fill:rgba(0,0,0,0.5);
+	
+}
+
+#header-font{
+	-fx-padding:5px;
+}
+
+.wifi-img{
+	-fx-background-color:black;
+}

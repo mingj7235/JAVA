@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="39.0" prefWidth="420.0" styleClass="header-box">
+         <children>
+            <Label prefHeight="44.0" prefWidth="31.0" text="KT" />
+            <ImageView fitHeight="38.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            	<image><Image url="@imgs/wifi.JPG"/></image>
+            </ImageView>
+            <Label prefHeight="39.0" prefWidth="271.0" text="시계" />
+            <HBox prefHeight="39.0" prefWidth="89.0">
+               <children>
+                  <Label prefHeight="39.0" prefWidth="31.0" text="98%" />
+                  <Label prefHeight="51.0" prefWidth="31.0" text="battery" />
+                  <Label prefHeight="43.0" prefWidth="30.0" text="thunder" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutY="39.0" prefHeight="45.0" prefWidth="420.0">
+         <children>
+            <Label prefHeight="45.0" prefWidth="275.0" text="친구" />
+            <HBox prefHeight="45.0" prefWidth="146.0">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="45.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="45.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutY="84.0" prefHeight="32.0" prefWidth="420.0">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField prefHeight="23.0" prefWidth="329.0" />
+         </children>
+      </HBox>
+      <HBox layoutY="122.0" prefHeight="61.0" prefWidth="420.0">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="64.0" prefWidth="63.0">
+               <children>
+                  <Label prefHeight="33.0" prefWidth="77.0" text="Label" />
+                  <Label prefHeight="32.0" prefWidth="63.0" text="Label" />
+               </children>
+            </VBox>
+            <Label prefHeight="65.0" prefWidth="31.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox layoutY="190.0" prefHeight="21.0" prefWidth="420.0" />
+   </children>
+</Pane>

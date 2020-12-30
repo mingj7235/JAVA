@@ -12,7 +12,7 @@ public class KakaoMain extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Friends.fxml"));
 		Scene scene = new Scene (root);
-		scene.getStylesheets().add(getClass().getResource("header.css").toString());
+		scene.getStylesheets().add(getClass().getResource("headerstyle.css").toString());
 		
 		primaryStage.setTitle("Friends");
 		primaryStage.setScene(scene);
