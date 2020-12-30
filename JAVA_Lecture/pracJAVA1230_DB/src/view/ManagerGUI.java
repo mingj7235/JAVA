@@ -1,11 +1,22 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.List;
+import java.awt.Panel;
+import java.awt.TextField;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 //화면 gui
@@ -70,6 +81,7 @@ public class ManagerGUI {
 		});
 		
 		//리스트 부분을 하나씩 가져오기
+		//리스트를 클릭하면 이벤트가 발생함 -> 즉, 이벤트가 메모리를 읽어가서 담기는 것임 
 		list.addItemListener(new ItemListener() {
 			
 			@Override
@@ -163,7 +175,17 @@ public class ManagerGUI {
 	}//end launchFrame ()
 	
 	public void displayAll() {
-		
+		list.removeAll(); //리스트(awt) 화면 클리어
+		MemberDAO dao = new MemberDAO();
+		ArrayList<MemberDTO> allData = dao.select();
+		for (MemberDTO dto : allData) {
+			String name = dto.getName();
+			int age = dto.getAge();
+			int height = dto.getHeight();
+			int weight = dto.getWeight();
+			char sex = dto.getSex();
+			list.add(name + "             " + age + "                 " + weight + "               "  + height + "                " + sex);
+		}
 	}
 
 	public static void main(String[] args) {
