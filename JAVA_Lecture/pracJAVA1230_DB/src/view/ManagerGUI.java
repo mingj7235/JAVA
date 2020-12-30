@@ -157,9 +157,15 @@ public class ManagerGUI {
 				((frame.getToolkit().getScreenSize()).height -frame.getHeight()) /2 );
 		
 		frame.setVisible(true);
-		//displayAll();
+		
+		displayAll(); //회원 정보 보기 메소드
+		
+	}//end launchFrame ()
+	
+	public void displayAll() {
 		
 	}
+
 	public static void main(String[] args) {
 		ManagerGUI mem = new ManagerGUI();
 		mem.launchFrame();
