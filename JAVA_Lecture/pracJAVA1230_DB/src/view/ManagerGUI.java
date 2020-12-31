@@ -1,25 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.List;
-import java.awt.Panel;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.*;
+
+import java.awt.event.*;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+
 
 //화면 gui
 public class ManagerGUI {
@@ -207,6 +195,83 @@ public class ManagerGUI {
 				
 			}
 		});
+		
+		//수정 버튼 
+		
+		btnUpdate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = tfName.getText();
+				String age = tfAge.getText();
+				String weight = tfWeight.getText();
+				String height = tfHeight.getText();
+				String sex = "여";
+				if(chMale.getState()) {
+					sex="남";
+				}
+				
+				MemberDAO dao = new MemberDAO();
+				dao.update(name, age, weight, height, sex);
+				displayAll();
+				lblStatus.setText(name + "님의 정보가 수정되었습니다. ");
+				
+			}
+		});
+		
+		//검색버튼
+		
+		//검색 버튼
+	      btnSearch.addActionListener(new ActionListener() {
+
+	         @Override
+	         public void actionPerformed(ActionEvent e) {
+	            String name = tfName.getText();
+	            MemberDAO dao = new MemberDAO();
+	            MemberDTO dto = new MemberDTO();
+
+	            try {
+	               dto = dao.search(name);
+	            } catch (RecordNotFoundException e1) {
+	               // TODO Auto-generated catch block
+	               lblStatus.setText(e1.getMessage());
+	               final Dialog dialog = new Dialog(frame, "경고");
+	               dialog.setLayout(new FlowLayout());
+	               dialog.setSize(200,80);
+	               dialog.setTitle(e1.getMessage());
+	               Button btnOk = new Button("확 인");
+	               btnOk.addActionListener(new ActionListener() {
+	                  
+	                  @Override
+	                  public void actionPerformed(ActionEvent e) {
+	                     dialog.dispose();
+	                     
+	                  }
+	               });
+	               dialog.add(btnOk);
+	               dialog.setVisible(true);
+	               return;
+	            }
+
+				
+				//dto 안에 있는 필드에 자료에 접근할 수있다. 즉, name으로 검색된 정보가 나온다. 
+				//memberDAO의 search에서 해놓은 작업이다.
+				
+				//dto안에 있는걸 gui로 옮겨오는것이다. 
+				tfName.setText(dto.getName());
+				tfAge.setText(""+dto.getAge());
+				tfHeight.setText(""+dto.getHeight());
+				tfWeight.setText(""+dto.getWeight());
+				String sex = Character.toString(dto.getSex()); //'남' -> "남" char를 string으로 변환
+				if (sex.equals("남" )) {
+					chMale.setState(true);
+				}else {
+					chFemale.setState(true);
+				}
+				lblStatus.setText(name + "님의 정보가 검색되었습니다.");
+			}
+		});
+		
 		
 		//지우기 (삭제말고)
 		btnReset.addActionListener(new ActionListener() {

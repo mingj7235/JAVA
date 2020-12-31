@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
+
 //데이터 베이스 연결하는 클래스
 public class MemberDAO {
 	//1. 오라클 데이터베이스 연동을 위한 4가지 정보를 문자열에 저장
@@ -89,6 +91,90 @@ public class MemberDAO {
 	}
 	
 	
+	//수정버튼 기능 (primary key는 고치지 못한다)
+	public void update (String name, String age, String weight, String height, String sex) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con= DriverManager.getConnection(url, userid, passwd);
+			//name이 primary key이므로 그것으로 구분하여 where절에 둔 것이다.
+			String sql = "UPDATE member SET age=?,weight=?,height=?,sex=? WHERE name =?"; 
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(age));
+			pstmt.setInt(2, Integer.parseInt(weight));
+			pstmt.setInt(3, Integer.parseInt(height));
+			pstmt.setString(4, sex);
+			pstmt.setString(5, name);
+			
+			int n = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	//검색버튼 기능 (MemberDTO를 리턴한다 -> row를 검색하게하는것임)
+	//1. 화면에 있는 이름을 select DB로 보내기
+	//2. DB에 있는 것을 가져다가 화면에 보여주기
+	//3. tfName tfAge TextField안에 보여주기
+	
+	public MemberDTO search(String name) throws RecordNotFoundException {
+		
+		if(!isExist(name)) throw new RecordNotFoundException(name + "은 등록된 회원이 아닙니다.");
+			
+		
+		
+		MemberDTO dto = new MemberDTO();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; //결과가 있음 (select문을 쓰므로!!)
+		
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			String sql = "SELECT * FROM member WHERE name=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery(); //select문인경우는 이걸로해야함
+			
+			//한 줄로 나온 데이터를 token으로 끊는다.
+			while (rs.next()) {
+				//DB에서 가져와서 MemberDTO에 넣음 이것을 다시 gui에 넣을것임
+				dto.setName(rs.getString(1));
+				dto.setAge(rs.getInt(2));
+				dto.setWeight(rs.getInt(3));
+				dto.setHeight(rs.getInt(4));
+				//sex는 char 타입이므로 
+				dto.setSex(rs.getString(5).charAt(0));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}//end search()
+	
+	
+	
+	
 	//회원 정보 보기 (select)
 	public ArrayList<MemberDTO> select () {
 		ArrayList list = new ArrayList<MemberDTO>();
@@ -136,8 +222,38 @@ public class MemberDAO {
 		return list;
 	}//end select
 	
-	
-	
-	
-	
+	//name이 존재하는지 체크하는 메소드 -> search에서 사용
+	public boolean isExist(String name) {
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			String sql = "SELECT * FROM member WHERE name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			//가지고 올 이름이 있냐? 즉 데이터에 이름이 있냐? 라고 묻는것임
+			while (rs.next()) {
+				//검색이 되므로 true를 result로 주는것임
+				result = true;
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close ();
+				if(pstmt!=null) pstmt.close();
+				if(con!= null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;	
+	}//end isExist()
 }
