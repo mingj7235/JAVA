@@ -12,6 +12,8 @@ import java.awt.Label;
 import java.awt.List;
 import java.awt.Panel;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
@@ -50,7 +52,7 @@ public class ManagerGUI {
 		lblHeight = new Label("키");
 		lblWeight = new Label("체중");
 		lblSex = new Label("성별");
-		lblStatus = new Label("체중");
+		lblStatus = new Label("");
 		lblStatus.setBackground(Color.LIGHT_GRAY);
 		
 		tfName = new TextField("");
@@ -172,6 +174,54 @@ public class ManagerGUI {
 		
 		displayAll(); //회원 정보 보기 메소드
 		
+		//저장버튼 : 회원 정보 저장하기 버튼에 저장 기능을 연결하는 것임
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = tfName.getText();
+				String age = tfAge.getText();
+				String weight = tfWeight.getText();
+				String height = tfHeight.getText();
+				String sex = "여";
+				if(chMale.getState()) {
+					sex="남";
+				}
+				MemberDAO dao = new MemberDAO ();
+				dao.insert(name, age, weight, height, sex);
+				displayAll();
+				lblStatus.setText(name+ "님의 정보가 저장되었습니다.");
+			}
+		});
+		
+		//삭제버튼 : 연결하는 것임
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = tfName.getText();
+				MemberDAO dao = new MemberDAO ();
+				dao.delete(name);
+				displayAll();
+				lblStatus.setText(name + "님의 정보가 삭제되었습니다.");
+				
+			}
+		});
+		
+		//지우기 (삭제말고)
+		btnReset.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tfName.setText("");
+				tfAge.setText("");
+				tfWeight.setText("");
+				tfHeight.setText("");
+				chGroup.setSelectedCheckbox(null);
+				lblStatus.setText("항목이 지워졌습니다. 다시 입력해주세요");
+			}
+		});
+		
 	}//end launchFrame ()
 	
 	public void displayAll() {
@@ -186,8 +236,9 @@ public class ManagerGUI {
 			char sex = dto.getSex();
 			list.add(name + "             " + age + "                 " + weight + "               "  + height + "                " + sex);
 		}
+		
 	}
-
+	
 	public static void main(String[] args) {
 		ManagerGUI mem = new ManagerGUI();
 		mem.launchFrame();

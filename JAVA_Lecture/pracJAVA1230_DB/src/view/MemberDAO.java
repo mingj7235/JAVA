@@ -25,7 +25,7 @@ public class MemberDAO {
 	}//end 생성자
 	
 	//회원 정보 생성 insert() - 데이터 베이스 안으로 새로운 자료 넣기
-	public void insert(String name, String age, String height, String weight, String sex) {
+	public void insert(String name, String age, String weight, String height, String sex) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -37,8 +37,8 @@ public class MemberDAO {
 			//? 안에 실제 데이터 넣기
 			pstmt.setString(1, name); //1번 물음표에 name(insert()의 매개변수)을 넣어주셈 이라는 의미임
 			pstmt.setInt(2, Integer.parseInt(age)); //데이터베이스에 넣을때는 int타입으로 넣어야하므로 ! 
-			pstmt.setInt(3, Integer.parseInt(height));
-			pstmt.setInt(4, Integer.parseInt(weight));
+			pstmt.setInt(3, Integer.parseInt(weight));
+			pstmt.setInt(4, Integer.parseInt(height));
 			pstmt.setString(5, sex);
 			
 			int n = pstmt.executeUpdate(); //n행이 들어갔습니다. 라는 것임
@@ -58,8 +58,36 @@ public class MemberDAO {
 		}
 	
 	}
+
 	
+	//삭제버튼 기능
+	public void delete(String name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			String sql = "DELETE FROM member WHERE name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name); //첫번째 물음표에 name을 넣어라 라는 의미임
+			
+			int n = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+				try {
+					if(pstmt!=null) pstmt.close();
+					if(con!=null) con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		
+	}
+	
 	
 	//회원 정보 보기 (select)
 	public ArrayList<MemberDTO> select () {
