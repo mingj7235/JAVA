@@ -10,19 +10,12 @@ public class KakaoMain extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Root.fxml"));
+		primaryStage.setTitle("Login");
+		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene (root);
-		
-		primaryStage.setTitle("Main");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
-		
-		
-		
 	}
-	
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
