@@ -22,20 +22,31 @@ public class KakaoMain_controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		kakaoMain_login_btn.setOnAction(e->handleBtnLogin(e));
+		kakaoMain_signin_btn.setOnAction(e->handleBtnSignin(e));
 			
 	}
 	public void handleBtnLogin (ActionEvent event) {
 		try {
-			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
+			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) kakaoMain_login_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
-//			StackPane root = (StackPane) kakaoMain_login_btn.getScene().getRoot();
-//			root.getChildren().add(login);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void handleBtnSignin(ActionEvent event) {
+		try {
+			Parent signin=FXMLLoader.load(getClass().getClassLoader().getResource("view/signin.fxml"));
+			Scene scene = new Scene(signin);
+			Stage primaryStage = (Stage) kakaoMain_signin_btn.getScene().getWindow();
+			primaryStage.setScene(scene);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 	
 }

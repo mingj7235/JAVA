@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml"
-		prefHeight="500" prefWidth="350"
-		fx:controller="controller.RootController">
-
+		prefHeight="500" prefWidth="350" fx:controller="p01.RootController">
 	<children>
 		<BorderPane>
 			<top>
