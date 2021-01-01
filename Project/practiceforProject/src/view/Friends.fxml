@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
@@ -61,6 +60,7 @@
                         <Font name="Lucida Bright Italic" size="11.0" />
                      </font>
                   </Label>
+                  <Label layoutX="31.0" layoutY="27.0" style="border-color: white;" text="Label" />
                </children>
             </Pane>
          </children>
