@@ -50,8 +50,7 @@ public class Chat_w_01_controller implements Initializable{
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, 
 					Number oldValue, Number newValue) {
-				chat_w_01_mainpane.setOpacity(newValue.doubleValue());
-//				chat_w_01_pane.setOpacity(newValue.doubleValue());
+				chat_w_01_mainpane.setOpacity(chat_slider_opacity.getValue() /100.0);
 			}
 		});
 		
