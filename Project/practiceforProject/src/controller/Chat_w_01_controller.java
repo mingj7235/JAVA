@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +19,15 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Chat_w_01_controller implements Initializable{
 	@FXML private Label Chats_time;
 	@FXML private Label chat_chat_name_label;
+	@FXML private BorderPane chat_w_01_mainpane;
+	@FXML private Pane chat_w_01_pane;
 	@FXML private Slider chat_slider_opacity;
 	
 	@FXML private TextField chat_write_messages;
@@ -41,6 +46,14 @@ public class Chat_w_01_controller implements Initializable{
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		Chats_time.setText(sdf.format(date));
 		
+		chat_slider_opacity.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, 
+					Number oldValue, Number newValue) {
+				chat_w_01_mainpane.setOpacity(newValue.doubleValue());
+//				chat_w_01_pane.setOpacity(newValue.doubleValue());
+			}
+		});
 		
 	}
 

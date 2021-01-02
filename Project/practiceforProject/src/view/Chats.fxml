@@ -53,6 +53,9 @@
                   <Label layoutX="10.0" prefHeight="68.0" prefWidth="73.0" style="-fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 4px;" />
                   <Label fx:id="chats_chatstime_1" layoutX="262.0" layoutY="6.0" text="time" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
             <Separator layoutY="536.0" prefHeight="3.0" prefWidth="300.0" />
             <Pane layoutY="538.0" prefHeight="62.0" prefWidth="300.0" style="-fx-background-color: #f9f9fa;">
@@ -119,6 +122,9 @@
                   <Label layoutX="10.0" prefHeight="68.0" prefWidth="73.0" style="-fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 4px;" />
                   <Label fx:id="chats_chatstime_11" layoutX="262.0" layoutY="6.0" text="time" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
             <Pane layoutX="-1.0" layoutY="229.0" prefHeight="71.0" prefWidth="300.0">
                <children>
@@ -143,6 +149,9 @@
                   <Label layoutX="10.0" prefHeight="68.0" prefWidth="73.0" style="-fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 4px;" />
                   <Label fx:id="chats_chatstime_111" layoutX="262.0" layoutY="6.0" text="time" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
             <Pane layoutX="-1.0" layoutY="303.0" prefHeight="71.0" prefWidth="300.0">
                <children>
@@ -167,6 +176,9 @@
                   <Label layoutX="10.0" prefHeight="68.0" prefWidth="73.0" style="-fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 4px;" />
                   <Label fx:id="chats_chatstime_1111" layoutX="262.0" layoutY="6.0" text="time" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
             <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="266.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                <image>
