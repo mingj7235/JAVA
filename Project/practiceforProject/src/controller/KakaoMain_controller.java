@@ -19,17 +19,10 @@ import javafx.stage.Stage;
 
 public class KakaoMain_controller implements Initializable{
 	@FXML private Label Login_time;
-	
 	@FXML private Button kakaoMain_login_btn;
 	@FXML private TextField KakaoMain_login_email;
 	@FXML private PasswordField KakaoMain_login_password;
-
 	@FXML private Button kakaoMain_signin_btn;
-	
-//	public KakaoMain_controller() {
-//		
-//	}
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -39,8 +32,6 @@ public class KakaoMain_controller implements Initializable{
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		Login_time.setText(sdf.format(date));
 	}
-	
-	
 	
 	public void handleBtnLogin (ActionEvent event) {
 		String id = KakaoMain_login_email.getText();
@@ -58,8 +49,6 @@ public class KakaoMain_controller implements Initializable{
 		} else {
 			System.out.println("로그인실패");
 		}
-		
-		
 	}
 	
 	public void handleBtnSignin(ActionEvent event) {
@@ -71,7 +60,5 @@ public class KakaoMain_controller implements Initializable{
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 	}
-	
 }

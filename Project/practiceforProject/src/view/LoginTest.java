@@ -10,7 +10,7 @@ public class LoginTest extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Login");
-		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Friends.fxml"));
+		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Chats.fxml"));
 		Scene scene = new Scene (root);
 		primaryStage.setScene(scene);
 		primaryStage.show();

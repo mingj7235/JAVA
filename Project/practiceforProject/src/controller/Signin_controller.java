@@ -19,11 +19,9 @@ import javafx.stage.Stage;
 
 public class Signin_controller implements Initializable{
 	@FXML private Label signin_time;
-	
 	@FXML private TextField signin_siginin_phonenum;
 	@FXML private PasswordField signin_signin_password;
 	@FXML private PasswordField signin_lsignin_passwordcheck;
-
 	@FXML private Button signin_signin_btn;
 	
 	@Override
@@ -52,9 +50,5 @@ public class Signin_controller implements Initializable{
 		} else {
 			System.out.println("로그인실패");
 		}
-		
-		
 	}
-	
-	
 }

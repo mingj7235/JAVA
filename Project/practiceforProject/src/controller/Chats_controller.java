@@ -13,14 +13,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Friends_controller implements Initializable{
-	@FXML private Label Friend_time;
+public class Chats_controller implements Initializable{
+	@FXML private Label Chats_time;
+	@FXML private Label chats_chatstime_1;
+	@FXML private Label chats_chatstime_11;
+	@FXML private Label chats_chatstime_111;
+	@FXML private Label chats_chatstime_1111;
 	
-	@FXML private TextField friends_search;
+	@FXML private Pane chats_first_linktochat;
+	
 	@FXML private Button friends_friends_btn;
 	@FXML private Button friends_chats_btn;
 	@FXML private Button friends_search_btn;
@@ -32,11 +37,25 @@ public class Friends_controller implements Initializable{
 		friends_chats_btn.setOnAction(e->handleBtnChats(e));
 		friends_search_btn.setOnAction(e->handleBtnSearch(e));
 		friends_more_btn.setOnAction(e->handleBtnMore(e));
+		chats_first_linktochat.setOnMouseClicked(e->handletochatlink(e));
+		
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		Friend_time.setText(sdf.format(date));
+		Chats_time.setText(sdf.format(date));
 	}
 	
+	//채팅방 창에서 친구 클릭시 친구와 채팅창으로 넘어가는 이벤트
+	public void handletochatlink(MouseEvent event) {
+		try {
+			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	//네비게이션 바
 	public void handleBtnFriends (ActionEvent event) {
 		//db에 저장해야함
