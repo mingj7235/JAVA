@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="login" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Friends_Controller">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Friends_controller">
    <center>
       <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="132.0" layoutY="7.0" text="21:15" />
+            <Label fx:id="Friend_time" layoutX="132.0" layoutY="7.0" text="21:15" />
             <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
             
                <image>
@@ -100,7 +100,10 @@
                         <Image url="@../imgs/ellipsis.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="friends_friends_btn" layoutX="37.0" layoutY="11.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="19.0" />
+                  <Button fx:id="friends_friends_btn" layoutX="37.0" layoutY="11.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="19.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Button fx:id="friends_chats_btn" layoutX="96.0" layoutY="13.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="35.0" />
                   <Button fx:id="friends_search_btn" layoutX="164.0" layoutY="13.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="34.0" />
                   <Button fx:id="friends_more_btn" layoutX="231.0" layoutY="13.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="32.0" />
