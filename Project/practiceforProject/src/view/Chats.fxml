@@ -16,7 +16,7 @@
       <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="Chats_time" layoutX="132.0" layoutY="7.0" text="21:15" />
-            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
             
                <image>
                   <Image url="@../imgs/wifi.png" />
@@ -168,6 +168,52 @@
                   <Label fx:id="chats_chatstime_1111" layoutX="262.0" layoutY="6.0" text="time" />
                </children>
             </Pane>
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="266.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/battery.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="243.0" layoutY="7.0" text="78%">
+               <font>
+                  <Font name="Lucida Bright Regular" size="10.0" />
+               </font>
+            </Label>
+            <HBox layoutX="174.0" layoutY="42.0" prefHeight="25.0" prefWidth="116.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/chats.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/music.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/cog.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </center>

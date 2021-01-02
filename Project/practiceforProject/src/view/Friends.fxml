@@ -74,6 +74,9 @@
                   </Label>
                   <Label layoutX="10.0" prefHeight="68.0" prefWidth="73.0" style="-fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 4px;" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
             <Separator layoutX="15.0" layoutY="183.0" prefHeight="0.0" prefWidth="269.0" />
             <Label layoutX="13.0" layoutY="194.0" text="Friends" />
@@ -118,6 +121,52 @@
                      </cursor></Button>
                </children>
             </Pane>
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="266.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/battery.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="243.0" layoutY="7.0" text="78%">
+               <font>
+                  <Font name="Lucida Bright Regular" size="10.0" />
+               </font>
+            </Label>
+            <HBox layoutX="174.0" layoutY="42.0" prefHeight="25.0" prefWidth="116.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/chats.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/music.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/cog.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </center>

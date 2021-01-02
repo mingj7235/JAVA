@@ -32,7 +32,7 @@
             <Label alignment="CENTER" layoutX="40.0" layoutY="145.0" prefHeight="15.0" prefWidth="221.0" text="If you have a Kakao account," textFill="#a49f9f" />
             <Label alignment="CENTER" layoutX="20.0" layoutY="166.0" prefHeight="15.0" prefWidth="261.0" text="log in with your email or phone number:)" textFill="#a49f9f" />
             <Label fx:id="Login_time" contentDisplay="CENTER" layoutX="133.0" layoutY="10.0" text="21:15" />
-            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="40.0" layoutY="10.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imgs/wifi.png" />
                </image>
@@ -43,6 +43,16 @@
                </font>
             </Label>
             <Button fx:id="kakaoMain_signin_btn" layoutX="44.0" layoutY="401.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="210.0" style="-fx-background-color: white;" text="Sign in" textFill="#a49f9f" />
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="266.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/battery.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="243.0" layoutY="7.0" text="78%">
+               <font>
+                  <Font name="Lucida Bright Regular" size="10.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

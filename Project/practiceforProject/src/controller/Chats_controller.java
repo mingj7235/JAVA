@@ -49,7 +49,7 @@ public class Chats_controller implements Initializable{
 	//채팅방 창에서 친구 클릭시 친구와 채팅창으로 넘어가는 이벤트
 	public void handletochatlink(MouseEvent event) {
 		try {
-			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
+			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Chat_w_01.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
