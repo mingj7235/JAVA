@@ -9,10 +9,9 @@
 <?import java.*?>
 <?import javafx.scene.layout.*?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KakaoMain_controller">
    <children>
-      <Pane prefHeight="600.0" prefWidth="300.0" StackPane.alignment="CENTER">
+      <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
          <children>
             <TextField fx:id="KakaoMain_login_email" layoutX="20.0" layoutY="209.0" prefHeight="42.0" prefWidth="258.0" promptText="Email or phone number" style="-fx-border-radius: 20px; -fx-border-color: none;">
                <opaqueInsets>
@@ -35,7 +34,7 @@
             <Label contentDisplay="CENTER" layoutX="133.0" layoutY="10.0" text="21:15" />
             <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@wifi.JPG" />
+                  <Image url="@../imgs/wifi.png" />
                </image>
             </ImageView>
             <Label layoutX="19.0" layoutY="10.0" text="KT">
