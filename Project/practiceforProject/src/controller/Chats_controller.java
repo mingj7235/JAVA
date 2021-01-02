@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 public class Chats_controller implements Initializable{
 	@FXML private Label Chats_time;
+	//채팅방의 오른편 채팅 시간 label
 	@FXML private Label chats_chatstime_1;
 	@FXML private Label chats_chatstime_11;
 	@FXML private Label chats_chatstime_111;
@@ -37,6 +38,7 @@ public class Chats_controller implements Initializable{
 		friends_chats_btn.setOnAction(e->handleBtnChats(e));
 		friends_search_btn.setOnAction(e->handleBtnSearch(e));
 		friends_more_btn.setOnAction(e->handleBtnMore(e));
+		
 		chats_first_linktochat.setOnMouseClicked(e->handletochatlink(e));
 		
 		Date date = new Date();
