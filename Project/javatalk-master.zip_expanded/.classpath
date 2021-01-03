@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="javatalk-master/javatalkClient.jar"/>
+	<classpathentry kind="lib" path="javatalk-master/javatalkClient.jar" sourcepath="C:/Java/jdk1.8.0_201/javafx-src.zip"/>
 	<classpathentry kind="lib" path="javatalk-master/javatalkServer.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
