@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -93,12 +94,30 @@ public class ServerController implements Initializable{
 		executorService.submit(runnable);
 	}//end StartServer()
 	
-	
+	void stopServer() {
+		try {
+			Iterator<Client> iterator = connections.iterator();
+			while (iterator.hasNext()) {
+				Client client = iterator.next();
+				client.socket.close();
+				iterator.remove();
+			}
+			if (serverSocket != null && !serverSocket.isClosed()) {
+				serverSocket.close();
+			}
+			if (executorService != null && !executorService.isShutdown()) {
+				executorService.shutdown();
+			}
+			Platform.runLater(() ->{
+				logText.appendText("[Server stop]");
+				btnServerStart.setText("start"); //server 버튼 변경
+			});
+		}catch(IOException e) {}
+	}
 	
 	
 	public class Client {
 		Socket socket;
-		
 		public Client (Socket socket) {
 			this.socket = socket;
 			receive();
@@ -106,7 +125,7 @@ public class ServerController implements Initializable{
 		
 		//메세지 받기 메소드
 		void receive () {
-			Runnable thread = new Runnable() {
+			Runnable runnable = new Runnable() {
 				@Override
 				public void run() {
 					try {
@@ -114,30 +133,43 @@ public class ServerController implements Initializable{
 							byte[] byteArr = new byte[100];
 							InputStream is = socket.getInputStream();
 							
-							int readByteCount = inputStream.read(arr);
+							int readByteCount = is.read(byteArr);
+							
 							if(readByteCount == -1) {
 								throw new IOException();
 							}
-							String message = new String(arr,0,readByteCount, "UTF-8");
-							Platform.runLater(() -> logText.appendText(message));
 							
-							for(Client client : connection) {
-								client.send(message);
+							String message = "[Request : " + socket.getRemoteSocketAddress()
+								+ ":" + Thread.currentThread().getName() + "]" ;
+							
+							Platform.runLater(() -> 
+									logText.appendText(message));
+							
+							String data = new String (byteArr, 0, readByteCount, "UTF-8");
+							
+							for (Client client : connections) {
+								client.send(data);
 							}
 						}
 					}catch (Exception e) {
-						connection.remove(Client.this);
-						String message = "[Client connection Error : " +socket.getRemoteSocketAddress() + "]\n";
-						Platform.runLater(() -> logText.appendText(message));
 						try {
+							connections.remove(Client.this);
+							String message = "[Client connection Error] :" +
+							socket.getRemoteSocketAddress() + " : " + Thread.currentThread().getName() + "]";
+							Platform.runLater(() -> 
+								logText.appendText(message)
+							);
 							socket.close();
-						} catch (IOException e1) {
-						}
+						}catch (IOException e1) {}
 					}
 				}
 			};
-			executorService.submit(thread);
+			executorService.submit(runnable);
 		}
+							
+							
+							
+							
 		
 		//클라이언트한테 데이터 보냄
 		void send (String message) {
