@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
@@ -130,7 +131,11 @@
                   </HBox>
                </children>
             </Pane>
-            <TextArea fx:id="chat_textarea" layoutX="20.0" layoutY="117.0" prefHeight="402.0" prefWidth="261.0" style="-fx-background-color: #abc1d1;" />
+            <TextArea fx:id="chat_textarea" layoutX="20.0" layoutY="117.0" prefHeight="402.0" prefWidth="261.0" styleClass="chat_textarea">
+               <stylesheets>
+                  <URL value="@../../../../This_Is_JAVA/chap18_IO/src/sec07/exam03_chattingProgram/app.css" />
+                  <URL value="@app.css" />
+               </stylesheets></TextArea>
             <Button fx:id="chat_start_button" layoutX="20.0" layoutY="79.0" mnemonicParsing="false" opacity="0.85" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
                <cursor>
                   <Cursor fx:constant="HAND" />
