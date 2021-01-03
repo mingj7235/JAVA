@@ -16,6 +16,8 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import controller.Chat_w_01_controller;
+import controller.KakaoMain_controller;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -37,7 +39,9 @@ public class ServerController implements Initializable{
 	@FXML private TextArea logText;
 	@FXML private Button btnServerStart;
 	@FXML private TextField portField;
-
+	
+	KakaoMain_controller kc = new KakaoMain_controller();
+	
 	ExecutorService executorService;
 	ServerSocket serverSocket;
 	List<Client> connections = new Vector<>();
@@ -71,7 +75,7 @@ public class ServerController implements Initializable{
 						Socket socket = serverSocket.accept();
 						String message = "[Connection accept : " + 
 						socket.getRemoteSocketAddress() + ": " +
-						Thread.currentThread().getName() + "]";
+						Thread.currentThread().getName() + "]\n";
 						
 						Platform.runLater(() -> 
 							logText.appendText(message)
@@ -79,7 +83,7 @@ public class ServerController implements Initializable{
 						Client client = new Client(socket);
 						connections.add(client);
 						Platform.runLater(() -> logText.appendText(
-								"[Connections' size : " + connections.size() + "]"
+								"[Connections' size : " + connections.size() + "]\n"
 								));
 					}catch (IOException e ) {
 						if(!serverSocket.isClosed()) {

@@ -1,14 +1,10 @@
 package controller;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -22,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -38,27 +35,7 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
 		
-//	Socket socket;
-//	
-//	void startClient () {
-//		Thread thread = new Thread() {
-//			@Override
-//			public void run() {
-//				try {
-//					socket = new Socket();
-//					socket.connect(new InetSocketAddress("localhost", 5001));
-//					Platform.runLater(() -> {
-//						chat_textarea.appendText("[Connection]" 
-//								+ socket.getRemoteSocketAddress() + "]\n");
-//						
-//						
-//					});
-//				}catch (IOException e) {
-//					
-//				}
-//			}
-//		};
-//	}
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
