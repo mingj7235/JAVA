@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class LoginTest extends Application{
+public class Server extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Login");
-		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Chats.fxml"));
+		primaryStage.setTitle("Server");
+		Parent root = (Parent)FXMLLoader.load(getClass().getResource("Server.fxml"));
 		Scene scene = new Scene (root);
 		primaryStage.setScene(scene);
 		primaryStage.show();

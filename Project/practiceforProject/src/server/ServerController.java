@@ -16,8 +16,6 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.sound.sampled.SourceDataLine;
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -166,37 +164,35 @@ public class ServerController implements Initializable{
 			};
 			executorService.submit(runnable);
 		}
-							
-							
-							
-							
+				
 		
 		//클라이언트한테 데이터 보냄
-		void send (String message) {
-			Runnable thread = new Runnable() {
-				
+		
+		public void send (String data) {
+			Runnable runnable = new Runnable() {
 				@Override
 				public void run() {
 					try {
-						byte[] arr = message.getBytes("UTF-8");
-						OutputStream outputstream = socket.getOutputStream();
-						outputstream.write(arr);
-						outputstream.flush();
-					}catch (Exception e) {
-						String message = "[Client connection Error :"  + socket.getRemoteSocketAddress() + "]";
-						Platform.runLater(() -> logText.appendText(message));
-						connection.remove(Client.this);
+						byte [] byteArr = data.getBytes("UTF-8");
+						OutputStream os = socket.getOutputStream();
+						os.write(byteArr);
+						os.flush();
+					} catch (Exception e) {
 						try {
+							String message = "[Client connection Error : " 
+									+ socket.getRemoteSocketAddress()+ " : " 
+									+ Thread.currentThread().getName() + "]";
+							Platform.runLater(() -> 
+								logText.appendText(message)
+							);
+							connections.remove(Client.this);
 							socket.close();
-						}catch (IOException e1) {
-						}
+						}catch (IOException e1) {}
 					}
 				}
 			};
-			executorService.submit(thread);
+			executorService.submit(runnable);
 		}
-		
-		
 	}
 
 
@@ -219,3 +215,4 @@ public class ServerController implements Initializable{
 
 
 }
+ 

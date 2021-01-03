@@ -80,7 +80,8 @@ fx:controller="server.ServerController">
                         <Font name="Lucida Bright Italic" size="11.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btnServerStart" layoutX="249.0" layoutY="12.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="send">
+                  <Button fx:id="btnServerStart" layoutX="249.0" layoutY="12.0" mnemonicParsing="false" 
+                  prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
                      <font>
                         <Font name="Lucida Bright Demibold" size="9.5" />
                      </font>
