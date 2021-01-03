@@ -38,27 +38,27 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
 		
-//	Socket socket;
-//	
-//	void startClient () {
-//		Thread thread = new Thread() {
-//			@Override
-//			public void run() {
-//				try {
-//					socket = new Socket();
-//					socket.connect(new InetSocketAddress("localhost", 5001));
-//					Platform.runLater(() -> {
-//						chat_textarea.appendText("[Connection]" 
-//								+ socket.getRemoteSocketAddress() + "]\n");
-//						
-//						
-//					});
-//				}catch (IOException e) {
-//					
-//				}
-//			}
-//		};
-//	}
+	Socket socket;
+	
+	void startClient () {
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				try {
+					socket = new Socket();
+					socket.connect(new InetSocketAddress("localhost", 5001));
+					Platform.runLater(() -> {
+						chat_textarea.appendText("[Connection]" 
+								+ socket.getRemoteSocketAddress() + "]\n");
+						
+						
+					});
+				}catch (IOException e) {
+					
+				}
+			}
+		};
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

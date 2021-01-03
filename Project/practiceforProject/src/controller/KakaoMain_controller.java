@@ -27,7 +27,7 @@ public class KakaoMain_controller implements Initializable{
 	@FXML private TextField KakaoMain_login_email;
 	@FXML private PasswordField KakaoMain_login_password;
 	@FXML private Button kakaoMain_signin_btn;
-	
+
 Socket socket;
 	
 	void startClient () {
@@ -54,9 +54,6 @@ Socket socket;
 		}catch(Exception e) {}
 		
 	}
-	
-	
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -96,4 +93,10 @@ Socket socket;
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
 }
