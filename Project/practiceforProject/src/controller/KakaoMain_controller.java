@@ -28,32 +28,32 @@ public class KakaoMain_controller implements Initializable{
 	@FXML private PasswordField KakaoMain_login_password;
 	@FXML private Button kakaoMain_signin_btn;
 
-Socket socket;
-	
-	void startClient () {
-		Thread thread = new Thread() {
-			@Override
-			public void run() {
-				try {
-					socket = new Socket();
-					socket.connect(new InetSocketAddress("localhost", 5001));
-				}catch (IOException e) {
-					if(!socket.isClosed()) {stopClient();}
-					return;
-				}
-			}
-		};
-		thread.start();
-	}
-	
-	void stopClient() {
-		try {
-			if (socket !=null && !socket.isClosed()) {
-				socket.close();
-			}
-		}catch(Exception e) {}
-		
-	}
+//Socket socket;
+//	
+//	void startClient () {
+//		Thread thread = new Thread() {
+//			@Override
+//			public void run() {
+//				try {
+//					socket = new Socket();
+//					socket.connect(new InetSocketAddress("localhost", 5001));
+//				}catch (IOException e) {
+//					if(!socket.isClosed()) {stopClient();}
+//					return;
+//				}
+//			}
+//		};
+//		thread.start();
+//	}
+//	
+//	void stopClient() {
+//		try {
+//			if (socket !=null && !socket.isClosed()) {
+//				socket.close();
+//			}
+//		}catch(Exception e) {}
+//		
+//	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -69,7 +69,7 @@ Socket socket;
 		String pw = KakaoMain_login_password.getText();
 		
 		if (id.equals("01064707235") && pw.equals("7235")) {
-			startClient();
+//			startClient();
 			try {
 				Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
 				Scene scene = new Scene(login);

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URL;
@@ -37,6 +39,7 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private TextArea chat_textarea;
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
+	@FXML private Button chat_start_button;
 		
 	Socket socket;
 	
@@ -50,20 +53,81 @@ public class Chat_w_01_controller implements Initializable{
 					Platform.runLater(() -> {
 						chat_textarea.appendText("[Connection]" 
 								+ socket.getRemoteSocketAddress() + "]\n");
-						
+						chat_start_button.setText("stop");
+						chat_send_button.setDisable(false);
 						
 					});
 				}catch (IOException e) {
-					
+					Platform.runLater(() -> chat_textarea.appendText("[Connection Error]"));
+					if(!socket.isClosed()) {stopClient();}
+					return;
+				}
+				receive();
+			}
+		};
+		thread.start();
+	}
+	
+	void stopClient() {
+		try {
+			Platform.runLater(() -> {
+				chat_textarea.appendText("[Connection Error]");
+				chat_start_button.setText("start");
+				chat_send_button.setDisable(true);
+			});
+			
+			if(socket != null && !socket.isClosed()) {
+				socket.close();
+			}
+		}catch (Exception e) {}
+	}
+	
+	void receive () {
+		while (true) {
+			try {
+				byte [] byteArr = new byte [100];
+				InputStream is = socket.getInputStream();
+				
+				int readByteCount = is.read(byteArr);
+				if (readByteCount == -1) {
+					throw new IOException();
+				}
+				
+				String data = new String (byteArr, 0, readByteCount, "UTF-8");
+				
+				Platform.runLater(() -> chat_textarea.appendText(data+"\n"));
+				
+			}catch (Exception e) {
+				Platform.runLater(() -> chat_textarea.appendText("[Connection Error]"));
+				stopClient();
+				break;
+			}
+		}
+	}
+	
+	void send (String data) {
+		Thread thread = new Thread () {
+			public void run() {
+				try {
+					byte[] byteArr = data.getBytes("UTF-8");
+					OutputStream os = socket.getOutputStream();
+					os.write(byteArr);
+					os.flush();
+					Platform.runLater(() -> chat_textarea.appendText("[send Success]\n"));
+				}catch (Exception e) {
+					Platform.runLater(() -> chat_textarea.appendText("[Server connection Error]"));
 				}
 			}
 		};
+		thread.start();
 	}
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chat_send_button.setOnAction(e->handleBtnSend(e));
 		chat_back_btn.setOnAction(e->handleBtnBack(e));
+		chat_start_button.setOnAction(e->handleBtnStart(e));
 		
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -78,7 +142,15 @@ public class Chat_w_01_controller implements Initializable{
 		});
 		
 	}
-
+	
+	public void handleBtnStart (ActionEvent event) {
+		if(chat_start_button.getText().equals("start")) {
+			startClient();
+		} else if(chat_start_button.getText().equals("stop")){
+			stopClient();
+		}
+	}
+	
 	public void handleBtnBack(ActionEvent event) {
 		try {
 			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Chats.fxml"));
@@ -96,10 +168,7 @@ public class Chat_w_01_controller implements Initializable{
 
 
 	public void handleBtnSend(ActionEvent event) {
-		String message = writeMessages();
-			if(!(writeMessages().isEmpty())) {
-				chat_textarea.setText(message);
-			}
+		send(chat_write_messages.getText());
 	}
 	
 	

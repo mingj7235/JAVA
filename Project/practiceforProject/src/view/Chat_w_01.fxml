@@ -77,7 +77,7 @@
                         <Font name="Lucida Bright Italic" size="11.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="chat_send_button" layoutX="249.0" layoutY="12.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="send">
+                  <Button fx:id="chat_send_button" disable="true" layoutX="249.0" layoutY="12.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="send">
                      <font>
                         <Font name="Lucida Bright Demibold" size="9.5" />
                      </font>
@@ -131,6 +131,14 @@
                </children>
             </Pane>
             <TextArea fx:id="chat_textarea" layoutX="20.0" layoutY="117.0" prefHeight="402.0" prefWidth="261.0" style="-fx-background-color: #abc1d1;" />
+            <Button fx:id="chat_start_button" layoutX="20.0" layoutY="79.0" mnemonicParsing="false" opacity="0.85" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Lucida Bright Demibold" size="9.5" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
