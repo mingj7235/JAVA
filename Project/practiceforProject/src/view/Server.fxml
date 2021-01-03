@@ -12,9 +12,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.image.ImageView?>
 
-<BorderPane fx:id="chat_w_01_mainpane" opacity="0.99" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Chat_w_01_controller">
+<BorderPane opacity="0.99" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+fx:id="server_main"
+fx:controller="server.ServerController">
    <center>
-      <Pane fx:id="chat_w_01_pane" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #abc1d1;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #abc1d1;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="Chats_time" layoutX="132.0" layoutY="7.0" text="21:15" />
             <ImageView fitHeight="12.0" fitWidth="16.0" layoutX="34.0" layoutY="8.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
@@ -28,13 +31,13 @@
                   <Font name="Lucida Bright Regular" size="10.0" />
                </font>
             </Label>
-            <Label fx:id="chat_chat_name_label" layoutX="132.0" layoutY="35.0" text="NAME" />
+            <Label layoutX="132.0" layoutY="35.0" text="NAME" />
             <ImageView fitHeight="18.0" fitWidth="25.0" layoutX="17.0" layoutY="34.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imgs/chevron_left.png" />
                </image>
             </ImageView>
-            <Button fx:id="chat_back_btn" layoutX="20.0" layoutY="32.0" mnemonicParsing="false" opacity="0.0" style="-fx-background-color: #abc1d1;">
+            <Button layoutX="20.0" layoutY="32.0" mnemonicParsing="false" opacity="0.0" style="-fx-background-color: #abc1d1;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
