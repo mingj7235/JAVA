@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -50,7 +51,7 @@ public class ServerController implements Initializable{
 			serverSocket.bind(new InetSocketAddress("localhost", 5001));
 		}catch (Exception e) {
 			if(!serverSocket.isClosed()) {
-//				stopServer();
+				stopServer();
 			}
 			return;
 		}
@@ -61,7 +62,7 @@ public class ServerController implements Initializable{
 			@Override
 			public void run() {
 				Platform.runLater(() -> {
-					logText.appendText("[Server Start]");
+					logText.appendText("[Server Start]\n");
 					btnServerStart.setText("stop");
 				});
 				
@@ -107,7 +108,7 @@ public class ServerController implements Initializable{
 				executorService.shutdown();
 			}
 			Platform.runLater(() ->{
-				logText.appendText("[Server stop]");
+				logText.appendText("[Server stop]\n");
 				btnServerStart.setText("start"); //server 버튼 변경
 			});
 		}catch(IOException e) {}
@@ -210,9 +211,18 @@ public class ServerController implements Initializable{
 				server_main.setOpacity(chat_slider_opacity.getValue() /100.0);
 			}
 		});
-		btnServerStart.setOnAction(e -> StartServer());
+		btnServerStart.setOnAction(e -> handleServerStart(e));
 	}
-
-
+	
+	public void handleServerStart (ActionEvent event) {
+		if (btnServerStart.getText().equals("start")) {
+			StartServer();
+		}else if ( btnServerStart.getText().equals("stop")) {
+			stopServer();
+		}
+	}
+	
+	
+	
 }
  
