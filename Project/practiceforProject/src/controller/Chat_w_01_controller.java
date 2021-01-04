@@ -34,7 +34,6 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private BorderPane chat_w_01_mainpane;
 	@FXML private Pane chat_w_01_pane;
 	@FXML private Slider chat_slider_opacity;
-	
 	@FXML private TextField chat_write_messages;
 	@FXML private TextArea chat_textarea;
 	@FXML private Button chat_send_button;
@@ -51,14 +50,14 @@ public class Chat_w_01_controller implements Initializable{
 					socket = new Socket();
 					socket.connect(new InetSocketAddress("localhost", 5001));
 					Platform.runLater(() -> {
-						chat_textarea.appendText("[Connection]" 
-								+ socket.getRemoteSocketAddress() + "]\n");
+						chat("[Connection]" 
+								+ socket.getRemoteSocketAddress() + "]");
 						chat_start_button.setText("stop");
 						chat_send_button.setDisable(false);
 						
 					});
 				}catch (IOException e) {
-					Platform.runLater(() -> chat_textarea.appendText("[Connection Error]"));
+					Platform.runLater(() -> chat("[Connection Error]"));
 					if(!socket.isClosed()) {stopClient();}
 					return;
 				}
@@ -71,7 +70,7 @@ public class Chat_w_01_controller implements Initializable{
 	void stopClient() {
 		try {
 			Platform.runLater(() -> {
-				chat_textarea.appendText("[Connection Error]");
+				chat("[Connection Error]");
 				chat_start_button.setText("start");
 				chat_send_button.setDisable(true);
 			});
@@ -98,7 +97,7 @@ public class Chat_w_01_controller implements Initializable{
 				Platform.runLater(() -> chat_textarea.appendText(data+"\n"));
 				
 			}catch (Exception e) {
-				Platform.runLater(() -> chat_textarea.appendText("[Connection Error]"));
+				Platform.runLater(() -> chat("[Connection Error]"));
 				stopClient();
 				break;
 			}
@@ -113,15 +112,18 @@ public class Chat_w_01_controller implements Initializable{
 					OutputStream os = socket.getOutputStream();
 					os.write(byteArr);
 					os.flush();
-					Platform.runLater(() -> chat_textarea.appendText("[send Success]\n"));
+					Platform.runLater(() -> chat("[send Success]"));
 				}catch (Exception e) {
-					Platform.runLater(() -> chat_textarea.appendText("[Server connection Error]"));
+					Platform.runLater(() -> chat("[Server connection Error]"));
 				}
 			}
 		};
 		thread.start();
 	}
 	
+	public void chat (String msg) {
+		chat_textarea.appendText(msg+"\n");
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

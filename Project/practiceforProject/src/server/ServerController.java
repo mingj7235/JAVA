@@ -66,7 +66,7 @@ public class ServerController implements Initializable{
 			@Override
 			public void run() {
 				Platform.runLater(() -> {
-					logText.appendText("[Server Start]\n");
+					log("[Server Start]");
 					btnServerStart.setText("stop");
 				});
 				
@@ -75,15 +75,15 @@ public class ServerController implements Initializable{
 						Socket socket = serverSocket.accept();
 						String message = "[Connection accept : " + 
 						socket.getRemoteSocketAddress() + ": " +
-						Thread.currentThread().getName() + "]\n";
+						Thread.currentThread().getName() + "]";
 						
 						Platform.runLater(() -> 
-							logText.appendText(message)
+							log(message)
 							);
 						Client client = new Client(socket);
 						connections.add(client);
-						Platform.runLater(() -> logText.appendText(
-								"[Connections' size : " + connections.size() + "]\n"
+						Platform.runLater(() -> log(
+								"[Connections' size : " + connections.size() + "]"
 								));
 					}catch (IOException e ) {
 						if(!serverSocket.isClosed()) {
@@ -112,7 +112,7 @@ public class ServerController implements Initializable{
 				executorService.shutdown();
 			}
 			Platform.runLater(() ->{
-				logText.appendText("[Server stop]\n");
+				log("[Server stop]");
 				btnServerStart.setText("start"); //server 버튼 변경
 			});
 		}catch(IOException e) {}
@@ -146,7 +146,7 @@ public class ServerController implements Initializable{
 								+ ":" + Thread.currentThread().getName() + "]" ;
 							
 							Platform.runLater(() -> 
-									logText.appendText(message));
+									log(message));
 							
 							String data = new String (byteArr, 0, readByteCount, "UTF-8");
 							
@@ -160,7 +160,7 @@ public class ServerController implements Initializable{
 							String message = "[Client connection Error] :" +
 							socket.getRemoteSocketAddress() + " : " + Thread.currentThread().getName() + "]";
 							Platform.runLater(() -> 
-								logText.appendText(message)
+								log(message)
 							);
 							socket.close();
 						}catch (IOException e1) {}
@@ -188,7 +188,7 @@ public class ServerController implements Initializable{
 									+ socket.getRemoteSocketAddress()+ " : " 
 									+ Thread.currentThread().getName() + "]";
 							Platform.runLater(() -> 
-								logText.appendText(message)
+								log(message)
 							);
 							connections.remove(Client.this);
 							socket.close();
@@ -200,7 +200,9 @@ public class ServerController implements Initializable{
 		}
 	}
 
-
+	public void log (String msg) {
+		logText.appendText(msg + "\n");
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
