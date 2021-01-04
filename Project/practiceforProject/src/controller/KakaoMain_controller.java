@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import db_connection.DB_connection_test;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,32 +29,7 @@ public class KakaoMain_controller implements Initializable{
 	@FXML private PasswordField KakaoMain_login_password;
 	@FXML private Button kakaoMain_signin_btn;
 
-//Socket socket;
-//	
-//	void startClient () {
-//		Thread thread = new Thread() {
-//			@Override
-//			public void run() {
-//				try {
-//					socket = new Socket();
-//					socket.connect(new InetSocketAddress("localhost", 5001));
-//				}catch (IOException e) {
-//					if(!socket.isClosed()) {stopClient();}
-//					return;
-//				}
-//			}
-//		};
-//		thread.start();
-//	}
-//	
-//	void stopClient() {
-//		try {
-//			if (socket !=null && !socket.isClosed()) {
-//				socket.close();
-//			}
-//		}catch(Exception e) {}
-//		
-//	}
+	DB_connection_test db = new DB_connection_test();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -65,11 +41,9 @@ public class KakaoMain_controller implements Initializable{
 	}
 	
 	public void handleBtnLogin (ActionEvent event) {
-		String id = KakaoMain_login_email.getText();
-		String pw = KakaoMain_login_password.getText();
 		
-		if (id.equals("01064707235") && pw.equals("7235")) {
-//			startClient();
+		if (db.isExist_phone(KakaoMain_login_email.getText()) 
+				&& db.isExist_pw(KakaoMain_login_password.getText())) {
 			try {
 				Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
 				Scene scene = new Scene(login);
@@ -79,6 +53,7 @@ public class KakaoMain_controller implements Initializable{
 				e.printStackTrace();
 			}
 		} else {
+			//팝업창
 			System.out.println("로그인실패");
 		}
 	}
@@ -93,10 +68,5 @@ public class KakaoMain_controller implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
 	
 }
