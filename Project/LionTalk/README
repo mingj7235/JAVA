@@ -1,0 +1,12 @@
+본 프로젝트는 오픈소스 입니다.
+
+* 실행 환경
+DB : Oracle db 11g express
+JRE min version : 1.8.0
+
+* 실행 방법 
+Application/Server.java 실행 (서버 실행)
+Applcation/Client.java 실행 (클라이언트 실행)
+
+# 서버와 클라이언트의 IP는 사용자의 환경에 맞게 바꾸어 주어야 합니다. 
+# DB는 오라클 환경입니다.

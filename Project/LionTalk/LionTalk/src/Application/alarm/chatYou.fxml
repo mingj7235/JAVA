@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="323.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView id="img" fitHeight="57.0" fitWidth="63.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@initImg.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="77.0" layoutY="1.0" prefHeight="19.0" prefWidth="237.0">
+         <children>
+            <Label id="name" prefHeight="19.0" prefWidth="63.0" text="Label" />
+         </children>
+      </HBox>
+      <Label id="message" alignment="TOP_LEFT" layoutX="77.0" layoutY="17.0" prefHeight="57.0" prefWidth="237.0" text="Label" />
+   </children>
+</AnchorPane>

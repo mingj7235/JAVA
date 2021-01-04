@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+
+<VBox prefHeight="600.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.FreindList.FriendShowController">
+	<children>
+		<HBox prefHeight="59.0" prefWidth="360.0" style="-fx-background-color: #FFEB35;">
+			<children>
+				<Button fx:id="friendList" onAction="#FriendBtnAction" prefHeight="45.0" prefWidth="73.0" style="-fx-background-color: #FFEB35;" text="친구">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+				<Button fx:id="ChattingList" onAction="#ChattingBtnAction" prefHeight="45.0" prefWidth="73.0" style="-fx-background-color: #FFEB35;" text="채팅">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+				<Button fx:id="GameList" onAction="#GameBtnAction" prefHeight="45.0" prefWidth="83.0" style="-fx-background-color: #FFEB35;" text="더보기" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+				<Button mnemonicParsing="false" prefHeight="39.0" prefWidth="40.0" visible="false" />
+				<MenuBar prefHeight="32.0" prefWidth="69.0" style="-fx-background-color: #FFEB35;">
+					<menus>
+						<Menu text="목록">
+							<items>
+								<MenuItem onAction="#handleAddChat" text="새로운 채팅" />
+								<SeparatorMenuItem />
+								<MenuItem onAction="#handleProfile" text="프로필 상태 수정" />
+								<MenuItem onAction="#handleAddFriend" text="친구 추가" />
+								<SeparatorMenuItem />
+								<MenuItem onAction="#exitApplication" text="로그아웃" />
+								<MenuItem onAction="#exitApplication" text="끝내기" />
+								<SeparatorMenuItem />
+								<MenuItem onAction="#lionInfo" text="라이언톡 정보">
+									<graphic>
+									</graphic>
+								</MenuItem>
+							</items>
+						</Menu>
+					</menus>
+				</MenuBar>
+			</children>
+		</HBox>
+		<Pane prefHeight="82.0" prefWidth="360.0">
+			<children>
+				<TextField fx:id="Search" layoutX="11.0" layoutY="6.0" prefHeight="32.0" prefWidth="339.0" />
+				<Label fx:id="show" layoutX="10.0" layoutY="48.0" prefHeight="17.0" prefWidth="294.0" text=" 친구" />
+				<Line endX="265.0" layoutX="101.0" layoutY="87.0" startX="-100.0" />
+			</children>
+		</Pane>
+		<StackPane fx:id="stackpane" alignment="BOTTOM_RIGHT" prefHeight="458.0" prefWidth="360.0">
+			<children>
+				<Button fx:id="addChat" mnemonicParsing="false" onAction="#intviteBtnAction" prefHeight="38.0" prefWidth="46.0" style="-fx-background-color: #FFEB35;" text="+">
+					<StackPane.margin>
+						<Insets bottom="60.0" right="60.0" />
+					</StackPane.margin>
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+				</Button>
+			</children>
+		</StackPane>
+	</children>
+</VBox>

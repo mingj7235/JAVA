@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="Application.findFriend.findFriendController">
+   <children>
+      <Pane prefHeight="38.0" prefWidth="345.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="10.0" prefHeight="19.0" prefWidth="134.0" text="친구 추가" />
+         </children>
+      </Pane>
+      <HBox prefHeight="49.0" prefWidth="345.0">
+         <children>
+            <ToggleButton fx:id="btn1"  onAction="#handleFindBypb" mnemonicParsing="false" prefHeight="65.0" prefWidth="165.0" text="연락처로 친구 추가" />
+            <ToggleButton fx:id="btn2"  onAction="#handleFindById" mnemonicParsing="false" prefHeight="66.0" prefWidth="181.0" text="ID 검색" />
+         </children>
+      </HBox>
+      <Pane fx:id="pane" prefHeight="313.0" prefWidth="345.0" />
+   </children>
+</VBox>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.chatWindow.chatWindowController">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="400.0" style="-fx-background-color: #A0C0D7;">
+         <children>
+            <TextField fx:id="name" editable="false" layoutX="76.0" layoutY="8.0" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #A0C0D7;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="700.0" prefWidth="400.0">
+         <children>
+            <ListView fx:id="messagelist" prefHeight="457.0" prefWidth="400.0" style="-fx-background-color: #A0C0D7;" />
+         </children>
+      </Pane>
+      <AnchorPane prefHeight="121.0" prefWidth="400.0">
+         <children>
+            <Button fx:id="send" layoutX="297.0" layoutY="23.0" mnemonicParsing="false" onAction="#SendBtnAction" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #FFEB35;" text="전송" />
+            <TextArea fx:id="message" prefHeight="126.0" prefWidth="289.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

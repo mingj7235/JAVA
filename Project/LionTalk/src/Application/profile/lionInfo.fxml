@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.profile.lionInfoController">
+   <children>
+      <Pane prefHeight="35.0" prefWidth="290.0">
+         <children>
+            <Label alignment="CENTER" layoutX="67.0" layoutY="8.0" prefHeight="27.0" prefWidth="140.0" text="라이언 톡 정보" />
+         </children>
+      </Pane>
+      <Line endX="200.0" startX="-100.0" />
+      <AnchorPane prefHeight="406.0" prefWidth="290.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="89.0" fitWidth="94.0" layoutX="98.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@initImg.png" />
+               </image>
+            </ImageView>
+            <TextField editable="false" layoutX="26.0" layoutY="135.0" prefHeight="29.0" prefWidth="246.0" promptText="이름" text="라이언톡, 개인 프로젝트 /Email : pdh8788@naver.com" />
+            <Label layoutX="26.0" layoutY="175.0" prefHeight="19.0" prefWidth="246.0" text="개발자 : 박 덕환" />
+            <Line endX="137.0" layoutX="126.0" layoutY="202.0" startX="-100.0" />
+            <Label layoutX="26.0" layoutY="211.0" prefHeight="19.0" prefWidth="246.0" text="개발 기간 : 17.04.03 ~17.07.22">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextArea editable="false" layoutX="26.0" layoutY="252.0" prefHeight="143.0" prefWidth="238.0" text="프로그램 소개 ☆&#10; 라이언톡은 채팅 프로그램&#10;입니다. 1:1 채팅, 그룹 채팅,&#10;프로필, 상태 메시지 등의 &#10;기능을 사용할 수 있습니다.">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextArea>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
