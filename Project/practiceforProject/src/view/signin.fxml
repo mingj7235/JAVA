@@ -13,27 +13,27 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #fee100;" StackPane.alignment="CENTER">
          <children>
-            <TextField fx:id="signin_siginin_phonenum" layoutX="20.0" layoutY="209.0" prefHeight="42.0" prefWidth="258.0" promptText="Phone number" style="-fx-border-radius: 20px; -fx-border-color: none;">
+            <TextField fx:id="signin_siginin_phonenum" layoutX="20.0" layoutY="240.0" prefHeight="42.0" prefWidth="258.0" promptText="Phone number" style="-fx-border-radius: 20px; -fx-border-color: none;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <PasswordField fx:id="signin_signin_password" layoutX="21.0" layoutY="278.0" prefHeight="44.0" prefWidth="259.0" promptText="Password" />
-            <Button fx:id="signin_signin_btn" layoutX="72.0" layoutY="414.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="158.0" style="-fx-background-color: white; -fx-border-radius: 10px;" text="Sign in">
+            <PasswordField fx:id="signin_signin_password" layoutX="21.0" layoutY="327.0" prefHeight="44.0" prefWidth="259.0" promptText="Password" />
+            <Button fx:id="signin_signin_btn" layoutX="72.0" layoutY="463.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="158.0" style="-fx-background-color: white; -fx-border-radius: 10px;" text="Sign in">
                <font>
                   <Font name="Lucida Bright Demibold" size="15.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="61.0" prefHeight="66.0" prefWidth="254.0" style="-fx-text-fill: rgba(0,0,0,0.8);" text="Kakao Talk">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="55.0" prefHeight="66.0" prefWidth="254.0" style="-fx-text-fill: rgba(0,0,0,0.8);" text="Kakao Talk">
                <font>
                   <Font name="Lucida Bright Demibold Italic" size="31.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="40.0" layoutY="145.0" prefHeight="15.0" prefWidth="221.0" text="Welcome to Kakao Talk." textFill="#6b6161">
+            <Label alignment="CENTER" layoutX="40.0" layoutY="138.0" prefHeight="15.0" prefWidth="221.0" text="Welcome to Kakao Talk." textFill="#6b6161">
                <font>
                   <Font name="Lucida Bright Italic" size="12.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="20.0" layoutY="166.0" prefHeight="15.0" prefWidth="261.0" text="Sign in with phone number:)" textFill="#6b6161">
+            <Label alignment="CENTER" layoutX="20.0" layoutY="159.0" prefHeight="15.0" prefWidth="261.0" text="Sign in with phone number:)" textFill="#6b6161">
                <font>
                   <Font name="Lucida Bright Italic" size="12.0" />
                </font></Label>
@@ -48,7 +48,7 @@
                   <Font name="Lucida Bright Regular" size="10.0" />
                </font>
             </Label>
-            <PasswordField fx:id="signin_lsignin_passwordcheck" layoutX="21.0" layoutY="327.0" prefHeight="44.0" prefWidth="259.0" promptText="Password check" />
+            <PasswordField fx:id="signin_lsignin_passwordcheck" layoutX="21.0" layoutY="376.0" prefHeight="44.0" prefWidth="259.0" promptText="Password check" />
             <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="266.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imgs/battery.png" />
@@ -59,6 +59,16 @@
                   <Font name="Lucida Bright Regular" size="10.0" />
                </font>
             </Label>
+            <TextField fx:id="signin_siginin_name" layoutX="20.0" layoutY="191.0" prefHeight="42.0" prefWidth="258.0" promptText="Name" style="-fx-border-radius: 20px; -fx-border-color: none;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="signin_back_btn" layoutX="72.0" layoutY="505.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="158.0" style="-fx-background-color: white; -fx-border-radius: 10px;" text="Back">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

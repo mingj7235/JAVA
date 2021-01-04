@@ -23,25 +23,22 @@ public class DB_connection_test {
 		}
 	}//end 생성자
 	
-	//회원 정보 생성 insert() - 데이터 베이스 안으로 새로운 자료 넣기
-	public void insert(String name, String age, String weight, String height, String sex) {
+	//insert() 
+	public void insert(String name, String phone, String password) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = DriverManager.getConnection(url, userid, passwd);
 			//query문 작성
-			String sql = "INSERT INTO member VALUES(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO kakao_member VALUES(?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			//? 안에 실제 데이터 넣기
 			pstmt.setString(1, name); //1번 물음표에 name(insert()의 매개변수)을 넣어주셈 이라는 의미임
-			pstmt.setInt(2, Integer.parseInt(age)); //데이터베이스에 넣을때는 int타입으로 넣어야하므로 ! 
-			pstmt.setInt(3, Integer.parseInt(weight));
-			pstmt.setInt(4, Integer.parseInt(height));
-			pstmt.setString(5, sex);
+			pstmt.setString(2, phone); 
+			pstmt.setString(3, password);
 			
 			int n = pstmt.executeUpdate(); //n행이 들어갔습니다. 라는 것임
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,12 +51,11 @@ public class DB_connection_test {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		}
-	
+			}
 	}
 
 	
-	//삭제버튼 기능
+	//delete()
 	public void delete(String name) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -72,7 +68,6 @@ public class DB_connection_test {
 			
 			int n = pstmt.executeUpdate();
 			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,11 +79,9 @@ public class DB_connection_test {
 					e.printStackTrace();
 				}
 		}
-		
 	}
 	
-	
-	//수정버튼 기능 (primary key는 고치지 못한다)
+	//update() __ (primary key는 고치지 못한다)
 	public void update (String name, String age, String weight, String height, String sex) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -213,6 +206,7 @@ public class DB_connection_test {
 //		return list;
 //	}//end select
 	
+	//Login
 	public boolean isExist_phone(String phone) {
 		boolean result = false;
 		Connection con = null;
@@ -230,7 +224,6 @@ public class DB_connection_test {
 				result = true;
 			}
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -243,8 +236,9 @@ public class DB_connection_test {
 			}
 		}
 		return result;	
-	}//end isExist()
+	}//end isExist_phone()
 
+	//Login
 	public boolean isExist_pw(String pw) {
 		boolean result = false;
 		Connection con = null;
@@ -262,7 +256,6 @@ public class DB_connection_test {
 				result = true;
 			}
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -275,7 +268,6 @@ public class DB_connection_test {
 			}
 		}
 		return result;	
-	}//end isExist()
-	
+	}//end isExist_pw()
 	
 }
