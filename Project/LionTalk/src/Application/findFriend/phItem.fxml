@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="Application.findFriend.findFriendController">
+   <children>
+      <TextField fx:id="namef" layoutX="31.0" layoutY="46.0" prefHeight="33.0" prefWidth="280.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="142.0" prefHeight="33.0" prefWidth="259.0" text="연락처로 친구를 추가할 수 있습니다." />
+      <Button fx:id="phBtn" layoutX="112.0" layoutY="260.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0"
+      onAction="#handlePhBtn"  style="-fx-background-color: yellow;" text="친구 추가" />
+      <TextField fx:id="phf" layoutX="31.0" layoutY="89.0" prefHeight="33.0" prefWidth="280.0" />
+      <Label fx:id="textb" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="175.0" prefHeight="33.0" prefWidth="259.0" text="추가하고 싶은 친구의 이름과" />
+      <Label fx:id="text" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="199.0" prefHeight="33.0" prefWidth="259.0" text="휴대전화 번호를 입력해 주세요." />
+   </children>
+</AnchorPane>
