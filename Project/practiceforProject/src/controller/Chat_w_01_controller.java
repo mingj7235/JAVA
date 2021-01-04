@@ -169,6 +169,7 @@ public class Chat_w_01_controller implements Initializable{
 
 	public void handleBtnSend(ActionEvent event) {
 		send(chat_write_messages.getText());
+		chat_write_messages.setText("");
 	}
 	
 	
