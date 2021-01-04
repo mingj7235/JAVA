@@ -20,3 +20,5 @@ public class KakaoMain extends Application{
 		launch(args);
 	}
 }
+
+

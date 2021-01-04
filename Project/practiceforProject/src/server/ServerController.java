@@ -45,6 +45,7 @@ public class ServerController implements Initializable{
 	ExecutorService executorService;
 	ServerSocket serverSocket;
 	List<Client> connections = new Vector<>();
+	int server_no;
 	
 	public void StartServer() {
 		executorService = Executors.newFixedThreadPool(
