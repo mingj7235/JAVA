@@ -1,4 +1,4 @@
-package server;
+package Application.MemberDao;
 	
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,44 +12,32 @@ import Application.model.MessageFormat;
 
 
 
-public class MemberDao_backup {
-	
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:xe";
-	String userid="system";
-	String passwd= "1234";
-	
-	public MemberDao_backup() {
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+public class MemberDao {
+	public MemberDao() {
+		// TODO Auto-generated constructor stub
 	}
-	
-	
-	private static MemberDao_backup instance = new MemberDao_backup();
+
+	private static MemberDao instance = new MemberDao();
 
 
-	public static MemberDao_backup getInstance() {
+	public static MemberDao getInstance() {
 		return instance;
 	}
-	
 
 
-	// ì»¨ë„¥?…˜ ?? ?‚¬?š© ?•ˆ?•¨.
-//	public Connection getConnection() throws Exception{
-//
-//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//		String uid = "system";
-//		String pass = "1234";
-//
-//		Connection conn = null;
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		conn = DriverManager.getConnection(url,uid,pass);
-//
-//		return conn;
-//	}
+	// ì»¨ë„¥ì…˜ í’€ ì‚¬ìš© ì•ˆí•¨.
+	public Connection getConnection() throws Exception{
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String uid = "system";
+		String pass = "1234";
+
+		Connection conn = null;
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url,uid,pass);
+
+		return conn;
+	}
 
 	public int userCheck(String userid, String pwd){
 		int result = -1;
@@ -97,11 +85,11 @@ public class MemberDao_backup {
 	//			  9    8  primary key(id)
 	//			 10  ;
 
-	// ?•„?´?””ë¡? ?šŒ?› ? •ë³? ê°?? ¸?˜¤?Š” ë©”ì„œ?“œ
+	// ì•„ì´ë””ë¡œ íšŒì› ì •ë³´ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
 	public Customer getMember(String name, String hp){
 		Customer cus = null;
 		String sql ="select * from customer where name=? and hp=?";
-		//		select * from customer where name='ë°•ë•?™˜' and hp=null;
+		//		select * from customer where name='ë°•ë•í™˜' and hp=null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -178,7 +166,7 @@ public class MemberDao_backup {
 
 	public ArrayList<Customer> ServerInit(){
 
-		//ì¹œêµ¬ ë¦¬ìŠ¤?Š¸ ëª©ë¡ ê°?? ¸?˜´
+		//ì¹œêµ¬ ë¦¬ìŠ¤íŠ¸ ëª©ë¡ ê°€ì ¸ì˜´
 
 		ArrayList<Customer> custom = new ArrayList<>();
 
@@ -221,7 +209,7 @@ public class MemberDao_backup {
 
 	}
 
-	//ì¹œêµ¬ ë¦¬ìŠ¤?Š¸ ëª©ë¡ ê°?? ¸?˜´
+	//ì¹œêµ¬ ë¦¬ìŠ¤íŠ¸ ëª©ë¡ ê°€ì ¸ì˜´
 	public ArrayList<String> CusFriInit(String userid){
 		ArrayList<String> list = new ArrayList<>();
 		String sql ="select * from friendlist where id="+"\'"+userid+"\'";
@@ -345,7 +333,7 @@ public class MemberDao_backup {
 
 
 		//		insert into messageformat (chatid,  send_name , time , message)
-		//		values('1/2','1',to_char(sysdate, 'yyyymmdd day hh24 mi ss'), '?•˜?´');
+		//		values('1/2','1',to_char(sysdate, 'yyyymmdd day hh24 mi ss'), 'í•˜ì´');
 
 		String sql ="Insert into messageformat (chatid, send_name, time, message) values ("
 				+"\'"+ message.getChatId()+"\'" +","+"\'"+message.getFrom()+"\'"+",to_char(sysdate, 'yyyymmdd day hh24 mi ss'),"
@@ -389,7 +377,7 @@ public class MemberDao_backup {
 			pstmt.setString(1, chatId);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				return true; // ë°©ì´ ì¡´ì¬?•¨
+				return true; // ë°©ì´ ì¡´ì¬í•¨
 			}
 
 		}catch(Exception e){
@@ -493,7 +481,7 @@ public class MemberDao_backup {
 
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				return true; // ?‚¬?š©?ê°? ?ˆ?Œ
+				return true; // ì‚¬ìš©ìê°€ ìˆìŒ
 			}
 			return false;
 
@@ -526,10 +514,10 @@ public class MemberDao_backup {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeQuery();
-			return true; // db ?‚½?… ?„±ê³?
+			return true; // db ì‚½ì… ì„±ê³µ
 		}catch(Exception e){
 			e.printStackTrace();
-			return false; // db ?‚½?… ?‹¤?Œ¨
+			return false; // db ì‚½ì… ì‹¤íŒ¨
 		}finally{
 			try{
 				if(pstmt != null) pstmt.close();
@@ -599,7 +587,7 @@ public class MemberDao_backup {
 					
 					pstmt.close();
 					
-					// ???™”ëª? ?—…?°?´?Š¸
+					// ëŒ€í™”ëª… ì—…ë°ì´íŠ¸
 					sql ="update customer set talk ="+"\'"+
 							cus.getTalkName()+"\'"+" "+"where id="+"\'"+cus.getId()+"\'"; 
 						pstmt = conn.prepareStatement(sql);
