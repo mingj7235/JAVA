@@ -1,15 +1,11 @@
 package controller;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import db_connection.DB_connection_test;
-import javafx.application.Platform;
+import db_connection.KakaoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +24,6 @@ public class KakaoMain_controller implements Initializable{
 	@FXML private TextField KakaoMain_login_email;
 	@FXML private PasswordField KakaoMain_login_password;
 	@FXML private Button kakaoMain_signin_btn;
-
-	DB_connection_test db = new DB_connection_test();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,9 +35,17 @@ public class KakaoMain_controller implements Initializable{
 	}
 	
 	public void handleBtnLogin (ActionEvent event) {
+		String phoneNum = KakaoMain_login_email.getText();
+		String pw = KakaoMain_login_password.getText();
 		
-		if (db.isExist_phone(KakaoMain_login_email.getText()) 
-				&& db.isExist_pw(KakaoMain_login_password.getText())) {
+		KakaoDAO dao = new KakaoDAO();
+		int loginNum = dao.login(phoneNum, pw);//정상접속시 회원번호 리턴
+		if(loginNum == -1) {
+			//전화번호없음
+		}else if(loginNum == -2) {
+			//비밀번호다름
+		}else {
+			//정상접속
 			try {
 				Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Friends.fxml"));
 				Scene scene = new Scene(login);
@@ -51,11 +53,12 @@ public class KakaoMain_controller implements Initializable{
 				primaryStage.setScene(scene);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-		} else {
-			//팝업창
-			System.out.println("로그인실패");
+			}			
 		}
+//		if (phoneNum.equals("01064707235") && pw.equals("7235")) {
+//		} else {
+//			System.out.println("로그인실패");
+//		}		
 	}
 	
 	public void handleBtnSignin(ActionEvent event) {
@@ -68,5 +71,4 @@ public class KakaoMain_controller implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
 }

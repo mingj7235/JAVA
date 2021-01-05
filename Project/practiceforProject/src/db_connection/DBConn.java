@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class DBConn {
 	private static Connection dbconn;
 	private static final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String id = "team";
-	private static final String pw = "team1";
+	private static final String id = "system";
+	private static final String pw = "1234";
 	
 	public static Connection getConnection()  {
 		if(dbconn == null) {
@@ -26,7 +26,7 @@ public class DBConn {
 			}
 		}
 		try {
-			System.out.println(dbconn.isClosed() ? "접속종료" : "접속중");
+			System.out.println(dbconn.isClosed() ? "�젒�냽醫낅즺" : "�젒�냽以�");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
