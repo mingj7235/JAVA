@@ -1,0 +1,18 @@
+CREATE TABLE kakaouser (
+    user_num NUMBER(4) NOT NULL,
+    tel VARCHAR2(11) PRIMARY KEY,
+    NAME VARCHAR2(20) NOT NULL,
+    PASSWORD VARCHAR2(20) NOT NULL
+    );
+        
+COMMIT;
+
+
+ALTER TABLE kakaouser
+    RENAME COLUMN tel TO phonenum;
+    
+CREATE SEQUENCE user_seq START WITH 1 INCREMENT BY 1;
+
+INSERT INTO kakaouser VALUES (user_seq.NEXTVAL, '01012341234', 'kim', 'q123');
+COMMIT;
+SELECT * FROM kakaouser;

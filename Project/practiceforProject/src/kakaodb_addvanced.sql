@@ -9,7 +9,9 @@ create table customer (
 	hp varchar2(15),
 	talk varchar2(20),
 	CONSTRAINT customer_pk primary key(id));
-    
+
+insert into customer values ('3mins1', '7235','김','','01064707235','');
+select * from customer;
 --chatting room db
 
 create table chattingroom (
@@ -29,8 +31,14 @@ create table messageformat(
     send_name varchar2(20),
     time varchar2(30),
     message varchar2(500),
-    CONSTRAINT messageformat_fk FOREIGN KEY (send_name, chatid) REFERENCES chattingroom());
-    
- 
+    CONSTRAINT messageformat_fk FOREIGN KEY (send_name, chatid) REFERENCES chattingroom(id, chatid));
+
+create table friendlist (
+    from_id varchar2(100),
+    id varchar2(100),
+    constraint friendlist_pk primary key (from_id, id));
+
+
+ desc chattingroom;
     
     commit;
