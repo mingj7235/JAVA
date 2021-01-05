@@ -28,9 +28,9 @@ public class MemberDao {
 	// 컨넥션 풀 사용 안함.
 	public Connection getConnection() throws Exception{
 
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String uid = "system";
-		String pass = "1234";
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String uid = "lion_talk";
+		String pass = "lion_talk";
 
 		Connection conn = null;
 		Class.forName("oracle.jdbc.driver.OracleDriver");

@@ -1,4 +1,4 @@
-package Application.MemberDao;
+package server;
 	
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,32 +12,44 @@ import Application.model.MessageFormat;
 
 
 
-public class MemberDao {
-	public MemberDao() {
-		// TODO Auto-generated constructor stub
+public class MemberDao_backup {
+	
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String userid="system";
+	String passwd= "1234";
+	
+	public MemberDao_backup() {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
+	
+	
+	private static MemberDao_backup instance = new MemberDao_backup();
 
-	private static MemberDao instance = new MemberDao();
 
-
-	public static MemberDao getInstance() {
+	public static MemberDao_backup getInstance() {
 		return instance;
 	}
+	
 
 
-	// ì»¨ë„¥ì…˜ í’€ ì‚¬ìš© ì•ˆí•¨.
-	public Connection getConnection() throws Exception{
-
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-		String uid = "lion_talk";
-		String pass = "lion_talk";
-
-		Connection conn = null;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url,uid,pass);
-
-		return conn;
-	}
+	// ì»¨ë„¥?…˜ ?? ?‚¬?š© ?•ˆ?•¨.
+//	public Connection getConnection() throws Exception{
+//
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String uid = "system";
+//		String pass = "1234";
+//
+//		Connection conn = null;
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		conn = DriverManager.getConnection(url,uid,pass);
+//
+//		return conn;
+//	}
 
 	public int userCheck(String userid, String pwd){
 		int result = -1;
@@ -85,11 +97,11 @@ public class MemberDao {
 	//			  9    8  primary key(id)
 	//			 10  ;
 
-	// ì•„ì´ë””ë¡œ íšŒì› ì •ë³´ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
+	// ?•„?´?””ë¡? ?šŒ?› ? •ë³? ê°?? ¸?˜¤?Š” ë©”ì„œ?“œ
 	public Customer getMember(String name, String hp){
 		Customer cus = null;
 		String sql ="select * from customer where name=? and hp=?";
-		//		select * from customer where name='ë°•ë•í™˜' and hp=null;
+		//		select * from customer where name='ë°•ë•?™˜' and hp=null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -166,7 +178,7 @@ public class MemberDao {
 
 	public ArrayList<Customer> ServerInit(){
 
-		//ì¹œêµ¬ ë¦¬ìŠ¤íŠ¸ ëª©ë¡ ê°€ì ¸ì˜´
+		//ì¹œêµ¬ ë¦¬ìŠ¤?Š¸ ëª©ë¡ ê°?? ¸?˜´
 
 		ArrayList<Customer> custom = new ArrayList<>();
 
@@ -209,7 +221,7 @@ public class MemberDao {
 
 	}
 
-	//ì¹œêµ¬ ë¦¬ìŠ¤íŠ¸ ëª©ë¡ ê°€ì ¸ì˜´
+	//ì¹œêµ¬ ë¦¬ìŠ¤?Š¸ ëª©ë¡ ê°?? ¸?˜´
 	public ArrayList<String> CusFriInit(String userid){
 		ArrayList<String> list = new ArrayList<>();
 		String sql ="select * from friendlist where id="+"\'"+userid+"\'";
@@ -333,7 +345,7 @@ public class MemberDao {
 
 
 		//		insert into messageformat (chatid,  send_name , time , message)
-		//		values('1/2','1',to_char(sysdate, 'yyyymmdd day hh24 mi ss'), 'í•˜ì´');
+		//		values('1/2','1',to_char(sysdate, 'yyyymmdd day hh24 mi ss'), '?•˜?´');
 
 		String sql ="Insert into messageformat (chatid, send_name, time, message) values ("
 				+"\'"+ message.getChatId()+"\'" +","+"\'"+message.getFrom()+"\'"+",to_char(sysdate, 'yyyymmdd day hh24 mi ss'),"
@@ -377,7 +389,7 @@ public class MemberDao {
 			pstmt.setString(1, chatId);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				return true; // ë°©ì´ ì¡´ì¬í•¨
+				return true; // ë°©ì´ ì¡´ì¬?•¨
 			}
 
 		}catch(Exception e){
@@ -481,7 +493,7 @@ public class MemberDao {
 
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				return true; // ì‚¬ìš©ìê°€ ìˆìŒ
+				return true; // ?‚¬?š©?ê°? ?ˆ?Œ
 			}
 			return false;
 
@@ -514,10 +526,10 @@ public class MemberDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeQuery();
-			return true; // db ì‚½ì… ì„±ê³µ
+			return true; // db ?‚½?… ?„±ê³?
 		}catch(Exception e){
 			e.printStackTrace();
-			return false; // db ì‚½ì… ì‹¤íŒ¨
+			return false; // db ?‚½?… ?‹¤?Œ¨
 		}finally{
 			try{
 				if(pstmt != null) pstmt.close();
@@ -587,7 +599,7 @@ public class MemberDao {
 					
 					pstmt.close();
 					
-					// ëŒ€í™”ëª… ì—…ë°ì´íŠ¸
+					// ???™”ëª? ?—…?°?´?Š¸
 					sql ="update customer set talk ="+"\'"+
 							cus.getTalkName()+"\'"+" "+"where id="+"\'"+cus.getId()+"\'"; 
 						pstmt = conn.prepareStatement(sql);
