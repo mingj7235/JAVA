@@ -27,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.MessagePane;
 
@@ -42,6 +43,7 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
 	@FXML private Button chat_start_button;
+	@FXML private VBox chat_vbox;
 		
 	Socket socket;
 	
@@ -97,12 +99,12 @@ public class Chat_w_01_controller implements Initializable{
 				}
 				
 				String data = new String (byteArr, 0, readByteCount, "UTF-8");
-				
 				MessagePane mp = new MessagePane(data);
-				mp.getPane();
+//				chat_vbox.getChildren().add(mp.getPane());
+				
 				Platform.runLater(() -> 
-					//여기에 페인을 놓고, 그 페인에 data를 얹으면...? 
-					chat_textarea.appendText(data+"\n"));
+					chat_vbox.getChildren().add(mp.getPane()));
+//					chat_textarea.appendText(data+"\n"));
 				
 			}catch (Exception e) {
 				Platform.runLater(() -> chat("[Connection Error]"));
@@ -128,6 +130,7 @@ public class Chat_w_01_controller implements Initializable{
 		};
 		thread.start();
 	}
+	
 	
 	public void chat (String msg) {
 		chat_textarea.appendText(msg+"\n");
@@ -178,6 +181,9 @@ public class Chat_w_01_controller implements Initializable{
 
 
 	public void handleBtnSend(ActionEvent event) {
+		MessagePane mp = new MessagePane("메세지");
+		chat_vbox.getChildren().add(mp.getPane());
+		
 		send(chat_write_messages.getText());
 		chat_write_messages.setText("");
 	}
