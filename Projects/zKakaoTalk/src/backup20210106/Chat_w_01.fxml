@@ -131,6 +131,11 @@
                   </HBox>
                </children>
             </Pane>
+            <TextArea fx:id="chat_textarea" layoutX="20.0" layoutY="117.0" prefHeight="402.0" prefWidth="261.0" styleClass="chat_textarea">
+               <stylesheets>
+        
+                  <URL value="@app.css" />
+               </stylesheets></TextArea>
             <Button fx:id="chat_start_button" layoutX="20.0" layoutY="79.0" mnemonicParsing="false" opacity="0.85" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -139,14 +144,6 @@
                   <Font name="Lucida Bright Demibold" size="9.5" />
                </font>
             </Button>
-            <ScrollPane fx:id="chat_pane" layoutX="4.0" layoutY="116.0" prefHeight="415.0" prefWidth="292.0" styleClass="chat_pane">
-            <stylesheets>
-                  <URL value="@app.css" />
-               </stylesheets>
-               <content>
-                  <TextArea fx:id="chat_textarea" prefHeight="72.0" prefWidth="290.0" />
-               </content>
-            </ScrollPane>
          </children>
       </Pane>
    </center>

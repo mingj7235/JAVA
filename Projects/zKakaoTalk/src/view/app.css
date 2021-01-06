@@ -1,19 +1,19 @@
-/*text-area ¹è°æ»ö*/
-.text-area {
+/*text-area ï¿½ï¿½ï¿½ï¿½*/
+.scroll-pane {
 	-fx-background-color: #abc1d1;
 }
 
-/*scroll-pane ¹è°æ»ö*/
-.text-area .scroll-pane {
+/*scroll-pane ï¿½ï¿½ï¿½ï¿½*/
+.scroll-pane {
 	-fx-background-color: transparent;
 }
 
-/*viewport ¹è°æ»ö*/
-.text-area .scroll-pane .viewport{
+/*viewport ï¿½ï¿½ï¿½ï¿½*/
+.scroll-pane .viewport{
 	-fx-background-color: transparent;
 }
 
-/*content ¹è°æ»ö*/
-.text-area .scroll-pane .content{
+/*content ï¿½ï¿½ï¿½ï¿½*/
+.scroll-pane .content{
 	-fx-background-color: transparent;
 }

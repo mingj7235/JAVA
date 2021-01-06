@@ -1,4 +1,4 @@
-package controller;
+package backup20210106;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,14 +21,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.MessagePane;
 
 public class Chat_w_01_controller implements Initializable{
 	@FXML private Label Chats_time;
@@ -37,7 +35,6 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Pane chat_w_01_pane;
 	@FXML private Slider chat_slider_opacity;
 	@FXML private TextField chat_write_messages;
-	@FXML private ScrollPane chat_pane;
 	@FXML private TextArea chat_textarea;
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
@@ -46,7 +43,6 @@ public class Chat_w_01_controller implements Initializable{
 	Socket socket;
 	
 	void startClient () {
-		
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
@@ -98,8 +94,6 @@ public class Chat_w_01_controller implements Initializable{
 				
 				String data = new String (byteArr, 0, readByteCount, "UTF-8");
 				
-				MessagePane mp = new MessagePane(data);
-				mp.getPane();
 				Platform.runLater(() -> 
 					//여기에 페인을 놓고, 그 페인에 data를 얹으면...? 
 					chat_textarea.appendText(data+"\n"));
