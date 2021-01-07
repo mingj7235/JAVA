@@ -14,6 +14,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -138,6 +141,7 @@ public class Chat_w_01_controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		chat_send_button.setOnKeyPressed(e->handleBtnSend(e));
 		chat_send_button.setOnAction(e->handleBtnSend(e));
 		chat_back_btn.setOnAction(e->handleBtnBack(e));
 		chat_start_button.setOnAction(e->handleBtnStart(e));
@@ -186,10 +190,22 @@ public class Chat_w_01_controller implements Initializable{
 		chat_vbox.getChildren().add(mm.getName_pane());
 		chat_vbox.getChildren().add(mm.getMsg_pane());
 		
-//		chat_vbox.getChildren().add(mm.getPane());
-		
 		send(chat_write_messages.getText());
 		chat_write_messages.setText("");
 	}
-		
+	
+//	public void handleBtnSend(KeyEvent event) {
+//		if(event.getCode() == KeyCode.ENTER) {
+//			chat_send_button.fire();
+//			event.consume();
+//			MyMessagePane mm = new MyMessagePane(chat_write_messages.getText());
+//			chat_vbox.getChildren().add(mm.getName_pane());
+//			chat_vbox.getChildren().add(mm.getMsg_pane());
+//			
+//			send(chat_write_messages.getText());
+//			chat_write_messages.setText("");
+//		}
+//	}
+	
+	
 }

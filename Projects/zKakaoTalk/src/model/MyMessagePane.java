@@ -24,7 +24,7 @@ public class MyMessagePane {
 		
 		nameLb.setLayoutX(200);
 		nameLb.setLayoutY(20);
-		nameLb.setText("내이름");
+		nameLb.setText(UserDTO.nowUser.getName());
 		
 		msgLb.setLayoutX(170);
 		msgLb.setLayoutY(20);
