@@ -6,8 +6,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class MyMessagePane {
-//	private HBox name_pane = new HBox();
-//	private HBox msg_pane = new HBox();
 	private Pane name_pane = new Pane();
 	private Pane msg_pane = new Pane();
 	Label nameLb = new Label();
@@ -16,23 +14,23 @@ public class MyMessagePane {
 	
 	public MyMessagePane(String msg) {
 		//Pane 설치
-		name_pane.setPrefHeight(50);
 		name_pane.setPrefWidth(250);
-//		name_pane.setPadding(new Insets(0, 0, 0, 50));
+		name_pane.setPrefHeight(20);
 		
-		msg_pane.setPrefHeight(50);
 		msg_pane.setPrefWidth(250);
+		msg_pane.setPrefHeight(50);
 		
 		//label 설정
 		
 		nameLb.setLayoutX(200);
 		nameLb.setLayoutY(20);
-		nameLb.setText("이름df");
+		nameLb.setText("내이름");
 		
-		msgLb.setLayoutX(200);
-		msgLb.setLayoutX(20);
+		msgLb.setLayoutX(170);
+		msgLb.setLayoutY(20);
 		msgLb.setMinHeight(30);
-		msgLb.setMinWidth(50);
+		msgLb.setMinWidth(100);
+		msgLb.setPadding(new Insets(10));
 		msgLb.setStyle("-fx-background-color: white");
 		msgLb.setText(msg);
 		

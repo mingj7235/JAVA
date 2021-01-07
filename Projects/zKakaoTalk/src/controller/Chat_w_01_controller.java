@@ -101,8 +101,10 @@ public class Chat_w_01_controller implements Initializable{
 				String data = new String (byteArr, 0, readByteCount, "UTF-8");
 				MessagePane mp = new MessagePane(data);
 				
-				Platform.runLater(() -> 
-					chat_vbox.getChildren().add(mp.getPane()));
+				Platform.runLater(() -> {
+					chat_vbox.getChildren().add(mp.getName_pane());
+					chat_vbox.getChildren().add(mp.getMsg_pane());
+				});
 				
 			}catch (Exception e) {
 //				Platform.runLater(() -> chat("[Connection Error]"));
