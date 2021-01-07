@@ -30,6 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.MessagePane;
+import model.MyMessagePane;
 
 public class Chat_w_01_controller implements Initializable{
 	@FXML private Label Chats_time;
@@ -38,7 +39,6 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Pane chat_w_01_pane;
 	@FXML private Slider chat_slider_opacity;
 	@FXML private TextField chat_write_messages;
-	@FXML private ScrollPane chat_pane;
 	@FXML private TextArea chat_textarea;
 	@FXML private Button chat_send_button;
 	@FXML private Button chat_back_btn;
@@ -56,14 +56,14 @@ public class Chat_w_01_controller implements Initializable{
 					socket = new Socket();
 					socket.connect(new InetSocketAddress("localhost", 5001));
 					Platform.runLater(() -> {
-						chat("[Connection]" 
-								+ socket.getRemoteSocketAddress() + "]");
+//						chat("[Connection]" 
+//								+ socket.getRemoteSocketAddress() + "]");
 						chat_start_button.setText("stop");
 						chat_send_button.setDisable(false);
 						
 					});
 				}catch (IOException e) {
-					Platform.runLater(() -> chat("[Connection Error]"));
+//					Platform.runLater(() -> chat("[Connection Error]"));
 					if(!socket.isClosed()) {stopClient();}
 					return;
 				}
@@ -76,7 +76,7 @@ public class Chat_w_01_controller implements Initializable{
 	void stopClient() {
 		try {
 			Platform.runLater(() -> {
-				chat("[Connection Error]");
+//				chat("[Connection Error]");
 				chat_start_button.setText("start");
 				chat_send_button.setDisable(true);
 			});
@@ -100,14 +100,12 @@ public class Chat_w_01_controller implements Initializable{
 				
 				String data = new String (byteArr, 0, readByteCount, "UTF-8");
 				MessagePane mp = new MessagePane(data);
-//				chat_vbox.getChildren().add(mp.getPane());
 				
 				Platform.runLater(() -> 
 					chat_vbox.getChildren().add(mp.getPane()));
-//					chat_textarea.appendText(data+"\n"));
 				
 			}catch (Exception e) {
-				Platform.runLater(() -> chat("[Connection Error]"));
+//				Platform.runLater(() -> chat("[Connection Error]"));
 				stopClient();
 				break;
 			}
@@ -122,9 +120,9 @@ public class Chat_w_01_controller implements Initializable{
 					OutputStream os = socket.getOutputStream();
 					os.write(byteArr);
 					os.flush();
-					Platform.runLater(() -> chat("[send Success]"));
+//					Platform.runLater(() -> chat("[send Success]"));
 				}catch (Exception e) {
-					Platform.runLater(() -> chat("[Server connection Error]"));
+//					Platform.runLater(() -> chat("[Server connection Error]"));
 				}
 			}
 		};
@@ -181,8 +179,12 @@ public class Chat_w_01_controller implements Initializable{
 
 
 	public void handleBtnSend(ActionEvent event) {
-		MessagePane mp = new MessagePane("메세지");
-		chat_vbox.getChildren().add(mp.getPane());
+		
+		MyMessagePane mm = new MyMessagePane(chat_write_messages.getText());
+		chat_vbox.getChildren().add(mm.getName_pane());
+		chat_vbox.getChildren().add(mm.getMsg_pane());
+		
+//		chat_vbox.getChildren().add(mm.getPane());
 		
 		send(chat_write_messages.getText());
 		chat_write_messages.setText("");

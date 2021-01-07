@@ -139,15 +139,7 @@
                   <Font name="Lucida Bright Demibold" size="9.5" />
                </font>
             </Button>
-            <ScrollPane fx:id="chat_pane" layoutX="4.0" layoutY="116.0" prefHeight="222.0" prefWidth="292.0" styleClass="chat_pane">
-            <stylesheets>
-                  <URL value="@app.css" />
-               </stylesheets>
-               <content>
-                  <TextArea fx:id="chat_textarea" prefHeight="72.0" prefWidth="290.0" />
-               </content>
-            </ScrollPane>
-            <VBox fx:id="chat_vbox" layoutX="20.0" layoutY="285.0" prefHeight="253.0" prefWidth="234.0" />
+            <VBox fx:id="chat_vbox" layoutX="5.0" layoutY="149.0" prefHeight="381.0" prefWidth="290.0" />
          </children>
       </Pane>
    </center>
