@@ -203,10 +203,14 @@
                         </Label>
                         <Label text="#IU">
                            <font>
-                              <Font name="System Bold" size="13.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="#IU #아이유 #UAENA" textFill="#8a8383" />
+                        <Label text="#IU #SING #UAENA" textFill="#8a8383">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="12.0" />
+                           </font>
+                        </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -216,7 +220,7 @@
                               </ImageView>
                               <Label alignment="CENTER" contentDisplay="CENTER" text="2,827 members  |" textFill="#8a8383">
                                  <font>
-                                    <Font size="9.0" />
+                                    <Font name="Lucida Bright Demibold" size="9.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="2.0" />
@@ -235,9 +239,14 @@
                      <children>
                         <Label text="Go to Open Chat Home" textFill="#8a8383">
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="20.0" top="10.0" />
                            </VBox.margin>
                         </Label>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/IU.JPG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </VBox>
                </children>
