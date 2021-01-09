@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import model.FriendListPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,24 +14,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.UserDTO;
 
-public class Chats_controller implements Initializable{
-	@FXML private Label Chats_time;
-	//채팅방의 오른편 채팅 시간 label
-	@FXML private Label chats_chatstime_1;
-	@FXML private Label chats_chatstime_11;
-	@FXML private Label chats_chatstime_111;
-	@FXML private Label chats_chatstime_1111;
+public class Friends_controller implements Initializable{
+	@FXML private Label Friend_time;
+	@FXML private Label logon_id;
 	
-	@FXML private Pane chats_first_linktochat;
-	
+	@FXML private TextField friends_search;
 	@FXML private Button friends_friends_btn;
 	@FXML private Button friends_chats_btn;
 	@FXML private Button friends_search_btn;
 	@FXML private Button friends_more_btn;
+	@FXML private VBox vboxlist;
+	
+	private FriendListPane [] friendListPane  = new FriendListPane [UserDTO.friends.size()];
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -38,18 +40,31 @@ public class Chats_controller implements Initializable{
 		friends_chats_btn.setOnAction(e->handleBtnChats(e));
 		friends_search_btn.setOnAction(e->handleBtnSearch(e));
 		friends_more_btn.setOnAction(e->handleBtnMore(e));
-		
-		chats_first_linktochat.setOnMouseClicked(e->handletochatlink(e));
-		
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		Chats_time.setText(sdf.format(date));
+		Friend_time.setText(sdf.format(date));
+		logon_id.setText(UserDTO.nowUser.getName());
+		for (int i = 0; i < friendListPane.length; i++) {
+			friendListPane[i] = new FriendListPane(UserDTO.friends.get(i));
+			int a = i;
+			friendListPane[i].getPane().setOnMouseClicked(e->handletoFriendClick(e, UserDTO.friends.get(a)));
+			vboxlist.getChildren().add(friendListPane[i].getPane());
+		}	
 	}
-	
-	//채팅방 창에서 친구 클릭시 친구와 채팅창으로 넘어가는 이벤트
-	public void handletochatlink(MouseEvent event) {
+	//친구 클릭시
+	public void handletoFriendClick (MouseEvent event, UserDTO friend) {
 		try {
+			//접속하는 채팅방 친구 입력
+			UserDTO.withFriend = friend;
+
+			UserDAO dao = new UserDAO();
+			int room_num = dao.roomCheck(UserDTO.nowUser, UserDTO.withFriend); //방이 존재하지 않다면 만들고 결과적으로 방번호 리턴
+			
+			Chat_w_01_controller.room_num = room_num;
+			
+			//scene의 경로
 			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Chat_w_01.fxml"));
+			//받아온 경로로 객체만들기
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
@@ -57,7 +72,7 @@ public class Chats_controller implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
+	
 	//네비게이션 바
 	public void handleBtnFriends (ActionEvent event) {
 		//db에 저장해야함
@@ -76,7 +91,7 @@ public class Chats_controller implements Initializable{
 		try {
 			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Chats.fxml"));
 			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) friends_chats_btn.getScene().getWindow();
+			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,7 +103,7 @@ public class Chats_controller implements Initializable{
 		try {
 			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/Search.fxml"));
 			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) friends_search_btn.getScene().getWindow();
+			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +115,7 @@ public class Chats_controller implements Initializable{
 		try {
 			Parent login = FXMLLoader.load(getClass().getClassLoader().getResource("view/More.fxml"));
 			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) friends_more_btn.getScene().getWindow();
+			Stage primaryStage = (Stage) friends_friends_btn.getScene().getWindow();
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
