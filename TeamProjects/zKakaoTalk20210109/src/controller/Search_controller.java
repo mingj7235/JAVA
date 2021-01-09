@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import model.UserDTO;
 
 public class Search_controller implements Initializable{
-	@FXML private Label More_time;
+	@FXML private Label Search_time;
 	
 	@FXML private Button friends_friends_btn;
 	@FXML private Button friends_chats_btn;
@@ -38,7 +38,7 @@ public class Search_controller implements Initializable{
 		friends_more_btn.setOnAction(e->handleBtnMore(e));
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		More_time.setText(sdf.format(date));
+		Search_time.setText(sdf.format(date));
 	}
 	
 	//네비게이션 바
