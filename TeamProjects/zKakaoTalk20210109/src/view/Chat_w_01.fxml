@@ -131,7 +131,7 @@
                   </HBox>
                </children>
             </Pane>
-            <TextArea fx:id="chat_textarea" layoutX="20.0" layoutY="117.0" prefHeight="402.0" prefWidth="261.0" styleClass="chat_textarea">
+            <TextArea fx:id="chat_textarea" layoutX="13.0" layoutY="117.0" prefHeight="86.0" prefWidth="274.0" styleClass="chat_textarea">
                <stylesheets>
         
                   <URL value="@app.css" />
@@ -144,6 +144,11 @@
                   <Font name="Lucida Bright Demibold" size="9.5" />
                </font>
             </Button>
+            <ScrollPane hbarPolicy="NEVER" layoutX="15.0" layoutY="192.0" prefHeight="320.0" prefWidth="270.0" style="-fx-background-color: #abc1d1;" stylesheets="@scroll.css" vbarPolicy="NEVER">
+               <content>
+                  <VBox fx:id="chat_vbox" prefHeight="320.0" prefWidth="250.0" style="-fx-background-color: #abc1d1;" />
+               </content>
+            </ScrollPane>
          </children>
       </Pane>
    </center>

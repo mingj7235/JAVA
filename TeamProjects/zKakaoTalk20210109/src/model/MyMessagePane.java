@@ -12,7 +12,7 @@ public class MyMessagePane {
 	Label msgLb = new Label();
 	Label timeLb = new Label();
 	
-	public MyMessagePane(String msg) {
+	public MyMessagePane(String name, String msg) {
 		//Pane 설치
 		name_pane.setPrefWidth(250);
 		name_pane.setPrefHeight(20);

@@ -1,0 +1,21 @@
+@charset "EUC-KR";
+
+
+.scroll-pane {
+	-fx-background-color: #abc1d1;
+}
+
+
+.scroll-pane {
+	-fx-background-color: transparent;
+}
+
+
+.scroll-pane .viewport{
+	-fx-background-color: transparent;
+}
+
+
+.scroll-pane .content{
+	-fx-background-color: transparent;
+}
