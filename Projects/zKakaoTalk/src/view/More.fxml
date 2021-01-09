@@ -231,7 +231,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutY="67.0" prefHeight="60.0" prefWidth="300.0">
+            <HBox layoutY="66.0" prefHeight="60.0" prefWidth="300.0">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -268,7 +268,7 @@
                   <Image url="@../imgs/ads.JPG" />
                </image>
             </ImageView>
-            <HBox layoutX="10.0" layoutY="121.0" prefHeight="56.0" prefWidth="280.0" style="-fx-background-color: #FEE100;">
+            <HBox layoutX="10.0" layoutY="121.0" prefHeight="51.0" prefWidth="280.0" style="-fx-background-color: #FEE100;">
                <children>
                   <Label text="Minjae">
                      <font>
@@ -295,15 +295,6 @@
                         <Insets right="50.0" />
                      </padding>
                   </Pane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="150.0">
-                     <children>
-                        <Label text="Label">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
             </HBox>
             <Ellipse fill="WHITE" layoutX="12.0" layoutY="175.0" radiusX="12.0" radiusY="7.0" stroke="#0000001a" strokeType="INSIDE" />
@@ -350,6 +341,46 @@
                            </HBox.margin>
                         </Label>
                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="150.0">
+                     <children>
+                        <Label style="-fx-border-radius: 10; -fx-border-color: #8a8383; -fx-border-width: 0.2;" text="Transfer">
+                           <HBox.margin>
+                              <Insets right="3.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Lucida Bright Italic" size="10.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-border-color: #8a8383; -fx-border-radius: 10; -fx-border-width: 0.2;" text="Payment">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Lucida Bright Italic" size="10.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-border-color: #8a8383; -fx-border-radius: 10; -fx-border-width: 0.2;" text="Asset">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Lucida Bright Italic" size="10.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="3.0" right="3.0" top="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="3.0" left="15.0" />
+                     </HBox.margin>
                   </HBox>
                </children>
             </HBox>
