@@ -21,10 +21,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -49,6 +51,9 @@ public class Chat_w_01_controller implements Initializable{
 	@FXML private Button chat_back_btn;
 	@FXML private Button chat_start_button;
 	@FXML private VBox chat_vbox;
+	@FXML private ScrollPane chat_scroll;
+	
+	
 	
 	public static int room_num; //현재 내가 접속한 방번호
 	
@@ -98,6 +103,9 @@ public class Chat_w_01_controller implements Initializable{
 	}
 	
 	void receive () {
+//		chat_scroll.setVvalue(1.0);
+		chat_scroll.vvalueProperty().bind(chat_vbox.heightProperty());
+		chat_vbox.setPadding(new Insets(5,0,15,0));
 		while (true) {
 			try {
 				byte [] byteArr = new byte [1024];
@@ -123,6 +131,9 @@ public class Chat_w_01_controller implements Initializable{
 					}else {//남이보낸거면
 //						data = getMessage.getSendUserName() +": "+getMessage.getSendComment();
 						data = getMessage.getSendComment();
+						if (data.length()>10) {
+							
+						}
 						MessagePane fmp = new MessagePane(getMessage.getSendUserName(), data);
 						Platform.runLater(() -> {
 							chat_vbox.getChildren().add(fmp.getName_pane());

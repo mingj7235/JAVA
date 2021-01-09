@@ -26,10 +26,12 @@ public class MyMessagePane {
 		nameLb.setLayoutY(20);
 		nameLb.setText(UserDTO.nowUser.getName());
 		
-		msgLb.setLayoutX(170);
+		msgLb.setLayoutX(100);
 		msgLb.setLayoutY(20);
-		msgLb.setMinHeight(30);
-		msgLb.setMinWidth(100);
+		msgLb.setPrefWidth(150);
+		
+		msgLb.setWrapText(true);
+		
 		msgLb.setPadding(new Insets(10));
 		msgLb.setStyle("-fx-background-color: white");
 		msgLb.setText(msg);

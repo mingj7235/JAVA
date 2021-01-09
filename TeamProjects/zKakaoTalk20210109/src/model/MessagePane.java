@@ -12,16 +12,6 @@ public class MessagePane {
 	Label msgLb = new Label();
 	Label timeLb = new Label();
 	
-	public int messeges_height (int msg_length) {
-		if (msg_length <10) {
-			return 20;
-		}else if (msg_length < 20) {
-			return 40;
-		} else {
-			return 60;
-		}
-	}
-	
 	
 	public MessagePane(String name, String msg) {
 		
@@ -40,12 +30,8 @@ public class MessagePane {
 		
 		msgLb.setLayoutX(20);
 		msgLb.setLayoutY(20);
-		msgLb.setPrefHeight(messeges_height(msg.length()));
-		
-		//메세지를 띄어쓰기 밑 엔터를 어떻게할 것인가..
-		if (msg.length()<10) {
-			msgLb.setPrefWidth(100);
-		}
+		msgLb.setPrefWidth(150);
+		msgLb.setWrapText(true);
 		
 		
 		msgLb.setPadding(new Insets(10));

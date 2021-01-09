@@ -144,11 +144,12 @@
                   <Font name="Lucida Bright Demibold" size="9.5" />
                </font>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="19.0" layoutY="154.0" prefHeight="362.0" prefWidth="261.0" stylesheets="@scroll.css">
+            <ScrollPane fx:id="chat_scroll" hbarPolicy="NEVER" layoutX="19.0" layoutY="154.0" prefHeight="362.0" prefWidth="261.0" stylesheets="@scroll.css">
                <content>
-                  <VBox fx:id="chat_vbox" prefHeight="3000.0" prefWidth="258.0" style="-fx-background-color: #abc1d1;" />
+                  <VBox fx:id="chat_vbox" prefWidth="258.0" style="-fx-background-color: #abc1d1;" />
                </content>
             </ScrollPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abc1d1" height="421.0" layoutX="260.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="26.0" />
          </children>
       </Pane>
    </center>
