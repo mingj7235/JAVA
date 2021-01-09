@@ -131,12 +131,12 @@
                   </HBox>
                </children>
             </Pane>
-            <TextArea fx:id="chat_textarea" layoutX="13.0" layoutY="117.0" prefHeight="86.0" prefWidth="274.0" styleClass="chat_textarea">
+            <TextArea fx:id="chat_textarea" layoutX="200.0" layoutY="104.0" prefHeight="86.0" prefWidth="87.0" styleClass="chat_textarea">
                <stylesheets>
         
                   <URL value="@app.css" />
                </stylesheets></TextArea>
-            <Button fx:id="chat_start_button" layoutX="20.0" layoutY="79.0" mnemonicParsing="false" opacity="0.85" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
+            <Button fx:id="chat_start_button" layoutX="21.0" layoutY="79.0" mnemonicParsing="false" opacity="0.85" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #fee100;" text="start">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -144,12 +144,11 @@
                   <Font name="Lucida Bright Demibold" size="9.5" />
                </font>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="15.0" layoutY="192.0" prefHeight="320.0" prefWidth="270.0" style="-fx-background-color: #abc1d1;" stylesheets="@scroll.css">
-               <content>
-                  <VBox fx:id="chat_vbox" prefHeight="320.0" prefWidth="250.0" style="-fx-background-color: #abc1d1;" />
-               </content>
-            </ScrollPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abc1d1" height="370.0" layoutX="267.0" layoutY="151.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" />
+            <VBox fx:id="chat_vbox" alignment="TOP_RIGHT" layoutX="25.0" layoutY="174.0" prefHeight="320.0" prefWidth="250.0" style="-fx-background-color: #abc1d1;">
+               <children>
+                  <ScrollBar opacity="0.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="14.0" />
+               </children>
+            </VBox>
          </children>
       </Pane>
    </center>
