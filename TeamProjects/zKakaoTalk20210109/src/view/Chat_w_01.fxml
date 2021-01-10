@@ -149,7 +149,7 @@
                   <VBox fx:id="chat_vbox" prefWidth="258.0" style="-fx-background-color: #abc1d1;" />
                </content>
             </ScrollPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abc1d1" height="421.0" layoutX="260.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="26.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abc1d1" height="433.0" layoutX="260.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="26.0" />
          </children>
       </Pane>
    </center>
